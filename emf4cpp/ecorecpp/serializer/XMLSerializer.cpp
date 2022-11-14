@@ -216,7 +216,7 @@ XMLSerializer::get_reference(::ecore::EObject_ptr obj) const {
 	if (crossDocument) {
 		return ( fromResource == toResource )
 				? (QString("#") + referenceUri.fragment(QUrl::FullyEncoded)).toStdWString()
-				: referenceUri.toString().toStdWString();
+				: referenceUri.toString(QUrl::FullyEncoded).toStdWString();
 	}
 
 	return referenceUri.fragment(QUrl::FullyEncoded).toStdWString();
@@ -224,7 +224,7 @@ XMLSerializer::get_reference(::ecore::EObject_ptr obj) const {
 	if (crossDocument) {
 		return ( fromResource == toResource )
 				? (QString("#") + referenceUri.fragment(QUrl::FullyEncoded)).toStdString()
-				: referenceUri.toString().toStdString();
+				: referenceUri.toString(QUrl::FullyEncoded).toStdString();
 	}
 
 	return referenceUri.fragment(QUrl::FullyEncoded).toStdString();
