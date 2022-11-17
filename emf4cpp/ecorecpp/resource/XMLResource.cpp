@@ -214,7 +214,6 @@ void XMLResource::doLoad(
 	xml_parser::grammar::the_xml::match(st);
 
 	for ( const auto& root : handler.getRootElements() ) {
-		root->_initialize();
 		getContents()->push_back(root);
 	}
 
@@ -233,6 +232,10 @@ void XMLResource::doLoad(
 		handler.resolveCrossDocumentReferences();
 	else
 		_unresolvedCrossDocumentReferences = handler.getCrossDocumentReferences();
+
+	for ( const auto& root : *getContents() ) {
+		root->_initialize();
+	}
 }
 
 bool XMLResource::useIDs() const {
