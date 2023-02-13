@@ -59,14 +59,14 @@ void XercesHandler::characters(const XMLCh * const chars, const XMLSize_t length
 
             ::ecorecpp::mapping::type_definitions::string_t _literal(xercesToWstring(chars));
 
-            // DEBUG_MSG(cerr, "expected!! " << length << " " << _literal);
+            // DEBUG_XMI_MSG(cerr, "expected!! " << length << " " << _literal);
 
             EObject_ptr const& peobj = m_objects.back();
             EClass_ptr const peclass = peobj->eClass();
             ::ecorecpp::mapping::type_definitions::string_t const& _name =
                   m_expected_literal_name;
 
-            DEBUG_MSG(cerr, _name);
+            DEBUG_XMI_MSG(cerr, _name);
 
             EStructuralFeature_ptr const esf = peclass->getEStructuralFeature(
                     _name);
@@ -188,7 +188,7 @@ void XercesHandler::startElement(const XMLCh * const name,
         eobj = efac->create(eclass);
         assert(eobj);
 
-        DEBUG_MSG(cerr, "--- START: " << (m_level + 1));
+        DEBUG_XMI_MSG(cerr, "--- START: " << (m_level + 1));
 
         // Attributes
         for (size_t i = 0; i < length; i++)
@@ -202,7 +202,7 @@ void XercesHandler::startElement(const XMLCh * const name,
 
                 ::ecorecpp::mapping::type_definitions::string_t const& _avalue = attr_list[i].second;
 
-                DEBUG_MSG(cerr, "    --- Attributes: (" << (i + 1) << "/"
+                DEBUG_XMI_MSG(cerr, "    --- Attributes: (" << (i + 1) << "/"
                         << length << ") " << _aname << " " << _avalue);
 
                 EStructuralFeature_ptr const esf =
@@ -221,7 +221,7 @@ void XercesHandler::startElement(const XMLCh * const name,
                             _urref(_avalue, _aname, eobj, eclass);
                     m_unresolved_references.push_back(_urref);
 
-                    DEBUG_MSG(cerr, "    --- Unresolved reference: "
+                    DEBUG_XMI_MSG(cerr, "    --- Unresolved reference: "
                             << _avalue);
                 }
                 else
@@ -288,7 +288,7 @@ void XercesHandler::startElement(const XMLCh * const name,
 
 void XercesHandler::endElement(const XMLCh * const name)
 {
-    DEBUG_MSG(cerr, "--- END: " << m_level);
+    DEBUG_XMI_MSG(cerr, "--- END: " << m_level);
 
     if (--m_level && !m_expected_literal)
         m_objects.pop_back();
@@ -307,7 +307,7 @@ EObject_ptr XercesHandler::getRootElement()
 
 void XercesHandler::resolveReferences()
 {
-    DEBUG_MSG(cerr, "--- Resolving references ");
+    DEBUG_XMI_MSG(cerr, "--- Resolving references ");
     static MetaModelRepository_ptr _mmr = MetaModelRepository::_instance();
 
     while (!m_unresolved_references.empty())
@@ -321,13 +321,13 @@ void XercesHandler::resolveReferences()
 
         try
         {
-            DEBUG_MSG(cerr, "--- Resolving reference " << xpath << " from "
+            DEBUG_XMI_MSG(cerr, "--- Resolving reference " << xpath << " from "
                     << eclass->getName() << ":" << name);
 
             EStructuralFeature_ptr const esf = eclass->getEStructuralFeature(
                     name);
 
-            DEBUG_MSG(cerr, esf->getName() << " " << eclass->getName());
+            DEBUG_XMI_MSG(cerr, esf->getName() << " " << eclass->getName());
 
             // Parse reference
             size_t size = xpath.size();
@@ -349,7 +349,7 @@ void XercesHandler::resolveReferences()
                 if (!_ref.get_uri().empty() && (!pkg || (pkg && _ref.get_uri()
                         != pkg->getNsURI())))
                 {
-                    DEBUG_MSG(cerr, _ref.get_uri());
+                    DEBUG_XMI_MSG(cerr, _ref.get_uri());
                     _current = _mmr->getByNSURI(_ref.get_uri());
                 }
 
@@ -391,9 +391,9 @@ void XercesHandler::resolveReferences()
                         _any = _current->eGet(sesf);
 
 #if 0
-                        DEBUG_MSG(cerr, _current_id << " " << cl->getName()
+                        DEBUG_XMI_MSG(cerr, _current_id << " " << cl->getName()
                                   << " " << _path[j].get_index());
-                        DEBUG_MSG(cerr, _any.type().name());
+                        DEBUG_XMI_MSG(cerr, _any.type().name());
 #endif
                         if (_path[j].is_collection())
                         {
@@ -403,7 +403,7 @@ void XercesHandler::resolveReferences()
                                     mapping::EList<::ecore::EObject_ptr>::ptr_type >(_any);
 
                             assert(_collection->size() > _index);
-                            DEBUG_MSG(cerr, _collection->size());
+                            DEBUG_XMI_MSG(cerr, _collection->size());
 
                             _current = (*_collection)[_index];
                         }

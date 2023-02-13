@@ -36,4 +36,15 @@
 #define ERROR_MSG(Y) \
         std::wcerr <<__FILE__ << ":" <<__LINE__ << ":" << __FUNCTION__ << ": " << Y << std::endl
 
+#ifdef DEBUGXMI
+
+#define DEBUG_XMI_MSG( X, Y ) \
+        std::X <<__FILE__ << ":" <<__LINE__ << ":" << __FUNCTION__ << ": " << Y << std::endl
+
+#else
+
+#define DEBUG_XMI_MSG(X, Y)
+
+#endif
+
 #endif // ECOREUTILDEBUG_HPP

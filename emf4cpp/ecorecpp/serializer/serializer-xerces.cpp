@@ -95,7 +95,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
             EAttribute_ptr const& current_at = attributes[i];
             EClassifier_ptr at_classifier = current_at->getEType();
 
-            DEBUG_MSG(cerr, indent << current_at->getName());
+            DEBUG_XMI_MSG(cerr, indent << current_at->getName());
 
             if (!current_at->isTransient() && !current_at->isDerived()
 				&& obj->eIsSet(current_at))
@@ -111,7 +111,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
                     {
                         ::ecorecpp::mapping::type_definitions::string_t value = fac->convertToString(atc, any);
 
-                        DEBUG_MSG(cerr, indent << current_at->getName() << " "
+                        DEBUG_XMI_MSG(cerr, indent << current_at->getName() << " "
                                 << value);
 
                         if (!value.empty() && value
@@ -131,7 +131,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
                             ::ecorecpp::mapping::type_definitions::string_t value = fac->convertToString(
                                     atc, anys[k]);
 
-                            DEBUG_MSG(cerr, indent << current_at->getName()
+                            DEBUG_XMI_MSG(cerr, indent << current_at->getName()
                                     << " " << value);
 
                             // create text node
@@ -152,7 +152,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
             }
         } catch (...)
         {
-            DEBUG_MSG(cerr, "exception catched!");
+            DEBUG_XMI_MSG(cerr, "exception catched!");
         }
     }
 
@@ -164,7 +164,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
         {
             EReference_ptr current_ref = references[i];
 
-            DEBUG_MSG(cerr, indent << current_ref->getName());
+            DEBUG_XMI_MSG(cerr, indent << current_ref->getName());
 
             if (!current_ref->isTransient() && !current_ref->isDerived()
 				&& obj->eIsSet(current_ref))
@@ -173,7 +173,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
 
                 if (current_ref->isContainment())
                 {
-                    DEBUG_MSG(cerr, indent << current_ref->getName());
+                    DEBUG_XMI_MSG(cerr, indent << current_ref->getName());
 
                     if (current_ref->getUpperBound() != 1)
                     {
@@ -195,7 +195,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
                 {
                     // TODO: create reference
                     ::ecorecpp::mapping::type_definitions::stringstream_t value;
-                    DEBUG_MSG(cerr, indent << current_ref->getName());
+                    DEBUG_XMI_MSG(cerr, indent << current_ref->getName());
 
                     if (current_ref->getUpperBound() != 1)
                     {
@@ -225,7 +225,7 @@ void serializer::serialize_node(DOMElement* node, EObject_ptr obj)
             }
         } catch (...)
         {
-            DEBUG_MSG(cerr, "exception catched! ");
+            DEBUG_XMI_MSG(cerr, "exception catched! ");
         }
     }
 
@@ -389,7 +389,7 @@ void serializer::serialize(EObject_ptr obj)
     else
     {
         // TODO
-        DEBUG_MSG(cerr, "not implemented!");
+        DEBUG_XMI_MSG(cerr, "not implemented!");
     }
 
     return value.str();

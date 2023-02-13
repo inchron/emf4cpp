@@ -122,7 +122,7 @@ parser::load_str(const ::ecorecpp::mapping::type_definitions::char_t* buffer,
 
     mtime = ((seconds) * 1000 + useconds/1000.0) + 0.5;
 #endif
-    DEBUG_MSG(cerr,"--- DURATION: " << mtime);
+    DEBUG_XMI_MSG(cerr,"--- DURATION: " << mtime);
 
     _handler.resolveReferences();
 
