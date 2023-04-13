@@ -1,14 +1,28 @@
 #
 # CMakeLists.txt
-# This file was created by EMF4CPP 2.0.5 and is copyrighted by the
-# respective user and/or provider of the processed ECORE model.
+# Copyright (C) Cátedra SAES-UMU 2010 <andres.senac@um.es>
+# Copyright (C) INCHRON GmbH 2016-2019 <emf4cpp@inchron.com>
+# Copyright (C) INCHRON AG 2019-2023 <emf4cpp@inchron.com>
 #
-# EMF4CPP is free software. You can obtain it from
-# https://github.com/catedrasaes-umu/emf4cpp
+# EMF4CPP is free software: you can redistribute it and/or modify it
+# under the terms of the GNU Lesser General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# EMF4CPP is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+# See the GNU Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
 
 cmake_minimum_required(VERSION 3.1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(emf4cpp-treeiterator CXX)
 
@@ -17,5 +31,4 @@ FILE(GLOB CMAKES "${CMAKE_CURRENT_SOURCE_DIR}/*.cmake")
 foreach(cmake ${CMAKES})
   include(${cmake})
 endforeach(cmake)
-
 

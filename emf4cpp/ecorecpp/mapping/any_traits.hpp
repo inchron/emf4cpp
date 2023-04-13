@@ -35,45 +35,19 @@ struct any_traits
 {
     static inline void fromAny(const any& _any, T& _t)
     {
-        _t = fromAnyHelper<T>(_any);
+		if constexpr ( std::is_enum_v<T> )
+			_t = static_cast<T>( any::any_cast<int>( _any ) );
+		else
+			_t = any::any_cast<T>(_any);
 	}
 
 	static inline void toAny(any& _any, const T& _t)
     {
-		_any = toAnyHelper<T>(_t);
+		if constexpr ( std::is_enum_v<T> )
+			_any = static_cast<int>(_t);
+		else
+			_any = _t;
     }
-
-	/* The function templates toAnyHelper()/fromAnyHelper() use the SFINAE ('Substitution
-	 * failure is not an arror') technique to offer a special treatment
-	 * for c++ enums.
-	 */
-	template <class U>
-	static inline
-	auto toAnyHelper(const U& _t)
-		-> typename std::enable_if<std::is_enum<U>::value, int>::type {
-		return static_cast<int>(_t);
-	}
-
-	template <class U>
-	static inline
-	auto toAnyHelper(const U& _t)
-		-> typename std::enable_if<!std::is_enum<U>::value, U>::type {
-		return _t;
-	}
-
-	template <class U>
-	static inline
-	auto fromAnyHelper(const any& _any)
-		-> typename std::enable_if<std::is_enum<U>::value, U>::type {
-		return static_cast<U>(any::any_cast<int>(_any));
-	}
-
-	template <class U>
-	static inline
-	auto fromAnyHelper(const any& _any)
-		-> typename std::enable_if<!std::is_enum<U>::value, U>::type {
-		return any::any_cast<U>(_any);
-	}
 };
 
 } // mapping

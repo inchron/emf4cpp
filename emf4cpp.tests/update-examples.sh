@@ -32,24 +32,26 @@ GENERATOR="java -jar $EMF4CPPJAR"
 testLicenseText ()
 {
 	DIR=`dirname $1`
-	FILES="$DIR/CMakeLists.txt $DIR/*.hpp $DIR/*.cpp"
-	rm -f $FILES
+	FILES="$DIR/CMakeLists.txt $DIR/*.hpp $DIR/*.cpp $DIR/enduserlicense/*.hpp $DIR/enduserlicense/*.cpp"
+	rm -f $FILES -r $DIR/enduserlicense
 
 	(cd $DIR ; $GENERATOR -o . -e $EMF4CPP `basename $1`)
 	egrep -L "was created by EMF4CPP [[:digit:]]+.[[:digit:]]+.[[:digit:]]+ and is copyrighted by the" $FILES
-	if [ $? -ne 1 ] ; then
+	if [ $? -ne 0 ] ; then
 	    echo "License text failed: No foreign copyright when called w/o -i"
 	    return 1
 	fi
 
-	rm -f $FILES
+	rm -f $FILES -r $DIR/enduserlicense
 
 	(cd $DIR ; $GENERATOR --internal -o . -e $EMF4CPP `basename $1`)
 	grep -L "SAES-UMU 2010 <andres.senac@um.es>" $FILES
-	if [ $? -ne 1 ] ; then
+	if [ $? -ne 0 ] ; then
 	    echo "License text failed: No internal copyright when called w/ -i"
 	    return 2
 	fi
+
+	rm -f $FILES -r $DIR/enduserlicense
 
 	echo "License text passed for $1"
 	return 0

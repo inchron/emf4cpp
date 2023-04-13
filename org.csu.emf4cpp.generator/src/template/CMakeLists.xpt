@@ -2,7 +2,7 @@
 CMakeLists.ext
 Copyright (C) Cátedra SAES-UMU 2010 <andres.senac@um.es>
 Copyright (C) INCHRON GmbH 2016 <soeren.henning@inchron.com>
-Copyright (C) INCHRON AG 2020 <emf4cpp@inchron.com>
+Copyright (C) INCHRON AG 2023 <emf4cpp@inchron.com>
 
 EMF4CPP is free software: you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published
@@ -31,6 +31,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 «EXPAND template::EndUserLicense::LicenseMakefile FOR "CMakeLists.txt"-»
 «ENDIF-»
 cmake_minimum_required(VERSION 3.1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(emf4cpp-«name» CXX)
 
@@ -86,7 +89,7 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/«class.getFQN("/")».hpp DESTINATION 
 «ELSE»
 «EXPAND template::EndUserLicense::LicenseMakefile FOR fqn+".cmake"-»
 «ENDIF»
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -funroll-loops")
 

@@ -3,7 +3,7 @@
  * eopposite/RightMultipleImpl.cpp
  * Copyright (C) Cátedra SAES-UMU 2010 <andres.senac@um.es>
  * Copyright (C) INCHRON GmbH 2016-2019 <emf4cpp@inchron.com>
- * Copyright (C) INCHRON AG 2019-2021 <emf4cpp@inchron.com>
+ * Copyright (C) INCHRON AG 2019-2023 <emf4cpp@inchron.com>
  *
  * EMF4CPP is free software: you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
