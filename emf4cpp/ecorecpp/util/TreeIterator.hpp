@@ -46,10 +46,14 @@ namespace util {
  */
 
 template <class T>
-class EXPORT_ECORECPP_DLL TreeIterator : public std::iterator<
-		std::forward_iterator_tag,
-		T> {
+class EXPORT_ECORECPP_DLL TreeIterator {
 public:
+	using iterator_category = std::forward_iterator_tag;
+    using value_type = T;
+    using difference_type = void;
+    using pointer = T*;
+    using reference = T&;
+
 	using EEList = ::ecorecpp::mapping::EList<T>;
 
 	explicit TreeIterator(T obj) {
@@ -106,7 +110,7 @@ public:
 		return !(*this == other);
 	}
 
-	T operator*() const {
+	value_type operator*() const {
 		return _current;
 	}
 

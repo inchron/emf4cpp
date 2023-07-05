@@ -41,15 +41,21 @@ public:
 
 	/** Iterator interfaces for an EList<T>.
 	 */
-	template <typename EListPtrType>
-	class EListIterator : public std::iterator<std::bidirectional_iterator_tag, T> {
+	template<typename EListPtrType>
+	class EListIterator {
 	public:
+		using iterator_category = std::bidirectional_iterator_tag;
+		using value_type = T;
+		using difference_type = void;
+		using pointer = T*;
+		using reference = T&;
+
 		EListIterator(EListPtrType el, size_t ind)
 			: _elist(el),
 			  _ind(ind) {
 		}
 
-		T operator*() const {
+		value_type operator*() const {
 			return _elist->get(_ind);
 		}
 
