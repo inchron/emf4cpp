@@ -46,7 +46,7 @@ public:
 	public:
 		using iterator_category = std::bidirectional_iterator_tag;
 		using value_type = T;
-		using difference_type = void;
+		using difference_type = ptrdiff_t;
 		using pointer = T*;
 		using reference = T&;
 
