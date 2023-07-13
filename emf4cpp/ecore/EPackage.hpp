@@ -30,16 +30,7 @@
 /*PROTECTED REGION ID(EPackage_pre) ENABLED START*/
 // Please, enable the protected region if you add manually written code.
 // To do this, add the keyword ENABLED before START.
-#ifdef ECORECPP_USE_UNORDERED_MAP
-#ifdef  __GNUG__
-#include <tr1/unordered_map>
-#endif // __GNUG__
-#ifdef _MSC_VER // TODO: look for version numbers of MS VC
 #include <unordered_map>
-#endif // _MSC_VER
-#else
-#include <map>
-#endif // ECORECPP_USE_UNORDERED_MAP
 
 #include <memory>
 #include <ecorecpp/ItemProvider.hpp>
@@ -96,13 +87,9 @@ public:
 protected:
     // Hardcoded map to speed up getEClassifier operation
 
-#ifdef ECORECPP_USE_UNORDERED_MAP
-    typedef std::tr1::unordered_map< ::ecore::EString , ::ecore::EClassifier_ptr > EClassifierMapType;
-#else
-    typedef std::map< ::ecore::EString, ::ecore::EClassifier_ptr > EClassifierMapType;
-#endif
-
-    EClassifierMapType m_eClassifiersMap;
+	typedef std::unordered_map<::ecore::EString, ::ecore::EClassifier_ptr>
+		EClassifierMapType;
+	EClassifierMapType m_eClassifiersMap;
 
 public:
     const std::shared_ptr<::ecorecpp::ItemProvider>& getItemProviderInstance () const;

@@ -27,9 +27,6 @@
 #include <vector>
 #include <ecorecpp/mapping_forward.hpp>
 #include <ecorecpp/resource_forward.hpp>
-#ifndef ECORECPP_USE_UNORDERED_MAP
-#define ECORECPP_USE_UNORDERED_MAP
-#endif
 
 #ifndef ECORECPP_NOTIFICATION_API
 #define ECORECPP_NOTIFICATION_API
