@@ -114,7 +114,7 @@ void XMLSerializer::serialize(const ::ecorecpp::mapping::EList<::ecore::EObject_
 	}
 
 	if ( hasManyRootObjects )
-		root_name = "xmi::XMI";
+		root_name = "xmi:XMI";
 	// The current state of m_internalBuffer controls the closing tag
 	m_ser.close_object(root_name, greedy_serializer::SilentMode::Loud);
 

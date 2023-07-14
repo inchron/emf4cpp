@@ -189,8 +189,8 @@ void XMLHandler::start_tag(xml_parser::match_pair const& nameP,
 		}
 	}
 
-	if ( !m_level && name == "xmi::XMI" )
-			return;
+	if ( !m_level && ( name == "xmi:XMI" || name == "xmi::XMI" ) )
+		return;
 
 	if (href) {
 		DEBUG_XMI_MSG(cerr, "    --- Unresolved cross document reference: "
