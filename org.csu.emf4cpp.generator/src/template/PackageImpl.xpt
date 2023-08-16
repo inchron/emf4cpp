@@ -249,6 +249,7 @@ void «name.toFirstUpper()»Package::_initPackage()
     }();
 «ENDIF-»
 
+«IF !EClassifiers.typeSelect(EClass).ESuperTypes.isEmpty-»
     // Add supertypes to classes
     [this]() {
         «FOREACH EClassifiers.typeSelect(EClass) AS class-»
@@ -257,6 +258,7 @@ void «name.toFirstUpper()»Package::_initPackage()
             «ENDFOREACH-»
         «ENDFOREACH-»
     }();
+«ENDIF-»
 
 «FOREACH EClassifiers.typeSelect(EClass) AS class-»
 

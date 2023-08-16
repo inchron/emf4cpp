@@ -22,7 +22,7 @@ import org::eclipse::emf::ecore;
 extension template::Types;
 
 cached String getCPPParameterSignature(EParameter this) : 
-	getCPPParameterType() + " _" + this.name
+	"[[maybe_unused]]" + getCPPParameterType() + " _" + this.name
 ;
 
 String getCPPSignature(List[EParameter] this) :

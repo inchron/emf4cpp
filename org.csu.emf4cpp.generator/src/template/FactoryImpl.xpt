@@ -57,7 +57,7 @@ using namespace ::«getFQN()»;
     }
 }
 
-::ecore::EJavaObject «name.toFirstUpper()»Factory::createFromString ( ::ecore::EDataType_ptr _eDataType, ::ecore::EString const& _literalValue)
+::ecore::EJavaObject «name.toFirstUpper()»Factory::createFromString ( ::ecore::EDataType_ptr _eDataType, [[maybe_unused]] ::ecore::EString const& _literalValue)
 {
     switch(_eDataType->getClassifierID())
     {
@@ -80,7 +80,7 @@ using namespace ::«getFQN()»;
     }
 }
 
-::ecore::EString «name.toFirstUpper()»Factory::convertToString ( ::ecore::EDataType_ptr _eDataType, ::ecore::EJavaObject const& _instanceValue)
+::ecore::EString «name.toFirstUpper()»Factory::convertToString ( ::ecore::EDataType_ptr _eDataType, [[maybe_unused]] ::ecore::EJavaObject const& _instanceValue)
 {
     switch(_eDataType->getClassifierID())
     {
