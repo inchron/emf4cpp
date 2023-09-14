@@ -24,12 +24,11 @@
 #include <ecore/EObject.hpp>
 #include <ecorecpp/mapping/EList.hpp>
 
-namespace ecorecpp {
-namespace util {
+namespace ecorecpp::util {
 
 class EXPORT_ECORECPP_DLL Copier {
 public:
-	Copier( bool keepExternalReferences = true );
+	explicit Copier( bool keepExternalReferences = true );
 	virtual ~Copier();
 
 	/** Create a deep copy of the given EObject. */
@@ -50,8 +49,8 @@ public:
 	/** Control if attributes marked as ID are copied 1:1 or if they are
 	 * skipped. When they are skipped, an outer mechanism usually will
 	 * recreate new unique values for them. */
-	void setExactCopy(bool b) { m_exactCopy = b; }
-	bool isExactCopy() const { return m_exactCopy; }
+	Copier& setExactCopy(bool b) { m_exactCopy = b; return *this; }
+	[[nodiscard]] bool isExactCopy() const { return m_exactCopy; }
 
 protected:
 	bool m_keepExternalRefs {true};
@@ -67,6 +66,6 @@ protected:
 };
 
 } // util
-} // ecorecpp
+// ecorecpp
 
 #endif  /* Copier_HPP */

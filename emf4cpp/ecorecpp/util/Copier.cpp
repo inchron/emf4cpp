@@ -21,8 +21,7 @@
 #include <ecore.hpp>
 #include "../mapping.hpp"
 
-namespace ecorecpp {
-namespace util {
+namespace ecorecpp::util {
 
 using namespace ecore;
 using EList_ptr = mapping::EList<EObject_ptr>::ptr_type;
@@ -30,7 +29,7 @@ using EList_ptr = mapping::EList<EObject_ptr>::ptr_type;
 Copier::Copier( bool keepExternalReferences )
 	: m_keepExternalRefs( keepExternalReferences ) { }
 
-Copier::~Copier() { }
+Copier::~Copier() = default;
 
 /** If the object is a subtree of an EMF model then references to elements
  * outside the subtree cannot be resolved, unless the same Copier instance has
@@ -82,10 +81,11 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
 	/* 1)  Copy attributes
 	 */
 	const auto& attributes = cls->getEAllAttributes();
-	for ( size_t i = 0; i < attributes.size(); i++ ) {
-		EAttribute_ptr const& attr = attributes[ i ];
-		if ( attr->isTransient() || ! src->eIsSet( attr )
-			 || (attr->isID() && !m_exactCopy) )
+	for (const auto & attribute : attributes) {
+		EAttribute_ptr const& attr = attribute;
+		if ( not attr->isChangeable() or attr->isDerived()
+			 or not src->eIsSet( attr )
+			 or (attr->isID() && !m_exactCopy) )
 			continue;
 
 		dst->eSet( attr, src->eGet( attr ) );
@@ -94,9 +94,11 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
 	/* 2)  Recursively traverse references, deep copying all containments.
 	 */
 	const auto& ereferences = cls->getEAllReferences();
-	for ( size_t i = 0; i < ereferences.size(); i++ ) {
-		EReference_ptr eref = ereferences[ i ];
-		if ( ! eref->isContainment() || eref->isTransient() || !  src->eIsSet( eref ) )
+	for (const auto & ereference : ereferences) {
+		EReference_ptr eref = ereference;
+		if ( not eref->isContainment()
+			 or not eref->isChangeable() or eref->isDerived()
+			 or not src->eIsSet( eref ) )
 			continue;
 
 		mapping::any src_refs = src->eGet( eref );
@@ -107,8 +109,8 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
 			auto dsts = mapping::any::any_cast<EList_ptr>( dst_refs );
 			assert( dsts->size() == 0 );
 
-			for ( size_t j = 0; j < srcs.size(); j++ ) {
-				auto child = mapping::any::any_cast<EObject_ptr>( srcs[ j ] );
+			for (const auto & srcObject : srcs) {
+				auto child = mapping::any::any_cast<EObject_ptr>( srcObject );
 				dsts->push_back( copy( child ) );
 			}
 		} else if ( auto child = mapping::any::any_cast<EObject_ptr>( src_refs ) )
@@ -129,16 +131,18 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
  */
 void Copier::copy_references( EObject_ptr src, EObject_ptr dst ) {
 	const auto& ereferences = src->eClass()->getEAllReferences();
-	for ( size_t i = 0; i < ereferences.size(); i++ ) {
-		EReference_ptr eref = ereferences[ i ];
-		if ( eref->isContainment() || eref->isTransient() || ! src->eIsSet( eref ) )
+	for (const auto & ereference : ereferences) {
+		EReference_ptr eref = ereference;
+		if ( eref->isContainment()
+			 or not eref->isChangeable() or eref->isDerived()
+			 or not src->eIsSet( eref ) )
 			continue;
 
 		mapping::any src_refs = src->eGet( eref );
 		if ( eref->getUpperBound() != 1 ) {
 			const auto& srcs = *mapping::any::any_cast<EList_ptr>( src_refs );
-			for ( size_t j = 0; j < srcs.size(); j++ ) {
-				if ( auto refObj = mapping::any::any_cast<EObject_ptr>( srcs[ j ] ) ) {
+			for (const auto & srcObject : srcs) {
+				if ( auto refObj = mapping::any::any_cast<EObject_ptr>( srcObject ) ) {
 					auto it = m_objectsMap.find( refObj );
 					const bool isWithinCopy = it != m_objectsMap.end();
 					if ( isWithinCopy ) {
@@ -187,8 +191,8 @@ EObject_ptr Copier::get_clone( EObject_ptr original) {
 	auto it = m_objectsMap.find(original);
 	if (it != m_objectsMap.end())
 		return it->second;
-	return EObject_ptr();
+	return {};
 }
 
 } // util
-} // ecorecpp
+// ecorecpp
