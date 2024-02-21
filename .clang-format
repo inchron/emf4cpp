@@ -1,0 +1,177 @@
+#
+# INCHRON's formatting style
+#
+---
+#
+# For C++ we are not so far away from LLVM's style
+# Overview over all possible options:
+#   https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+#
+Language: Cpp
+BasedOnStyle:  LLVM # do we really want to base on? I don't know what are the defaults defined in LLVM :(
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: Align
+AlignArrayOfStructures: None
+AlignConsecutiveAssignments: false
+AlignConsecutiveBitFields: false
+AlignConsecutiveDeclarations: false
+AlignConsecutiveMacros: false
+AlignEscapedNewlines: Left
+AlignOperands: AlignAfterOperator
+AlignTrailingComments: true
+AllowAllArgumentsOnNextLine: true
+AllowAllParametersOfDeclarationOnNextLine: true
+AllowShortBlocksOnASingleLine: Never
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortEnumsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: Never
+AllowShortLambdasOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: true
+AlwaysBreakTemplateDeclarations: Yes
+AttributeMacros: [] # may be we need to add each export macro here -- testing!
+BinPackArguments: true
+BinPackParameters: true
+BitFieldColonSpacing: Both
+
+#BraceWrapping: # defined by BreakBeforeBraces, no extra definition needed
+#    AfterCaseLabel: false
+#    AfterClass: false
+#    AfterControlStatement: Never
+#    AfterEnum: false
+#    AfterFunction: false
+#    AfterNamespace: false
+#    # AfterObjCDeclaration: false
+#    AfterStruct: false
+#    AfterUnion: false
+#    AfterExternBlock: false
+#    BeforeCatch: false
+#    BeforeElse: false
+#    BeforeLambdaBody: false
+#    BeforeWhile: false
+#    IndentBraces: false
+#    SplitEmptyFunction: true
+#    SplitEmptyRecord: true
+#    SplitEmptyNamespace: true
+# BreakAfterJavaFieldAnnotations: true
+BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBraces: Stroustrup
+BreakBeforeConceptDeclarations: true
+BreakBeforeTernaryOperators: true
+BreakConstructorInitializers: BeforeColon
+BreakInheritanceList: AfterComma
+BreakStringLiterals: true
+ColumnLimit: 100
+CommentPragmas:  '^ IWYU pragma:'
+CompactNamespaces: false
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+Cpp11BracedListStyle: true
+DeriveLineEnding: true
+DerivePointerAlignment: false # we use PointerAlignment
+DisableFormat: false
+EmptyLineAfterAccessModifier: Never # cf14
+EmptyLineBeforeAccessModifier: Always
+# ExperimentalAutoDetectBinPacking: false
+FixNamespaceComments: true
+ForEachMacros: # avoids { wrapped to next line
+  - forever
+  - foreach
+  - Q_FOREACH
+  - Q_FOREVER
+  - BOOST_FOREACH
+IfMacros: [] # cf14
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: '^<Q'
+    Priority: 3
+  - Regex: '^<(boost|nlohmann|jsonrpccxx)/'
+    Priority: 4
+  - Regex: '^<(ecore|ecorecpp)'
+    Priority: 5
+  - Regex: '^<'
+    Priority: 2
+  - Regex: '^"'
+    Priority: 9
+  - Regex: '.*'
+    Priority: 8
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+IndentAccessModifiers: false # AccessModifierOffset is used
+IndentCaseBlocks: false
+IndentCaseLabels: false
+IndentExternBlock: Indent
+IndentGotoLabels: true
+IndentPPDirectives: AfterHash
+IndentRequires: false
+IndentWidth: 4
+IndentWrappedFunctionNames: true
+InsertTrailingCommas: None # not usable with bin packing
+KeepEmptyLinesAtTheStartOfBlocks: false
+LambdaBodyIndentation: Signature
+MacroBlockBegin: ''
+MacroBlockEnd: ''
+MaxEmptyLinesToKeep: 2
+NamespaceIndentation: None
+NamespaceMacros: []
+PPIndentWidth: -1 # cf14
+# PackConstructorInitializers: CurrentLine # cf14 - unknown in cf13
+PenaltyBreakAssignment: 2
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyBreakTemplateDeclaration: 10
+PenaltyExcessCharacter: 1000000
+#PenaltyIndentedWhitespace: ?? # No default in for LLVM style in cf13
+PenaltyReturnTypeOnItsOwnLine: 500
+PointerAlignment: Left
+# QualifierAlignment: Leave # cf14 - unknown in cf13
+# QualifierOrder: [] # cf14 @see QualifierAlignment - unknown in cf13
+# RawStringFormats: ?? # No default in for LLVM style in cf13
+ReferenceAlignment: Left # cf14
+ReflowComments: false
+ShortNamespaceLines: 0 # cf14
+SortIncludes: CaseInsensitive
+SortUsingDeclarations: true
+SpaceAfterCStyleCast: false
+SpaceAfterLogicalNot: false
+SpaceAfterTemplateKeyword: false
+SpaceAroundPointerQualifiers: Default
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeCaseColon: false
+SpaceBeforeCpp11BracedList: false
+SpaceBeforeCtorInitializerColon: true
+SpaceBeforeInheritanceColon: true
+SpaceBeforeParens: ControlStatements
+SpaceBeforeRangeBasedForLoopColon: true
+SpaceBeforeSquareBrackets: false
+SpaceInEmptyBlock: false
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+SpacesInAngles: Never
+SpacesInCStyleCastParentheses: false
+SpacesInConditionalStatement: true
+SpacesInContainerLiterals: true
+SpacesInLineCommentPrefix: # cf14
+  Minimum: 1
+  Maximum: -1
+SpacesInParentheses: true
+SpacesInSquareBrackets: false
+Standard: Latest
+StatementAttributeLikeMacros:
+  - emit
+StatementMacros: # @see https://doc.qt.io/qt-5/qtglobal.html#macros
+  - Q_UNUSED
+  - QT_REQUIRE_VERSION
+TabWidth: 4
+TypenameMacros: []
+UseCRLF: false
+UseTab: Always
+WhitespaceSensitiveMacros:
+  - STRINGIZE
+  - PP_STRINGIZE
+  - BOOST_PP_STRINGIZE

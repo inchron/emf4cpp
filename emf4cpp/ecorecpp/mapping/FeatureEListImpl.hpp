@@ -22,109 +22,126 @@
 #define ECORECPP_MAPPING_FEATUREELISTIMPL_HPP
 
 #include <algorithm>
-#include "EList.hpp"
-#include "any.hpp"
+
 #include <ecore/EObject.hpp>
 #include <ecore/EReference.hpp>
 
+#include "any.hpp"
+#include "EList.hpp"
+
 #ifdef ECORECPP_NOTIFICATION_API
-#include <ecorecpp/notify.hpp>
+#	include <ecorecpp/notify.hpp>
 #endif
 
 
-namespace ecorecpp
-{
-namespace mapping
-{
+namespace ecorecpp {
+namespace mapping {
 
-template< typename T >
-class FeatureEListImpl: public EList< T >
-{
+template<typename T>
+class FeatureEListImpl : public EList<T> {
 public:
-    T get(size_t _index) const override
-    {
-        return m_content[_index].first;
-    }
+	T get( size_t _index ) const override
+	{
+		return m_content[_index].first;
+	}
 
-    typename EList< T >::ef_ptr eFeature(size_t _index) const override
+	T front() const override
+	{
+		return m_content.front().first;
+	}
+
+	T back() const override
+	{
+		return m_content.back().first;
+	}
+
+	typename EList<T>::ef_ptr eFeature( size_t _index ) const override
 	{
 		return m_content[_index].second;
 	}
 
-    template< typename Q >
-    inline void insert_all(EList< Q >& _q, const typename EList< T >::ef_ptr& ef)
-    {
-		EList<T>::insert_all(_q, ef);
-    }
+	template<typename Q>
+	inline void insert_all( EList<Q>& _q, const typename EList<T>::ef_ptr& ef )
+	{
+		EList<T>::insert_all( _q, ef );
+	}
 
 	/* The container grows as std::vector<>::insert() does. */
-    void insert_at(size_t _pos, T _obj, const typename EList< T >::ef_ptr& ef) override
-    {
+	void insert_at( size_t _pos, T _obj, const typename EList<T>::ef_ptr& ef ) override
+	{
 		/* Out-of-range positions are appended. */
-		if (_pos >= m_content.size())
+		if ( _pos >= m_content.size() )
 			return push_back( _obj, ef );
 
 		auto it = m_content.begin() + _pos;
-		m_content.insert(it, std::make_pair(_obj, ef));
-    }
+		m_content.insert( it, std::make_pair( _obj, ef ) );
+	}
 
-    bool contains(T _obj, const typename EList< T >::ef_ptr& ef) const override
-    {
+	bool contains( T _obj, const typename EList<T>::ef_ptr& ef ) const override
+	{
 		return std::any_of( m_content.begin(), m_content.end(),
-				[&_obj, &ef](typename Container::const_reference p){return p == std::make_pair(_obj,ef);} );
-    }
+							[&_obj, &ef]( typename Container::const_reference p ) {
+								return p == std::make_pair( _obj, ef );
+							} );
+	}
 
-    void push_back(T _obj, const typename EList< T >::ef_ptr& ef) override
-    {
-        m_content.push_back( std::make_pair(_obj, ef) );
-    }
+	void push_back( T _obj, const typename EList<T>::ef_ptr& ef ) override
+	{
+		m_content.push_back( std::make_pair( _obj, ef ) );
+	}
 
-    void push_back_unsafe(T _obj, const typename EList< T >::ef_ptr& ef) override
-    {
-        m_content.push_back( std::make_pair(_obj, ef) );
-    }
+	void push_back_unsafe( T _obj, const typename EList<T>::ef_ptr& ef ) override
+	{
+		m_content.push_back( std::make_pair( _obj, ef ) );
+	}
 
-    size_t size() const override
-    {
-        return m_content.size();
-    }
+	size_t size() const override
+	{
+		return m_content.size();
+	}
 
-    void clear() override
-    {
-        m_content.clear();
-    }
+	bool empty() const override
+	{
+		return m_content.empty();
+	}
 
-	void remove(T _obj) override {
-		auto pred = [&](const std::pair<T, typename EList< T >::ef_ptr>& cd) {
-			return (cd.first == _obj);
+	void clear() override
+	{
+		m_content.clear();
+	}
+
+	void remove( T _obj ) override
+	{
+		auto pred = [&]( const std::pair<T, typename EList<T>::ef_ptr>& cd ) {
+			return ( cd.first == _obj );
 		};
 
 		auto it = std::find_if( m_content.begin(), m_content.end(), pred );
 		if ( it != m_content.end() )
-			m_content.erase(it);
+			m_content.erase( it );
 	}
 
 	/* Better check before trusting the caller. */
-	void remove(typename EList<T>::iterator it) override {
-		if (it != EList<T>::end())
-			remove(*it);
+	void remove( typename EList<T>::iterator it ) override
+	{
+		if ( it != EList<T>::end() )
+			remove( *it );
 	}
 
-    virtual ~FeatureEListImpl()
-    {
-    }
+	virtual ~FeatureEListImpl()
+	{
+	}
 
-    FeatureEListImpl()
-    {
-    }
+	FeatureEListImpl()
+	{
+	}
 
 protected:
-
-	using Container = std::vector< std::pair< T, typename EList< T >::ef_ptr > >;
+	using Container = std::vector<std::pair<T, typename EList<T>::ef_ptr>>;
 	Container m_content;
 };
 
-} // mapping
-} // ecorecpp
+}  // namespace mapping
+}  // namespace ecorecpp
 
-#endif // ECORECPP_MAPPING_FEATUREELISTIMPL_HPP
+#endif	// ECORECPP_MAPPING_FEATUREELISTIMPL_HPP
