@@ -45,13 +45,13 @@ class EXPORT_ECORE_DLL EPackage : public virtual ::ecore::ENamedElement
 public:
     EPackage();
 
-    virtual ~EPackage();
+    ~EPackage() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
-    virtual ::ecore::EClassifier_ptr getEClassifier ( ::ecore::EString const& _name);
+    virtual ::ecore::EClassifier_ptr getEClassifier ( [[maybe_unused]]::ecore::EString const& _name);
 
     // Attributes
     virtual ::ecore::EString const& getNsURI () const;
@@ -87,9 +87,9 @@ public:
 protected:
     // Hardcoded map to speed up getEClassifier operation
 
-	typedef std::unordered_map<::ecore::EString, ::ecore::EClassifier_ptr>
-		EClassifierMapType;
-	EClassifierMapType m_eClassifiersMap;
+    typedef std::unordered_map<::ecore::EString, ::ecore::EClassifier_ptr>
+    EClassifierMapType;
+    EClassifierMapType m_eClassifiersMap;
 
 public:
     const std::shared_ptr<::ecorecpp::ItemProvider>& getItemProviderInstance () const;
@@ -102,13 +102,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EPackageImpl) START*/
     // Please, enable the protected region if you add manually written code.

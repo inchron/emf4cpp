@@ -49,9 +49,9 @@ namespace kdm
     public:
         Thread();
 
-        virtual ~Thread();
+        ~Thread() override;
 
-        virtual void _initialize();
+        void _initialize() override;
 
         // Operations
 
@@ -69,13 +69,13 @@ namespace kdm
         /*PROTECTED REGION END*/
 
         // EObjectImpl
-        virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-        virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-        virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-        virtual void eUnset ( ::ecore::EInt _featureID);
-        virtual ::ecore::EClass_ptr _eClass ();
-        virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-        virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+        ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+        void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+        ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+        void eUnset ( ::ecore::EInt _featureID) override;
+        ::ecore::EClass_ptr _eClass () override;
+        void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+        void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
         /*PROTECTED REGION ID(ThreadImpl) START*/
         // Please, enable the protected region if you add manually written code.

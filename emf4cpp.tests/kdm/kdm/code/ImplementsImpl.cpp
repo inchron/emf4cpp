@@ -100,7 +100,7 @@ void Implements::_initialize()
 }
 
 void Implements::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -197,7 +197,7 @@ void Implements::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void Implements::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -233,7 +233,7 @@ void Implements::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void Implements::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

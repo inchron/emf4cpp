@@ -56,7 +56,8 @@ void EFactory::_initialize()
 
 // Operations
 
-::ecore::EObject_ptr EFactory::create(::ecore::EClass_ptr _eClass)
+::ecore::EObject_ptr EFactory::create(
+        [[maybe_unused]]::ecore::EClass_ptr _eClass)
 {
     /*PROTECTED REGION ID(EFactoryImpl_create) START*/
     // Please, enable the protected region if you add manually written code.
@@ -66,8 +67,8 @@ void EFactory::_initialize()
 }
 
 ::ecore::EJavaObject EFactory::createFromString(
-        ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]]::ecore::EDataType_ptr _eDataType,
+        [[maybe_unused]]::ecore::EString const &_literalValue)
 {
     /*PROTECTED REGION ID(EFactoryImpl_createFromString) START*/
     // Please, enable the protected region if you add manually written code.
@@ -76,8 +77,9 @@ void EFactory::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EString EFactory::convertToString(::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+::ecore::EString EFactory::convertToString(
+        [[maybe_unused]]::ecore::EDataType_ptr _eDataType,
+        [[maybe_unused]]::ecore::EJavaObject const &_instanceValue)
 {
     /*PROTECTED REGION ID(EFactoryImpl_convertToString) START*/
     // Please, enable the protected region if you add manually written code.
@@ -109,7 +111,7 @@ void EFactory::_initialize()
 }
 
 void EFactory::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -166,7 +168,7 @@ void EFactory::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void EFactory::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -212,7 +214,7 @@ void EFactory::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void EFactory::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

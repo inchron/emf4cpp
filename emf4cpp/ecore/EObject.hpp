@@ -62,17 +62,17 @@ public:
 
     virtual ::ecore::EList_ptr< ::ecore::EObject_ptr> eCrossReferences ();
 
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EStructuralFeature_ptr _feature);
+    virtual ::ecore::EJavaObject eGet ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature);
 
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EStructuralFeature_ptr _feature, ::ecore::EBoolean _resolve);
+    virtual ::ecore::EJavaObject eGet ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature, [[maybe_unused]]::ecore::EBoolean _resolve);
 
-    virtual void eSet ( ::ecore::EStructuralFeature_ptr _feature, ::ecore::EJavaObject const& _newValue);
+    virtual void eSet ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature, [[maybe_unused]]::ecore::EJavaObject const& _newValue);
 
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EStructuralFeature_ptr _feature);
+    virtual ::ecore::EBoolean eIsSet ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature);
 
-    virtual void eUnset ( ::ecore::EStructuralFeature_ptr _feature);
+    virtual void eUnset ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature);
 
-    virtual ::ecore::EJavaObject eInvoke ( ::ecore::EOperation_ptr _operation, ::ecore::EList_ptr< ::ecorecpp::mapping::any> const& _arguments);
+    virtual ::ecore::EJavaObject eInvoke ( [[maybe_unused]]::ecore::EOperation_ptr _operation, [[maybe_unused]]::ecore::EList_ptr< ::ecorecpp::mapping::any> const& _arguments);
 
     // Attributes
 

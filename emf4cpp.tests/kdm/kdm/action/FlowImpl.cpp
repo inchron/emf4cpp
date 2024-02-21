@@ -99,7 +99,8 @@ void Flow::_initialize()
     throw "Error: eGet() does not handle this featureID";
 }
 
-void Flow::eSet(::ecore::EInt _featureID, ::ecore::EJavaObject const &_newValue)
+void Flow::eSet(::ecore::EInt _featureID,
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -196,7 +197,7 @@ void Flow::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void Flow::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -232,7 +233,7 @@ void Flow::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void Flow::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

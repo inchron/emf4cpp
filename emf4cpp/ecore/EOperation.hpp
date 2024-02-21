@@ -40,15 +40,15 @@ class EXPORT_ECORE_DLL EOperation : public virtual ::ecore::ETypedElement
 public:
     EOperation();
 
-    virtual ~EOperation();
+    ~EOperation() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
     virtual ::ecore::EInt getOperationID ();
 
-    virtual ::ecore::EBoolean isOverrideOf ( ::ecore::EOperation_ptr _someOperation);
+    virtual ::ecore::EBoolean isOverrideOf ( [[maybe_unused]]::ecore::EOperation_ptr _someOperation);
 
     // Attributes
 
@@ -76,13 +76,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EOperationImpl) START*/
     // Please, enable the protected region if you add manually written code.

@@ -110,7 +110,7 @@ void ExceptionDef::_initialize()
 }
 
 void ExceptionDef::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -222,7 +222,7 @@ void ExceptionDef::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void ExceptionDef::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -258,7 +258,7 @@ void ExceptionDef::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void ExceptionDef::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

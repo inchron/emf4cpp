@@ -114,11 +114,6 @@ void EOperationBodyPackage::_initPackage()
 
     // TODO: bounds for type parameters
 
-    // Add supertypes to classes
-    [this]()
-    {
-    }();
-
     [this]()
     { // Class Integer
         auto &&cls = m_IntegerEClass;

@@ -297,7 +297,8 @@ void EObject::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EJavaObject EObject::eGet(::ecore::EStructuralFeature_ptr _feature)
+::ecore::EJavaObject EObject::eGet(
+        [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature)
 {
     /*PROTECTED REGION ID(EObjectImpl_eGet_0) ENABLED START*/
 
@@ -306,8 +307,9 @@ void EObject::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EJavaObject EObject::eGet(::ecore::EStructuralFeature_ptr _feature,
-        ::ecore::EBoolean _resolve)
+::ecore::EJavaObject EObject::eGet(
+        [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature,
+        [[maybe_unused]]::ecore::EBoolean _resolve)
 {
     /*PROTECTED REGION ID(EObjectImpl_eGet_1) ENABLED START*/
 
@@ -316,30 +318,32 @@ void EObject::_initialize()
     /*PROTECTED REGION END*/
 }
 
-void EObject::eSet(::ecore::EStructuralFeature_ptr _feature,
-        ::ecore::EJavaObject const &_newValue)
+void EObject::eSet([[maybe_unused]]::ecore::EStructuralFeature_ptr _feature,
+        [[maybe_unused]]::ecore::EJavaObject const &_newValue)
 {
     /*PROTECTED REGION ID(EObjectImpl_eSet) ENABLED START*/
     eSet(eClass()->getFeatureID(_feature), _newValue);
     /*PROTECTED REGION END*/
 }
 
-::ecore::EBoolean EObject::eIsSet(::ecore::EStructuralFeature_ptr _feature)
+::ecore::EBoolean EObject::eIsSet(
+        [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature)
 {
     /*PROTECTED REGION ID(EObjectImpl_eIsSet) ENABLED START*/
     return eIsSet(eClass()->getFeatureID(_feature));
     /*PROTECTED REGION END*/
 }
 
-void EObject::eUnset(::ecore::EStructuralFeature_ptr _feature)
+void EObject::eUnset([[maybe_unused]]::ecore::EStructuralFeature_ptr _feature)
 {
     /*PROTECTED REGION ID(EObjectImpl_eUnset) ENABLED START*/
     return eUnset(eClass()->getFeatureID(_feature));
     /*PROTECTED REGION END*/
 }
 
-::ecore::EJavaObject EObject::eInvoke(::ecore::EOperation_ptr _operation,
-        ::ecore::EList_ptr< ::ecorecpp::mapping::any > const &_arguments)
+::ecore::EJavaObject EObject::eInvoke(
+        [[maybe_unused]]::ecore::EOperation_ptr _operation,
+        [[maybe_unused]]::ecore::EList_ptr< ::ecorecpp::mapping::any > const &_arguments)
 {
     /*PROTECTED REGION ID(EObjectImpl_eInvoke) START*/
     // Please, enable the protected region if you add manually written code.
@@ -361,7 +365,7 @@ void EObject::eUnset(::ecore::EStructuralFeature_ptr _feature)
 }
 
 void EObject::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -398,7 +402,7 @@ void EObject::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void EObject::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -410,7 +414,7 @@ void EObject::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void EObject::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

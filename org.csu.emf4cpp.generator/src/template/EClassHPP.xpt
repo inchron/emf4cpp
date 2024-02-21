@@ -71,9 +71,15 @@ class EXPORT_«EPackage.getExportDLL()»_DLL «name» «IF !ESuperTypes.isEmpty-
 public:
     «name»();
 
+    «IF "::"+this.getFQN() == "::ecore::EObject"-»
     virtual ~«name»();
 
     virtual void _initialize();
+   	«ELSE-»
+    ~«name»() override;
+
+    void _initialize() override;
+   	«ENDIF-»
 
     // Operations
     «FOREACH this.EOperations AS op»
@@ -126,6 +132,7 @@ public:
     «ENDPROTECT»
     
     // EObjectImpl
+    «IF "::"+this.getFQN() == "::ecore::EObject"-»
     virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
     virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
     virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);    
@@ -133,6 +140,15 @@ public:
     virtual ::ecore::EClass_ptr _eClass ();
     virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
     virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    «ELSE-»
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;    
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
+    «ENDIF-»
     
     «PROTECT CSTART '/*' CEND '*/' ID name+"Impl" DISABLE»
     // Please, enable the protected region if you add manually written code.

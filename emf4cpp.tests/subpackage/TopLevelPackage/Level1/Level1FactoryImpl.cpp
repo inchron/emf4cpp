@@ -45,7 +45,7 @@ Level1Factory::Level1Factory()
 
 ::ecore::EJavaObject Level1Factory::createFromString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]] ::ecore::EString const &_literalValue)
 {
     switch (_eDataType->getClassifierID())
     {
@@ -56,7 +56,7 @@ Level1Factory::Level1Factory()
 
 ::ecore::EString Level1Factory::convertToString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_instanceValue)
 {
     switch (_eDataType->getClassifierID())
     {

@@ -40,13 +40,13 @@ class EXPORT_ECORE_DLL EClassifier : public virtual ::ecore::ENamedElement
 public:
     EClassifier();
 
-    virtual ~EClassifier();
+    ~EClassifier() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
-    virtual ::ecore::EBoolean isInstance ( ::ecore::EJavaObject const& _object);
+    virtual ::ecore::EBoolean isInstance ( [[maybe_unused]]::ecore::EJavaObject const& _object);
 
     virtual ::ecore::EInt getClassifierID ();
 
@@ -74,13 +74,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EClassifierImpl) ENABLED START*/
 

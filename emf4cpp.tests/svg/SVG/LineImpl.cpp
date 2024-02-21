@@ -153,7 +153,8 @@ void Line::_initialize()
     throw "Error: eGet() does not handle this featureID";
 }
 
-void Line::eSet(::ecore::EInt _featureID, ::ecore::EJavaObject const &_newValue)
+void Line::eSet(::ecore::EInt _featureID,
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -346,7 +347,7 @@ void Line::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void Line::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -468,7 +469,7 @@ void Line::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void Line::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

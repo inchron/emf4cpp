@@ -52,7 +52,7 @@ ReferenceSerializationFactory::ReferenceSerializationFactory()
 
 ::ecore::EJavaObject ReferenceSerializationFactory::createFromString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]] ::ecore::EString const &_literalValue)
 {
     switch (_eDataType->getClassifierID())
     {
@@ -63,7 +63,7 @@ ReferenceSerializationFactory::ReferenceSerializationFactory()
 
 ::ecore::EString ReferenceSerializationFactory::convertToString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_instanceValue)
 {
     switch (_eDataType->getClassifierID())
     {

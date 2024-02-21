@@ -57,7 +57,7 @@ ResourceTestsFactory::ResourceTestsFactory()
 
 ::ecore::EJavaObject ResourceTestsFactory::createFromString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]] ::ecore::EString const &_literalValue)
 {
     switch (_eDataType->getClassifierID())
     {
@@ -68,7 +68,7 @@ ResourceTestsFactory::ResourceTestsFactory()
 
 ::ecore::EString ResourceTestsFactory::convertToString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_instanceValue)
 {
     switch (_eDataType->getClassifierID())
     {

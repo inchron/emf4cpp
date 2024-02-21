@@ -40,17 +40,17 @@ class EXPORT_ECORE_DLL EFactory : public virtual ::ecore::EModelElement
 public:
     EFactory();
 
-    virtual ~EFactory();
+    ~EFactory() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
-    virtual ::ecore::EObject_ptr create ( ::ecore::EClass_ptr _eClass);
+    virtual ::ecore::EObject_ptr create ( [[maybe_unused]]::ecore::EClass_ptr _eClass);
 
-    virtual ::ecore::EJavaObject createFromString ( ::ecore::EDataType_ptr _eDataType, ::ecore::EString const& _literalValue);
+    virtual ::ecore::EJavaObject createFromString ( [[maybe_unused]]::ecore::EDataType_ptr _eDataType, [[maybe_unused]]::ecore::EString const& _literalValue);
 
-    virtual ::ecore::EString convertToString ( ::ecore::EDataType_ptr _eDataType, ::ecore::EJavaObject const& _instanceValue);
+    virtual ::ecore::EString convertToString ( [[maybe_unused]]::ecore::EDataType_ptr _eDataType, [[maybe_unused]]::ecore::EJavaObject const& _instanceValue);
 
     // Attributes
 
@@ -66,13 +66,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EFactoryImpl) START*/
     // Please, enable the protected region if you add manually written code.

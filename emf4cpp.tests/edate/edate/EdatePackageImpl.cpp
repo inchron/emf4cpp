@@ -234,11 +234,6 @@ void EdatePackage::_initPackage()
 
     // TODO: bounds for type parameters
 
-    // Add supertypes to classes
-    [this]()
-    {
-    }();
-
     [this]()
     { // Classifiers of this package
         auto &&classifiers = getEClassifiers();

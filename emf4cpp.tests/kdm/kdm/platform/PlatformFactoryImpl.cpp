@@ -138,7 +138,7 @@ PlatformFactory::PlatformFactory()
 
 ::ecore::EJavaObject PlatformFactory::createFromString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]] ::ecore::EString const &_literalValue)
 {
     switch (_eDataType->getClassifierID())
     {
@@ -149,7 +149,7 @@ PlatformFactory::PlatformFactory()
 
 ::ecore::EString PlatformFactory::convertToString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_instanceValue)
 {
     switch (_eDataType->getClassifierID())
     {

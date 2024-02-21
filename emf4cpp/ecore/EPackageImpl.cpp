@@ -63,7 +63,8 @@ void EPackage::_initialize()
 
 // Operations
 
-::ecore::EClassifier_ptr EPackage::getEClassifier(::ecore::EString const &_name)
+::ecore::EClassifier_ptr EPackage::getEClassifier(
+        [[maybe_unused]]::ecore::EString const &_name)
 {
     /*PROTECTED REGION ID(EPackageImpl_getEClassifier) ENABLED START*/
     if (m_eClassifiersMap.size() == 0)
@@ -140,7 +141,7 @@ void EPackage::_initialize()
 }
 
 void EPackage::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -252,7 +253,7 @@ void EPackage::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void EPackage::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -346,7 +347,7 @@ void EPackage::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void EPackage::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

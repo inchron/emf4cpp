@@ -59,7 +59,8 @@ void EEnum::_initialize()
 
 // Operations
 
-::ecore::EEnumLiteral_ptr EEnum::getEEnumLiteral(::ecore::EString const &_name)
+::ecore::EEnumLiteral_ptr EEnum::getEEnumLiteral(
+        [[maybe_unused]]::ecore::EString const &_name)
 {
     /*PROTECTED REGION ID(EEnumImpl_getEEnumLiteral_1) ENABLED START*/
     for (const auto &literal : *m_eLiterals)
@@ -72,7 +73,8 @@ void EEnum::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EEnumLiteral_ptr EEnum::getEEnumLiteral(::ecore::EInt _value)
+::ecore::EEnumLiteral_ptr EEnum::getEEnumLiteral(
+        [[maybe_unused]]::ecore::EInt _value)
 {
     /*PROTECTED REGION ID(EEnumImpl_getEEnumLiteral_0) ENABLED START*/
     for (const auto &literal : *m_eLiterals)
@@ -86,7 +88,7 @@ void EEnum::_initialize()
 }
 
 ::ecore::EEnumLiteral_ptr EEnum::getEEnumLiteralByLiteral(
-        ::ecore::EString const &_literal)
+        [[maybe_unused]]::ecore::EString const &_literal)
 {
     /*PROTECTED REGION ID(EEnumImpl_getEEnumLiteralByLiteral) ENABLED START*/
     for (const auto &literal : *m_eLiterals)
@@ -168,7 +170,7 @@ void EEnum::_initialize()
 }
 
 void EEnum::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -283,7 +285,7 @@ void EEnum::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void EEnum::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -347,7 +349,7 @@ void EEnum::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void EEnum::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

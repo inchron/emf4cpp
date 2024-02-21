@@ -42,13 +42,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <ecore/EClass.hpp>
 
 #include <«getFQN("/")».hpp>
-#include <«this.getDllExtensionPrefix()».hpp>
 
 «EXPAND template::EClassHPP::namespaces_begin FOR this-»
 
 template<class T>
-class EXPORT_«getExportDLL()»_DLL
-«this.name.toFirstUpper()»ItemDispatcher
+class «this.name.toFirstUpper()»ItemDispatcher
 {
 public:
     «this.name.toFirstUpper()»ItemDispatcher() = default;

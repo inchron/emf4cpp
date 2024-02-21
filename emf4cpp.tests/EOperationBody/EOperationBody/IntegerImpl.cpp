@@ -65,8 +65,9 @@ void Integer::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::EOperationBody::Integer_ptr Integer::add(::EOperationBody::Integer_ptr _lhs,
-        ::EOperationBody::Integer_ptr _rhs)
+::EOperationBody::Integer_ptr Integer::add(
+        [[maybe_unused]]::EOperationBody::Integer_ptr _lhs,
+        [[maybe_unused]]::EOperationBody::Integer_ptr _rhs)
 {
 #if 0
     // This is the original body of the EOperation as specified in
@@ -102,7 +103,7 @@ void Integer::_initialize()
 }
 
 void Integer::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -150,7 +151,7 @@ void Integer::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void Integer::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -162,7 +163,7 @@ void Integer::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void Integer::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

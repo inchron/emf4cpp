@@ -40,17 +40,17 @@ class EXPORT_ECORE_DLL EEnum : public virtual ::ecore::EDataType
 public:
     EEnum();
 
-    virtual ~EEnum();
+    ~EEnum() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
-    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteral ( ::ecore::EString const& _name);
+    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteral ( [[maybe_unused]]::ecore::EString const& _name);
 
-    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteral ( ::ecore::EInt _value);
+    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteral ( [[maybe_unused]]::ecore::EInt _value);
 
-    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteralByLiteral ( ::ecore::EString const& _literal);
+    virtual ::ecore::EEnumLiteral_ptr getEEnumLiteralByLiteral ( [[maybe_unused]]::ecore::EString const& _literal);
 
     // Attributes
 
@@ -64,13 +64,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EEnumImpl) START*/
     // Please, enable the protected region if you add manually written code.

@@ -41,29 +41,29 @@ class EXPORT_ECORE_DLL EClass : public virtual ::ecore::EClassifier
 public:
     EClass();
 
-    virtual ~EClass();
+    ~EClass() override;
 
-    virtual void _initialize();
+    void _initialize() override;
 
     // Operations
 
-    virtual ::ecore::EBoolean isSuperTypeOf ( ::ecore::EClass_ptr _someClass);
+    virtual ::ecore::EBoolean isSuperTypeOf ( [[maybe_unused]]::ecore::EClass_ptr _someClass);
 
     virtual ::ecore::EInt getFeatureCount ();
 
-    virtual ::ecore::EStructuralFeature_ptr getEStructuralFeature ( ::ecore::EInt _featureID);
+    virtual ::ecore::EStructuralFeature_ptr getEStructuralFeature ( [[maybe_unused]]::ecore::EInt _featureID);
 
-    virtual ::ecore::EInt getFeatureID ( ::ecore::EStructuralFeature_ptr _feature);
+    virtual ::ecore::EInt getFeatureID ( [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature);
 
-    virtual ::ecore::EStructuralFeature_ptr getEStructuralFeature ( ::ecore::EString const& _featureName);
+    virtual ::ecore::EStructuralFeature_ptr getEStructuralFeature ( [[maybe_unused]]::ecore::EString const& _featureName);
 
     virtual ::ecore::EInt getOperationCount ();
 
-    virtual ::ecore::EOperation_ptr getEOperation ( ::ecore::EInt _operationID);
+    virtual ::ecore::EOperation_ptr getEOperation ( [[maybe_unused]]::ecore::EInt _operationID);
 
-    virtual ::ecore::EInt getOperationID ( ::ecore::EOperation_ptr _operation);
+    virtual ::ecore::EInt getOperationID ( [[maybe_unused]]::ecore::EOperation_ptr _operation);
 
-    virtual ::ecore::EOperation_ptr getOverride ( ::ecore::EOperation_ptr _operation);
+    virtual ::ecore::EOperation_ptr getOverride ( [[maybe_unused]]::ecore::EOperation_ptr _operation);
 
     // Attributes
     virtual ::ecore::EBoolean isAbstract () const;
@@ -129,13 +129,13 @@ public:
     /*PROTECTED REGION END*/
 
     // EObjectImpl
-    virtual ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve);
-    virtual void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID);
-    virtual void eUnset ( ::ecore::EInt _featureID);
-    virtual ::ecore::EClass_ptr _eClass ();
-    virtual void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue);
-    virtual void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue);
+    ::ecore::EJavaObject eGet ( ::ecore::EInt _featureID, ::ecore::EBoolean _resolve) override;
+    void eSet ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    ::ecore::EBoolean eIsSet ( ::ecore::EInt _featureID) override;
+    void eUnset ( ::ecore::EInt _featureID) override;
+    ::ecore::EClass_ptr _eClass () override;
+    void _inverseAdd ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _newValue) override;
+    void _inverseRemove ( ::ecore::EInt _featureID, ::ecore::EJavaObject const& _oldValue) override;
 
     /*PROTECTED REGION ID(EClassImpl) START*/
     // Please, enable the protected region if you add manually written code.

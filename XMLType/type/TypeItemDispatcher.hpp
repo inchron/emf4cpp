@@ -27,75 +27,82 @@
 #include <ecore/EClass.hpp>
 
 #include <type.hpp>
-#include <type/dllType.hpp>
 
 namespace type
 {
 
-    template<class T>
-    class EXPORT_TYPE_DLL
-TypeItemDispatcher
-{
-public:
-    TypeItemDispatcher() = default;
-    ~TypeItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class TypeItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != TypePackage::_instance())
+    public:
+        TypeItemDispatcher() = default;
+        ~TypeItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != TypePackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case TypePackage::ANYTYPE:
             {
-                auto derived = ::ecore::as< AnyType >(obj);
-                _this()->T::work(derived, (AnyType*)nullptr);
-            }break;
+                auto derived = ::ecore::as < AnyType > (obj);
+                _this()->T::work(derived, (AnyType*) nullptr);
+            }
+                break;
             case TypePackage::PROCESSINGINSTRUCTION:
             {
-                auto derived = ::ecore::as< ProcessingInstruction >(obj);
-                _this()->T::work(derived, (ProcessingInstruction*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ProcessingInstruction > (obj);
+                _this()->T::work(derived, (ProcessingInstruction*) nullptr);
+            }
+                break;
             case TypePackage::SIMPLEANYTYPE:
             {
-                auto derived = ::ecore::as< SimpleAnyType >(obj);
-                _this()->T::work(derived, (SimpleAnyType*)nullptr);
-            }break;
+                auto derived = ::ecore::as < SimpleAnyType > (obj);
+                _this()->T::work(derived, (SimpleAnyType*) nullptr);
+            }
+                break;
             case TypePackage::XMLTYPEDOCUMENTROOT:
             {
-                auto derived = ::ecore::as< XMLTypeDocumentRoot >(obj);
-                _this()->T::work(derived, (XMLTypeDocumentRoot*)nullptr);
-            }break;
+                auto derived = ::ecore::as < XMLTypeDocumentRoot > (obj);
+                _this()->T::work(derived, (XMLTypeDocumentRoot*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // type
+} // type
 
 #endif // TYPE_ITEMDISPATCHER_HPP

@@ -160,11 +160,6 @@ void EnumerationPackage::_initPackage()
 
     // TODO: bounds for type parameters
 
-    // Add supertypes to classes
-    [this]()
-    {
-    }();
-
     [this]()
     { // EEnum BirdType
         auto &&eEnum = m_BirdTypeEEnum;

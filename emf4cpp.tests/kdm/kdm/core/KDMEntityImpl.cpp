@@ -59,7 +59,8 @@ void KDMEntity::_initialize()
 
 // Operations
 
-void KDMEntity::createAggregation(::kdm::core::KDMEntity_ptr _otherEntity)
+void KDMEntity::createAggregation(
+        [[maybe_unused]]::kdm::core::KDMEntity_ptr _otherEntity)
 {
     /*PROTECTED REGION ID(KDMEntityImpl_createAggregation) START*/
     // Please, enable the protected region if you add manually written code.
@@ -69,7 +70,7 @@ void KDMEntity::createAggregation(::kdm::core::KDMEntity_ptr _otherEntity)
 }
 
 void KDMEntity::deleteAggregation(
-        ::kdm::core::AggregatedRelationship_ptr _aggregation)
+        [[maybe_unused]]::kdm::core::AggregatedRelationship_ptr _aggregation)
 {
     /*PROTECTED REGION ID(KDMEntityImpl_deleteAggregation) START*/
     // Please, enable the protected region if you add manually written code.
@@ -207,7 +208,7 @@ void KDMEntity::deleteAggregation(
 }
 
 void KDMEntity::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -295,7 +296,7 @@ void KDMEntity::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void KDMEntity::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -323,7 +324,7 @@ void KDMEntity::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void KDMEntity::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

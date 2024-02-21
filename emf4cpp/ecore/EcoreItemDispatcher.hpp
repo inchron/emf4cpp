@@ -27,155 +27,178 @@
 #include <ecore/EClass.hpp>
 
 #include <ecore.hpp>
-#include <ecore/dllEcore.hpp>
 
 namespace ecore
 {
 
-    template<class T>
-    class EXPORT_ECORE_DLL
-EcoreItemDispatcher
-{
-public:
-    EcoreItemDispatcher() = default;
-    ~EcoreItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class EcoreItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != EcorePackage::_instance())
+    public:
+        EcoreItemDispatcher() = default;
+        ~EcoreItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != EcorePackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case EcorePackage::EANNOTATION:
             {
-                auto derived = ::ecore::as< EAnnotation >(obj);
-                _this()->T::work(derived, (EAnnotation*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EAnnotation > (obj);
+                _this()->T::work(derived, (EAnnotation*) nullptr);
+            }
+                break;
             case EcorePackage::EATTRIBUTE:
             {
-                auto derived = ::ecore::as< EAttribute >(obj);
-                _this()->T::work(derived, (EAttribute*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EAttribute > (obj);
+                _this()->T::work(derived, (EAttribute*) nullptr);
+            }
+                break;
             case EcorePackage::ECLASS:
             {
-                auto derived = ::ecore::as< EClass >(obj);
-                _this()->T::work(derived, (EClass*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EClass > (obj);
+                _this()->T::work(derived, (EClass*) nullptr);
+            }
+                break;
             case EcorePackage::ECLASSIFIER:
             {
-                auto derived = ::ecore::as< EClassifier >(obj);
-                _this()->T::work(derived, (EClassifier*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EClassifier > (obj);
+                _this()->T::work(derived, (EClassifier*) nullptr);
+            }
+                break;
             case EcorePackage::EDATATYPE:
             {
-                auto derived = ::ecore::as< EDataType >(obj);
-                _this()->T::work(derived, (EDataType*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EDataType > (obj);
+                _this()->T::work(derived, (EDataType*) nullptr);
+            }
+                break;
             case EcorePackage::EENUM:
             {
-                auto derived = ::ecore::as< EEnum >(obj);
-                _this()->T::work(derived, (EEnum*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EEnum > (obj);
+                _this()->T::work(derived, (EEnum*) nullptr);
+            }
+                break;
             case EcorePackage::EENUMLITERAL:
             {
-                auto derived = ::ecore::as< EEnumLiteral >(obj);
-                _this()->T::work(derived, (EEnumLiteral*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EEnumLiteral > (obj);
+                _this()->T::work(derived, (EEnumLiteral*) nullptr);
+            }
+                break;
             case EcorePackage::EFACTORY:
             {
-                auto derived = ::ecore::as< EFactory >(obj);
-                _this()->T::work(derived, (EFactory*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EFactory > (obj);
+                _this()->T::work(derived, (EFactory*) nullptr);
+            }
+                break;
             case EcorePackage::EGENERICTYPE:
             {
-                auto derived = ::ecore::as< EGenericType >(obj);
-                _this()->T::work(derived, (EGenericType*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EGenericType > (obj);
+                _this()->T::work(derived, (EGenericType*) nullptr);
+            }
+                break;
             case EcorePackage::EMODELELEMENT:
             {
-                auto derived = ::ecore::as< EModelElement >(obj);
-                _this()->T::work(derived, (EModelElement*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EModelElement > (obj);
+                _this()->T::work(derived, (EModelElement*) nullptr);
+            }
+                break;
             case EcorePackage::ENAMEDELEMENT:
             {
-                auto derived = ::ecore::as< ENamedElement >(obj);
-                _this()->T::work(derived, (ENamedElement*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ENamedElement > (obj);
+                _this()->T::work(derived, (ENamedElement*) nullptr);
+            }
+                break;
             case EcorePackage::EOBJECT:
             {
-                auto derived = ::ecore::as< EObject >(obj);
-                _this()->T::work(derived, (EObject*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EObject > (obj);
+                _this()->T::work(derived, (EObject*) nullptr);
+            }
+                break;
             case EcorePackage::EOPERATION:
             {
-                auto derived = ::ecore::as< EOperation >(obj);
-                _this()->T::work(derived, (EOperation*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EOperation > (obj);
+                _this()->T::work(derived, (EOperation*) nullptr);
+            }
+                break;
             case EcorePackage::EPACKAGE:
             {
-                auto derived = ::ecore::as< EPackage >(obj);
-                _this()->T::work(derived, (EPackage*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EPackage > (obj);
+                _this()->T::work(derived, (EPackage*) nullptr);
+            }
+                break;
             case EcorePackage::EPARAMETER:
             {
-                auto derived = ::ecore::as< EParameter >(obj);
-                _this()->T::work(derived, (EParameter*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EParameter > (obj);
+                _this()->T::work(derived, (EParameter*) nullptr);
+            }
+                break;
             case EcorePackage::EREFERENCE:
             {
-                auto derived = ::ecore::as< EReference >(obj);
-                _this()->T::work(derived, (EReference*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EReference > (obj);
+                _this()->T::work(derived, (EReference*) nullptr);
+            }
+                break;
             case EcorePackage::ESTRINGTOSTRINGMAPENTRY:
             {
-                auto derived = ::ecore::as< EStringToStringMapEntry >(obj);
-                _this()->T::work(derived, (EStringToStringMapEntry*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EStringToStringMapEntry > (obj);
+                _this()->T::work(derived, (EStringToStringMapEntry*) nullptr);
+            }
+                break;
             case EcorePackage::ESTRUCTURALFEATURE:
             {
-                auto derived = ::ecore::as< EStructuralFeature >(obj);
-                _this()->T::work(derived, (EStructuralFeature*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EStructuralFeature > (obj);
+                _this()->T::work(derived, (EStructuralFeature*) nullptr);
+            }
+                break;
             case EcorePackage::ETYPEDELEMENT:
             {
-                auto derived = ::ecore::as< ETypedElement >(obj);
-                _this()->T::work(derived, (ETypedElement*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ETypedElement > (obj);
+                _this()->T::work(derived, (ETypedElement*) nullptr);
+            }
+                break;
             case EcorePackage::ETYPEPARAMETER:
             {
-                auto derived = ::ecore::as< ETypeParameter >(obj);
-                _this()->T::work(derived, (ETypeParameter*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ETypeParameter > (obj);
+                _this()->T::work(derived, (ETypeParameter*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // ecore
+} // ecore
 
 #endif // ECORE_ITEMDISPATCHER_HPP

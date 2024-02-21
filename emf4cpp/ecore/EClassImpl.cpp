@@ -71,7 +71,8 @@ void EClass::_initialize()
 
 // Operations
 
-::ecore::EBoolean EClass::isSuperTypeOf(::ecore::EClass_ptr _someClass)
+::ecore::EBoolean EClass::isSuperTypeOf(
+        [[maybe_unused]]::ecore::EClass_ptr _someClass)
 {
     /*PROTECTED REGION ID(EClassImpl_isSuperTypeOf) ENABLED START*/
     // Please, enable the protected region if you add manually written code.
@@ -94,7 +95,7 @@ void EClass::_initialize()
 }
 
 ::ecore::EStructuralFeature_ptr EClass::getEStructuralFeature(
-        ::ecore::EInt _featureID)
+        [[maybe_unused]]::ecore::EInt _featureID)
 {
     /*PROTECTED REGION ID(EClassImpl_getEStructuralFeature_0) ENABLED START*/
     // Please, enable the protected region if you add manually written code.
@@ -114,7 +115,8 @@ void EClass::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EInt EClass::getFeatureID(::ecore::EStructuralFeature_ptr _feature)
+::ecore::EInt EClass::getFeatureID(
+        [[maybe_unused]]::ecore::EStructuralFeature_ptr _feature)
 {
     /*PROTECTED REGION ID(EClassImpl_getFeatureID) ENABLED START*/
 
@@ -135,7 +137,7 @@ void EClass::_initialize()
 }
 
 ::ecore::EStructuralFeature_ptr EClass::getEStructuralFeature(
-        ::ecore::EString const &_featureName)
+        [[maybe_unused]]::ecore::EString const &_featureName)
 {
     /*PROTECTED REGION ID(EClassImpl_getEStructuralFeature_1) ENABLED START*/
 
@@ -165,7 +167,8 @@ void EClass::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EOperation_ptr EClass::getEOperation(::ecore::EInt _operationID)
+::ecore::EOperation_ptr EClass::getEOperation(
+        [[maybe_unused]]::ecore::EInt _operationID)
 {
     /*PROTECTED REGION ID(EClassImpl_getEOperation) START*/
     // Please, enable the protected region if you add manually written code.
@@ -174,7 +177,8 @@ void EClass::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EInt EClass::getOperationID(::ecore::EOperation_ptr _operation)
+::ecore::EInt EClass::getOperationID(
+        [[maybe_unused]]::ecore::EOperation_ptr _operation)
 {
     /*PROTECTED REGION ID(EClassImpl_getOperationID) START*/
     // Please, enable the protected region if you add manually written code.
@@ -183,7 +187,8 @@ void EClass::_initialize()
     /*PROTECTED REGION END*/
 }
 
-::ecore::EOperation_ptr EClass::getOverride(::ecore::EOperation_ptr _operation)
+::ecore::EOperation_ptr EClass::getOverride(
+        [[maybe_unused]]::ecore::EOperation_ptr _operation)
 {
     /*PROTECTED REGION ID(EClassImpl_getOverride) START*/
     // Please, enable the protected region if you add manually written code.
@@ -332,7 +337,7 @@ void EClass::_initialize()
 }
 
 void EClass::eSet(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -509,7 +514,7 @@ void EClass::eUnset(::ecore::EInt _featureID)
 /** Set the local end of a reference with an EOpposite property.
  */
 void EClass::_inverseAdd(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_newValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_newValue)
 {
     switch (_featureID)
     {
@@ -595,7 +600,7 @@ void EClass::_inverseAdd(::ecore::EInt _featureID,
 /** Unset the local end of a reference with an EOpposite property.
  */
 void EClass::_inverseRemove(::ecore::EInt _featureID,
-        ::ecore::EJavaObject const &_oldValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_oldValue)
 {
     switch (_featureID)
     {

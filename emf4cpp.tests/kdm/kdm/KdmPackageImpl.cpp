@@ -87,11 +87,6 @@ void KdmPackage::_initPackage()
 
     // TODO: bounds for type parameters
 
-    // Add supertypes to classes
-    [this]()
-    {
-    }();
-
     _initialize();
 }
 

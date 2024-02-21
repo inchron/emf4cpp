@@ -75,7 +75,7 @@ StatementFactory::StatementFactory()
 
 ::ecore::EJavaObject StatementFactory::createFromString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EString const &_literalValue)
+        [[maybe_unused]] ::ecore::EString const &_literalValue)
 {
     switch (_eDataType->getClassifierID())
     {
@@ -86,7 +86,7 @@ StatementFactory::StatementFactory()
 
 ::ecore::EString StatementFactory::convertToString(
         ::ecore::EDataType_ptr _eDataType,
-        ::ecore::EJavaObject const &_instanceValue)
+        [[maybe_unused]] ::ecore::EJavaObject const &_instanceValue)
 {
     switch (_eDataType->getClassifierID())
     {
