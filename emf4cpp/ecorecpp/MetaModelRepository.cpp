@@ -19,62 +19,67 @@
  */
 
 #include "MetaModelRepository.hpp"
+
 #include <ecore/EcorePackage.hpp>
 
 using namespace ::ecorecpp;
 
-std::unique_ptr< MetaModelRepository > MetaModelRepository::m_instance;
+std::unique_ptr<MetaModelRepository> MetaModelRepository::m_instance;
 
 MetaModelRepository_ptr MetaModelRepository::_instance()
 {
-    if (m_instance.get() == NULL)
-        m_instance.reset(new MetaModelRepository);
-    return m_instance.get();
+	if ( m_instance.get() == NULL )
+		m_instance.reset( new MetaModelRepository );
+	return m_instance.get();
+}
+
+void MetaModelRepository::_setInstance( std::unique_ptr<MetaModelRepository> instance )
+{
+	m_instance = std::move( instance );
 }
 
 MetaModelRepository::MetaModelRepository()
 {
-    load(::ecore::EcorePackage::_instance());
+	load( ::ecore::EcorePackage::_instance() );
 }
 
 MetaModelRepository::~MetaModelRepository()
 {
 }
 
-::ecore::EPackage_ptr MetaModelRepository::getByNSPrefix(
-        ::ecore::EString const & _prefix) const
+::ecore::EPackage_ptr MetaModelRepository::getByNSPrefix( ::ecore::EString const& _prefix ) const
 {
-    // TODO: Throw a proper exception. Return NULL by now.
-    by_nsPrefix_t::const_iterator it = m_by_nsPrefix.find (_prefix);
-    return it != m_by_nsPrefix.end() ? it->second : 0;
+	// TODO: Throw a proper exception. Return NULL by now.
+	by_nsPrefix_t::const_iterator it = m_by_nsPrefix.find( _prefix );
+	return it != m_by_nsPrefix.end() ? it->second : 0;
 }
 
-::ecore::EPackage_ptr MetaModelRepository::getByNSURI(::ecore::EString const& _uri) const
+::ecore::EPackage_ptr MetaModelRepository::getByNSURI( ::ecore::EString const& _uri ) const
 {
-    // TODO: Throw a proper exception. Return NULL by now.
-    by_nsURI_t::const_iterator it = m_by_nsURI.find (_uri);
-    return it != m_by_nsURI.end() ? it->second : 0;
+	// TODO: Throw a proper exception. Return NULL by now.
+	by_nsURI_t::const_iterator it = m_by_nsURI.find( _uri );
+	return it != m_by_nsURI.end() ? it->second : 0;
 }
 
-::ecore::EPackage_ptr MetaModelRepository::getByName(::ecore::EString const& _name) const
+::ecore::EPackage_ptr MetaModelRepository::getByName( ::ecore::EString const& _name ) const
 {
-    // TODO: Throw a proper exception. Return NULL by now.
-    by_name_t::const_iterator it = m_by_name.find (_name);
-    return it != m_by_name.end() ? it->second : 0;
+	// TODO: Throw a proper exception. Return NULL by now.
+	by_name_t::const_iterator it = m_by_name.find( _name );
+	return it != m_by_name.end() ? it->second : 0;
 }
 
-void MetaModelRepository::load(::ecore::EPackage_ptr _mm)
+void MetaModelRepository::load( ::ecore::EPackage_ptr _mm )
 {
-    ::ecore::EString _name = _mm->getName();
-    ::ecore::EString _prefix = _mm->getNsPrefix();
-    ::ecore::EString _uri = _mm->getNsURI();
+	::ecore::EString _name = _mm->getName();
+	::ecore::EString _prefix = _mm->getNsPrefix();
+	::ecore::EString _uri = _mm->getNsURI();
 
-    if (!_name.empty())
-        m_by_name[_name] = _mm;
+	if ( !_name.empty() )
+		m_by_name[_name] = _mm;
 
-    if (!_prefix.empty())
-        m_by_nsPrefix[_prefix] = _mm;
+	if ( !_prefix.empty() )
+		m_by_nsPrefix[_prefix] = _mm;
 
-    if (!_uri.empty())
-        m_by_nsURI[_uri] = _mm;
+	if ( !_uri.empty() )
+		m_by_nsURI[_uri] = _mm;
 }

@@ -21,50 +21,48 @@
 #ifndef _METAMODELREPOSITORY_HPP
 #define _METAMODELREPOSITORY_HPP
 
-#include <ecore/EPackage.hpp>
 #include <map>
 #include <memory>
 
+#include <ecore/EPackage.hpp>
+
 #include "dllEcorecpp.hpp"
 
-namespace ecorecpp
-{
+namespace ecorecpp {
 
 class MetaModelRepository;
 typedef MetaModelRepository* MetaModelRepository_ptr;
 
-class EXPORT_ECORECPP_DLL MetaModelRepository
-{
+class EXPORT_ECORECPP_DLL MetaModelRepository {
 public:
+	static MetaModelRepository_ptr _instance();
+	static void _setInstance( std::unique_ptr<MetaModelRepository> instance );
 
-    static MetaModelRepository_ptr _instance();
+	virtual ~MetaModelRepository();
 
-    virtual ~MetaModelRepository();
+	::ecore::EPackage_ptr getByNSPrefix( ::ecore::EString const& _prefix ) const;
 
-    ::ecore::EPackage_ptr getByNSPrefix(::ecore::EString const& _prefix) const;
+	::ecore::EPackage_ptr getByNSURI( ::ecore::EString const& _prefix ) const;
 
-    ::ecore::EPackage_ptr getByNSURI(::ecore::EString const& _prefix) const;
+	::ecore::EPackage_ptr getByName( ::ecore::EString const& _name ) const;
 
-    ::ecore::EPackage_ptr getByName(::ecore::EString const& _name) const;
-
-    void load(::ecore::EPackage_ptr _mm);
+	void load( ::ecore::EPackage_ptr _mm );
 
 protected:
+	static std::unique_ptr<MetaModelRepository> m_instance;
 
-    static std::unique_ptr<MetaModelRepository> m_instance;
+	MetaModelRepository();
 
-    MetaModelRepository();
+	typedef std::map<::ecore::EString, ::ecore::EPackage_ptr> by_nsPrefix_t;
+	by_nsPrefix_t m_by_nsPrefix;
 
-    typedef std::map< ::ecore::EString, ::ecore::EPackage_ptr > by_nsPrefix_t;
-    by_nsPrefix_t m_by_nsPrefix;
+	typedef std::map<::ecore::EString, ::ecore::EPackage_ptr> by_nsURI_t;
+	by_nsURI_t m_by_nsURI;
 
-    typedef std::map< ::ecore::EString, ::ecore::EPackage_ptr > by_nsURI_t;
-    by_nsURI_t m_by_nsURI;
-
-    typedef std::map< ::ecore::EString, ::ecore::EPackage_ptr > by_name_t;
-    by_nsURI_t m_by_name;
+	typedef std::map<::ecore::EString, ::ecore::EPackage_ptr> by_name_t;
+	by_nsURI_t m_by_name;
 };
 
-} // ecorecpp
+}  // namespace ecorecpp
 
-#endif    /* _METAMODELREPOSITORY_HPP */
+#endif /* _METAMODELREPOSITORY_HPP */
