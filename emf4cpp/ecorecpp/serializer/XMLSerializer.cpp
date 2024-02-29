@@ -194,7 +194,13 @@ void XMLSerializer::addUsedPackage( ::ecore::EPackage_ptr package )
 		ss << m_extendedMetaData->getName( cl );
 	}
 	else {
-		ss << _packageAliases.at( cl->getEPackage() ) << ":" << cl->getName();
+		const auto& pkg = cl->getEPackage();
+		if ( auto it = _packageAliases.find( pkg ); it != _packageAliases.end() )
+			ss << it->second << ":" << cl->getName();
+		else
+			/* You have to call addUsedPackage() first. */
+			throw std::out_of_range(
+				"XMLSerializer::get_type(): Cannot resolve alias for unknown EPackage" );
 	}
 	return ss.str();
 }
@@ -211,8 +217,13 @@ void XMLSerializer::addUsedPackage( ::ecore::EPackage_ptr package )
 		ss << m_extendedMetaData->getName( ef );
 	}
 	else {
-		ss << _packageAliases.at( obj->eContainer()->eClass()->getEPackage() ) << ":"
-		   << ef->getName();
+		const auto& pkg = obj->eContainer()->eClass()->getEPackage();
+		if ( auto it = _packageAliases.find( pkg ); it != _packageAliases.end() )
+			ss << it->second << ":" << ef->getName();
+		else
+			/* You have to call addUsedPackage() first. */
+			throw std::out_of_range(
+				"XMLSerializer::get_reference(): Cannot resolve alias for unknown EPackage" );
 	}
 	return ss.str();
 }
@@ -442,8 +453,8 @@ void XMLSerializer::serialize_node_attributes( EObject_ptr obj )
 					crossRef[0] = referenceName;
 
 					if ( child->eClass() != current_ref->getEType() ) {
-						crossRef[1] = get_type( child );
 						addUsedPackage( child->eClass()->getEPackage() );
+						crossRef[1] = get_type( child );
 					}
 
 					crossRef[2] = ref;
