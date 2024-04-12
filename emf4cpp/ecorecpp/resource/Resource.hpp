@@ -20,8 +20,6 @@
 #ifndef Resource_HPP
 #define Resource_HPP
 
-#include "../dllEcorecpp.hpp"
-
 #include <memory>
 #include <string>
 #include <unordered_map>
@@ -29,12 +27,13 @@
 #include <QtCore/qstring.h>
 #include <QtCore/qurl.h>
 
-#include "../util/TreeIterator.hpp"
+#include "../dllEcorecpp.hpp"
 #include "../parser/Reference.hpp"
+#include "../util/TreeIterator.hpp"
 
 namespace ecore {
-	class EObject;
-}
+class EObject;
+}  // namespace ecore
 
 namespace ecorecpp {
 namespace resource {
@@ -48,30 +47,47 @@ class EXPORT_ECORECPP_DLL Resource : public std::enable_shared_from_this<Resourc
 public:
 	using OptionMap = std::unordered_map<std::string, std::string>;
 
-	Resource(const Resource&)    = delete;
-	void operator=(const Resource&) = delete;
+	/**
+	 * Encrypt the serialized content. A derived Resource, which controls the
+	 * serialization and the internal buffers, must also implement the
+	 * encryption if it shall be used.
+	 * By default, the content is not encrypted.
+	 * To encrypt the content, set this option to 'true'.
+	 */
+	static const std::string OPTION_CIPHER /*="CIPHER"*/;
+
+	/**
+	 * A derived Resource can compress its content. Depending on the native
+	 * format of the Resource, it could be either a compressed file or a zip
+	 * archive with a special named file entry.
+	 * By default, the content is not compressed.
+	 * To compress the content, set this option to 'true'.
+	 */
+	static const std::string OPTION_ZIP /*="ZIP"*/;
+
+	Resource( const Resource& ) = delete;
+	void operator=( const Resource& ) = delete;
 	virtual ~Resource();
 
 	class EXPORT_ECORECPP_DLL Factory {
 	public:
 		virtual ~Factory();
-		virtual Resource_ptr createResource(const QUrl& uri);
+		virtual Resource_ptr createResource( const QUrl& uri );
 
 		class EXPORT_ECORECPP_DLL Registry {
 		public:
 			static const std::string DEFAULT_EXTENSION;
 			static const std::string DEFAULT_CONTENT_TYPE_IDENTIFIER;
 
-			using FactoryMap =
-					std::unordered_map<std::string, std::unique_ptr<Factory>>;
+			using FactoryMap = std::unordered_map<std::string, std::unique_ptr<Factory>>;
 
 			static Registry& getInstance();
 
 			~Registry();
-			Registry(const Registry&)       = delete;
-			void operator=(const Registry&) = delete;
+			Registry( const Registry& ) = delete;
+			void operator=( const Registry& ) = delete;
 
-			Factory* getFactory(const QUrl& uri);
+			Factory* getFactory( const QUrl& uri );
 
 			FactoryMap& getProtocolToFactoryMap();
 			FactoryMap& getExtensionToFactoryMap();
@@ -88,26 +104,26 @@ public:
 	virtual const ::ecorecpp::mapping::EList<::ecore::EObject_ptr>::ptr_type& getContents();
 
 	const QUrl& getURI() const;
-	void setURI(const QUrl&);
+	void setURI( const QUrl& );
 
 	ResourceSet* getResourceSet();
-	void setResourceSet(ResourceSet*);
+	void setResourceSet( ResourceSet* );
 
-    virtual void load(const OptionMap& = OptionMap());
-	virtual void load(std::istream&, const OptionMap& = OptionMap());
+	virtual void load( const OptionMap& = OptionMap() );
+	virtual void load( std::istream&, const OptionMap& = OptionMap() );
 
-	virtual void save(const OptionMap& = OptionMap());
-	virtual void save(std::ostream&, const OptionMap& = OptionMap());
+	virtual void save( const OptionMap& = OptionMap() );
+	virtual void save( std::ostream&, const OptionMap& = OptionMap() );
 
 	virtual void unload();
 
 	bool isLoaded() const;
 
-	virtual ::ecore::EObject_ptr getEObjectForURIFragmentRootSegment(const std::string&);
-	virtual std::string getURIFragmentRootSegment(::ecore::EObject_ptr);
+	virtual ::ecore::EObject_ptr getEObjectForURIFragmentRootSegment( const std::string& );
+	virtual std::string getURIFragmentRootSegment( ::ecore::EObject_ptr );
 
-	virtual ::ecore::EObject_ptr getEObject(const std::string& uriFragment);
-	virtual std::string getURIFragment(::ecore::EObject_ptr);
+	virtual ::ecore::EObject_ptr getEObject( const std::string& uriFragment );
+	virtual std::string getURIFragment( ::ecore::EObject_ptr );
 
 	/** Use intrinsic ids if available. Default: true */
 	virtual bool useIDAttributes() const;
@@ -115,7 +131,7 @@ public:
 	std::list<::ecorecpp::parser::Reference>& getUnresolvedCrossDocumentReferences();
 
 protected:
-	explicit Resource(const QUrl&);
+	explicit Resource( const QUrl& );
 
 	URIConverter* getURIConverter();
 
@@ -133,7 +149,7 @@ private:
 	bool _loaded;
 };
 
-} // resource
-} // ecorecpp
+}  // namespace resource
+}  // namespace ecorecpp
 
-#endif    /* Resource_HPP */
+#endif /* Resource_HPP */

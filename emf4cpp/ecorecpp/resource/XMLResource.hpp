@@ -20,17 +20,16 @@
 #ifndef XMLResource_HPP
 #define XMLResource_HPP
 
-#include "../dllEcorecpp.hpp"
-
 #include <map>
 #include <unordered_map>
 
+#include "../dllEcorecpp.hpp"
 #include "../mapping/type_definitions.hpp"
 #include "Resource.hpp"
 
 namespace ecore {
 class EObject;
-}
+}  // namespace ecore
 
 namespace ecorecpp {
 namespace resource {
@@ -41,7 +40,7 @@ public:
 	XMLResourceFactory() = default;
 	~XMLResourceFactory() override;
 
-	Resource_ptr createResource(const QUrl&) override;
+	Resource_ptr createResource( const QUrl& ) override;
 };
 
 //Resource
@@ -82,19 +81,17 @@ public:
 	 */
 	static const std::string OPTION_PROCESS_DANGLING_HREF /*=PROCESS_DANGLING_HREF*/;
 
-	explicit XMLResource(const QUrl&);
+	explicit XMLResource( const QUrl& );
 	~XMLResource() override;
 
-	void load(std::istream&,
-			const Resource::OptionMap& = Resource::OptionMap()) override;
-	void save(std::ostream&,
-			const Resource::OptionMap& = Resource::OptionMap()) override;
+	void load( std::istream&, const Resource::OptionMap& = Resource::OptionMap() ) override;
+	void save( std::ostream&, const Resource::OptionMap& = Resource::OptionMap() ) override;
 
-	void setID(::ecore::EObject_ptr, const std::string&);
-	std::string getID(::ecore::EObject_ptr);
+	void setID( ::ecore::EObject_ptr, const std::string& );
+	std::string getID( ::ecore::EObject_ptr );
 
-	::ecore::EObject_ptr getEObject(const std::string& uriFragment) override;
-	std::string getURIFragment(::ecore::EObject_ptr) override;
+	::ecore::EObject_ptr getEObject( const std::string& uriFragment ) override;
+	std::string getURIFragment( ::ecore::EObject_ptr ) override;
 
 	/** Use ids from the map, where the user has set them. They are stored in
 	 * the attribue xmi:id. */
@@ -104,24 +101,28 @@ public:
 	virtual bool useUUIDs() const;
 	/* If all is disabled, xpath is used for references. */
 
+	using Buffer = std::vector<::ecorecpp::mapping::type_definitions::char_t>;
+
 protected:
 	/** Generates a new UUID and calls setId(). */
-	virtual std::string createID(::ecore::EObject_ptr);
+	virtual std::string createID( ::ecore::EObject_ptr );
 
 private:
-	void doLoad(const std::vector<::ecorecpp::mapping::type_definitions::char_t>&,
-				const Resource::OptionMap& = Resource::OptionMap());
+	void doLoad( const Buffer&, const Resource::OptionMap& = Resource::OptionMap() );
+	virtual Buffer doCompress( const Buffer& );
+	virtual Buffer doUncompress( const Buffer& );
+	virtual Buffer doEncrypt( const Buffer& );
+	virtual Buffer doDecrypt( const Buffer& );
 
 	using WeakEObject_ptr = std::weak_ptr<::ecore::EObject>;
 
-	std::map<WeakEObject_ptr, std::string,
-			 std::owner_less<WeakEObject_ptr> > _eObjectToIDMap;
+	std::map<WeakEObject_ptr, std::string, std::owner_less<WeakEObject_ptr>> _eObjectToIDMap;
 
 	/* Safe because the std::weak_ptr is only the value. */
 	std::unordered_map<std::string, WeakEObject_ptr> _idToEObjectMap;
 };
 
-} // resource
-} // ecorecpp
+}  // namespace resource
+}  // namespace ecorecpp
 
-#endif    /* XMLResource_HPP */
+#endif /* XMLResource_HPP */

@@ -78,6 +78,7 @@ set(ecorecpp_HEADERS
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/util/print.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/util/escape_html.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource_forward.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/Compression.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/Resource.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/ResourceSet.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/URIConverter.hpp
@@ -135,6 +136,7 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/util/debug.hpp DESTINATION in
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/util/print.hpp DESTINATION include/emf4cpp/ecorecpp/util)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/util/escape_html.hpp DESTINATION include/emf4cpp/ecorecpp/util)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource_forward.hpp DESTINATION include/emf4cpp/ecorecpp)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/Compression.hpp DESTINATION include/emf4cpp/ecorecpp/resource)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/Resource.hpp DESTINATION include/emf4cpp/ecorecpp/resource)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/ResourceSet.hpp DESTINATION include/emf4cpp/ecorecpp/resource)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/resource/URIConverter.hpp DESTINATION include/emf4cpp/ecorecpp/resource)
@@ -162,4 +164,3 @@ target_sources(emf4cpp-ecore PRIVATE
 set_target_properties(emf4cpp-ecorecpp PROPERTIES COMPILE_FLAGS "-DMAKE_ECORECPP_DLL" VERSION 3.0.0 SOVERSION 3)
 target_link_libraries(emf4cpp-ecorecpp emf4cpp-ecore Qt5::Core $<$<AND:$<CXX_COMPILER_ID:GNU>,$<VERSION_LESS:$<CXX_COMPILER_VERSION>,9.0>>:stdc++fs>)
 install(TARGETS emf4cpp-ecorecpp DESTINATION lib)
-
