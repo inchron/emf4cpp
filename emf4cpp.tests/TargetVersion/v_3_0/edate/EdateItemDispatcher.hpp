@@ -27,68 +27,73 @@
 #include <ecore/EClass.hpp>
 
 #include <v_3_0/edate.hpp>
-#include <v_3_0/edate/dllEdate.hpp>
 
 namespace v_3_0
 {
     namespace edate
     {
 
-        template<class T>
-        class EXPORT_V_3_0_EDATE_DLL
-    EdateItemDispatcher
-    {
-    public:
-        EdateItemDispatcher() = default;
-        ~EdateItemDispatcher() = default;
-
-        /** Clients need to overload and reimplement this work() method for every
-         * class they want to handle. The second argument is a dummy argument to
-         * disambiguate work methods in case of an inheritance hirarchy and
-         * always contains a nullptr.
-         * Note that in a class hierarchy classes may be shadowed by derived classes. */
-        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-        {}
-
-        /** Entry function for the dispatch mechanism. */
-        void enter(const ::ecore::EObject_ptr& obj)
+        template< class T >
+        class EdateItemDispatcher
         {
-            auto eClass = obj->eClass();
-            if (eClass->getEPackage() != EdatePackage::_instance())
+        public:
+            EdateItemDispatcher() = default;
+            ~EdateItemDispatcher() = default;
+
+            /** Clients need to overload and reimplement this work() method for every
+             * class they want to handle. The second argument is a dummy argument to
+             * disambiguate work methods in case of an inheritance hirarchy and
+             * always contains a nullptr.
+             * Note that in a class hierarchy classes may be shadowed by derived classes. */
+            void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
             {
-                assert(!"The package of the eclass does not match the package of the dispatcher!");
-                return;
             }
 
-            switch (eClass->getClassifierID())
+            /** Entry function for the dispatch mechanism. */
+            void enter(const ::ecore::EObject_ptr &obj)
             {
+                auto eClass = obj->eClass();
+                if (eClass->getEPackage() != EdatePackage::_instance())
+                {
+                    assert(
+                            !"The package of the eclass does not match the package of the dispatcher!");
+                    return;
+                }
+
+                switch (eClass->getClassifierID())
+                {
                 case EdatePackage::APOLLO11:
                 {
-                    auto derived = ::ecore::as< Apollo11 >(obj);
-                    _this()->T::work(derived, (Apollo11*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Apollo11 > (obj);
+                    _this()->T::work(derived, (Apollo11*) nullptr);
+                }
+                    break;
                 case EdatePackage::PERSON:
                 {
-                    auto derived = ::ecore::as< Person >(obj);
-                    _this()->T::work(derived, (Person*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Person > (obj);
+                    _this()->T::work(derived, (Person*) nullptr);
+                }
+                    break;
                 default:
-                break;
+                    break;
+                }
             }
-        }
 
-    private:
-        /** Inline helper, should compile to simple offset adjustment. */
-        T* _this()
-        {   return static_cast<T*>(this);}
+        private:
+            /** Inline helper, should compile to simple offset adjustment. */
+            T* _this()
+            {
+                return static_cast< T* >(this);
+            }
 
-        /** Inline helper, should compile to simple offset adjustment. */
-        const T* _this() const
-        {   return static_cast<const T*>(this);}
-    };
+            /** Inline helper, should compile to simple offset adjustment. */
+            const T* _this() const
+            {
+                return static_cast< const T* >(this);
+            }
+        };
 
-}
- // edate
-}// v_3_0
+    } // edate
+} // v_3_0
 
 #endif // V_3_0_EDATE_ITEMDISPATCHER_HPP

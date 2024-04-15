@@ -27,123 +27,144 @@
 #include <ecore/EClass.hpp>
 
 #include <kdm/conceptual.hpp>
-#include <kdm/dllKdm.hpp>
 
 namespace kdm
 {
     namespace conceptual
     {
 
-        template<class T>
-        class EXPORT_KDM_DLL
-    ConceptualItemDispatcher
-    {
-    public:
-        ConceptualItemDispatcher() = default;
-        ~ConceptualItemDispatcher() = default;
-
-        /** Clients need to overload and reimplement this work() method for every
-         * class they want to handle. The second argument is a dummy argument to
-         * disambiguate work methods in case of an inheritance hirarchy and
-         * always contains a nullptr.
-         * Note that in a class hierarchy classes may be shadowed by derived classes. */
-        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-        {}
-
-        /** Entry function for the dispatch mechanism. */
-        void enter(const ::ecore::EObject_ptr& obj)
+        template< class T >
+        class ConceptualItemDispatcher
         {
-            auto eClass = obj->eClass();
-            if (eClass->getEPackage() != ConceptualPackage::_instance())
+        public:
+            ConceptualItemDispatcher() = default;
+            ~ConceptualItemDispatcher() = default;
+
+            /** Clients need to overload and reimplement this work() method for every
+             * class they want to handle. The second argument is a dummy argument to
+             * disambiguate work methods in case of an inheritance hirarchy and
+             * always contains a nullptr.
+             * Note that in a class hierarchy classes may be shadowed by derived classes. */
+            void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
             {
-                assert(!"The package of the eclass does not match the package of the dispatcher!");
-                return;
             }
 
-            switch (eClass->getClassifierID())
+            /** Entry function for the dispatch mechanism. */
+            void enter(const ::ecore::EObject_ptr &obj)
             {
+                auto eClass = obj->eClass();
+                if (eClass->getEPackage() != ConceptualPackage::_instance())
+                {
+                    assert(
+                            !"The package of the eclass does not match the package of the dispatcher!");
+                    return;
+                }
+
+                switch (eClass->getClassifierID())
+                {
                 case ConceptualPackage::ABSTRACTCONCEPTUALELEMENT:
                 {
-                    auto derived = ::ecore::as< AbstractConceptualElement >(obj);
-                    _this()->T::work(derived, (AbstractConceptualElement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractConceptualElement
+                            > (obj);
+                    _this()->T::work(derived,
+                            (AbstractConceptualElement*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::ABSTRACTCONCEPTUALRELATIONSHIP:
                 {
-                    auto derived = ::ecore::as< AbstractConceptualRelationship >(obj);
-                    _this()->T::work(derived, (AbstractConceptualRelationship*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractConceptualRelationship
+                            > (obj);
+                    _this()->T::work(derived,
+                            (AbstractConceptualRelationship*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::BEHAVIORUNIT:
                 {
-                    auto derived = ::ecore::as< BehaviorUnit >(obj);
-                    _this()->T::work(derived, (BehaviorUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < BehaviorUnit > (obj);
+                    _this()->T::work(derived, (BehaviorUnit*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALCONTAINER:
                 {
-                    auto derived = ::ecore::as< ConceptualContainer >(obj);
-                    _this()->T::work(derived, (ConceptualContainer*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualContainer > (obj);
+                    _this()->T::work(derived, (ConceptualContainer*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALELEMENT:
                 {
-                    auto derived = ::ecore::as< ConceptualElement >(obj);
-                    _this()->T::work(derived, (ConceptualElement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualElement > (obj);
+                    _this()->T::work(derived, (ConceptualElement*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALFLOW:
                 {
-                    auto derived = ::ecore::as< ConceptualFlow >(obj);
-                    _this()->T::work(derived, (ConceptualFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualFlow > (obj);
+                    _this()->T::work(derived, (ConceptualFlow*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALMODEL:
                 {
-                    auto derived = ::ecore::as< ConceptualModel >(obj);
-                    _this()->T::work(derived, (ConceptualModel*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualModel > (obj);
+                    _this()->T::work(derived, (ConceptualModel*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALRELATIONSHIP:
                 {
-                    auto derived = ::ecore::as< ConceptualRelationship >(obj);
-                    _this()->T::work(derived, (ConceptualRelationship*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualRelationship > (obj);
+                    _this()->T::work(derived,
+                            (ConceptualRelationship*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::CONCEPTUALROLE:
                 {
-                    auto derived = ::ecore::as< ConceptualRole >(obj);
-                    _this()->T::work(derived, (ConceptualRole*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ConceptualRole > (obj);
+                    _this()->T::work(derived, (ConceptualRole*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::FACTUNIT:
                 {
-                    auto derived = ::ecore::as< FactUnit >(obj);
-                    _this()->T::work(derived, (FactUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < FactUnit > (obj);
+                    _this()->T::work(derived, (FactUnit*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::RULEUNIT:
                 {
-                    auto derived = ::ecore::as< RuleUnit >(obj);
-                    _this()->T::work(derived, (RuleUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < RuleUnit > (obj);
+                    _this()->T::work(derived, (RuleUnit*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::SCENARIOUNIT:
                 {
-                    auto derived = ::ecore::as< ScenarioUnit >(obj);
-                    _this()->T::work(derived, (ScenarioUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ScenarioUnit > (obj);
+                    _this()->T::work(derived, (ScenarioUnit*) nullptr);
+                }
+                    break;
                 case ConceptualPackage::TERMUNIT:
                 {
-                    auto derived = ::ecore::as< TermUnit >(obj);
-                    _this()->T::work(derived, (TermUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < TermUnit > (obj);
+                    _this()->T::work(derived, (TermUnit*) nullptr);
+                }
+                    break;
                 default:
-                break;
+                    break;
+                }
             }
-        }
 
-    private:
-        /** Inline helper, should compile to simple offset adjustment. */
-        T* _this()
-        {   return static_cast<T*>(this);}
+        private:
+            /** Inline helper, should compile to simple offset adjustment. */
+            T* _this()
+            {
+                return static_cast< T* >(this);
+            }
 
-        /** Inline helper, should compile to simple offset adjustment. */
-        const T* _this() const
-        {   return static_cast<const T*>(this);}
-    };
+            /** Inline helper, should compile to simple offset adjustment. */
+            const T* _this() const
+            {
+                return static_cast< const T* >(this);
+            }
+        };
 
-}
- // conceptual
-}// kdm
+    } // conceptual
+} // kdm
 
 #endif // KDM_CONCEPTUAL_ITEMDISPATCHER_HPP

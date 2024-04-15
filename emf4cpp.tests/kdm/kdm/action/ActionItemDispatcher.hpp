@@ -27,183 +27,213 @@
 #include <ecore/EClass.hpp>
 
 #include <kdm/action.hpp>
-#include <kdm/dllKdm.hpp>
 
 namespace kdm
 {
     namespace action
     {
 
-        template<class T>
-        class EXPORT_KDM_DLL
-    ActionItemDispatcher
-    {
-    public:
-        ActionItemDispatcher() = default;
-        ~ActionItemDispatcher() = default;
-
-        /** Clients need to overload and reimplement this work() method for every
-         * class they want to handle. The second argument is a dummy argument to
-         * disambiguate work methods in case of an inheritance hirarchy and
-         * always contains a nullptr.
-         * Note that in a class hierarchy classes may be shadowed by derived classes. */
-        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-        {}
-
-        /** Entry function for the dispatch mechanism. */
-        void enter(const ::ecore::EObject_ptr& obj)
+        template< class T >
+        class ActionItemDispatcher
         {
-            auto eClass = obj->eClass();
-            if (eClass->getEPackage() != ActionPackage::_instance())
+        public:
+            ActionItemDispatcher() = default;
+            ~ActionItemDispatcher() = default;
+
+            /** Clients need to overload and reimplement this work() method for every
+             * class they want to handle. The second argument is a dummy argument to
+             * disambiguate work methods in case of an inheritance hirarchy and
+             * always contains a nullptr.
+             * Note that in a class hierarchy classes may be shadowed by derived classes. */
+            void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
             {
-                assert(!"The package of the eclass does not match the package of the dispatcher!");
-                return;
             }
 
-            switch (eClass->getClassifierID())
+            /** Entry function for the dispatch mechanism. */
+            void enter(const ::ecore::EObject_ptr &obj)
             {
+                auto eClass = obj->eClass();
+                if (eClass->getEPackage() != ActionPackage::_instance())
+                {
+                    assert(
+                            !"The package of the eclass does not match the package of the dispatcher!");
+                    return;
+                }
+
+                switch (eClass->getClassifierID())
+                {
                 case ActionPackage::ABSTRACTACTIONRELATIONSHIP:
                 {
-                    auto derived = ::ecore::as< AbstractActionRelationship >(obj);
-                    _this()->T::work(derived, (AbstractActionRelationship*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractActionRelationship
+                            > (obj);
+                    _this()->T::work(derived,
+                            (AbstractActionRelationship*) nullptr);
+                }
+                    break;
                 case ActionPackage::ACTIONELEMENT:
                 {
-                    auto derived = ::ecore::as< ActionElement >(obj);
-                    _this()->T::work(derived, (ActionElement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ActionElement > (obj);
+                    _this()->T::work(derived, (ActionElement*) nullptr);
+                }
+                    break;
                 case ActionPackage::ACTIONRELATIONSHIP:
                 {
-                    auto derived = ::ecore::as< ActionRelationship >(obj);
-                    _this()->T::work(derived, (ActionRelationship*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ActionRelationship > (obj);
+                    _this()->T::work(derived, (ActionRelationship*) nullptr);
+                }
+                    break;
                 case ActionPackage::ADDRESSES:
                 {
-                    auto derived = ::ecore::as< Addresses >(obj);
-                    _this()->T::work(derived, (Addresses*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Addresses > (obj);
+                    _this()->T::work(derived, (Addresses*) nullptr);
+                }
+                    break;
                 case ActionPackage::BLOCKUNIT:
                 {
-                    auto derived = ::ecore::as< BlockUnit >(obj);
-                    _this()->T::work(derived, (BlockUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < BlockUnit > (obj);
+                    _this()->T::work(derived, (BlockUnit*) nullptr);
+                }
+                    break;
                 case ActionPackage::CALLS:
                 {
-                    auto derived = ::ecore::as< Calls >(obj);
-                    _this()->T::work(derived, (Calls*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Calls > (obj);
+                    _this()->T::work(derived, (Calls*) nullptr);
+                }
+                    break;
                 case ActionPackage::CATCHUNIT:
                 {
-                    auto derived = ::ecore::as< CatchUnit >(obj);
-                    _this()->T::work(derived, (CatchUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < CatchUnit > (obj);
+                    _this()->T::work(derived, (CatchUnit*) nullptr);
+                }
+                    break;
                 case ActionPackage::COMPLIESTO:
                 {
-                    auto derived = ::ecore::as< CompliesTo >(obj);
-                    _this()->T::work(derived, (CompliesTo*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < CompliesTo > (obj);
+                    _this()->T::work(derived, (CompliesTo*) nullptr);
+                }
+                    break;
                 case ActionPackage::CONTROLFLOW:
                 {
-                    auto derived = ::ecore::as< ControlFlow >(obj);
-                    _this()->T::work(derived, (ControlFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ControlFlow > (obj);
+                    _this()->T::work(derived, (ControlFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::CREATES:
                 {
-                    auto derived = ::ecore::as< Creates >(obj);
-                    _this()->T::work(derived, (Creates*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Creates > (obj);
+                    _this()->T::work(derived, (Creates*) nullptr);
+                }
+                    break;
                 case ActionPackage::DISPATCHES:
                 {
-                    auto derived = ::ecore::as< Dispatches >(obj);
-                    _this()->T::work(derived, (Dispatches*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Dispatches > (obj);
+                    _this()->T::work(derived, (Dispatches*) nullptr);
+                }
+                    break;
                 case ActionPackage::ENTRYFLOW:
                 {
-                    auto derived = ::ecore::as< EntryFlow >(obj);
-                    _this()->T::work(derived, (EntryFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < EntryFlow > (obj);
+                    _this()->T::work(derived, (EntryFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::EXCEPTIONFLOW:
                 {
-                    auto derived = ::ecore::as< ExceptionFlow >(obj);
-                    _this()->T::work(derived, (ExceptionFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExceptionFlow > (obj);
+                    _this()->T::work(derived, (ExceptionFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::EXCEPTIONUNIT:
                 {
-                    auto derived = ::ecore::as< ExceptionUnit >(obj);
-                    _this()->T::work(derived, (ExceptionUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExceptionUnit > (obj);
+                    _this()->T::work(derived, (ExceptionUnit*) nullptr);
+                }
+                    break;
                 case ActionPackage::EXITFLOW:
                 {
-                    auto derived = ::ecore::as< ExitFlow >(obj);
-                    _this()->T::work(derived, (ExitFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExitFlow > (obj);
+                    _this()->T::work(derived, (ExitFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::FALSEFLOW:
                 {
-                    auto derived = ::ecore::as< FalseFlow >(obj);
-                    _this()->T::work(derived, (FalseFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < FalseFlow > (obj);
+                    _this()->T::work(derived, (FalseFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::FINALLYUNIT:
                 {
-                    auto derived = ::ecore::as< FinallyUnit >(obj);
-                    _this()->T::work(derived, (FinallyUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < FinallyUnit > (obj);
+                    _this()->T::work(derived, (FinallyUnit*) nullptr);
+                }
+                    break;
                 case ActionPackage::FLOW:
                 {
-                    auto derived = ::ecore::as< Flow >(obj);
-                    _this()->T::work(derived, (Flow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Flow > (obj);
+                    _this()->T::work(derived, (Flow*) nullptr);
+                }
+                    break;
                 case ActionPackage::GUARDEDFLOW:
                 {
-                    auto derived = ::ecore::as< GuardedFlow >(obj);
-                    _this()->T::work(derived, (GuardedFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < GuardedFlow > (obj);
+                    _this()->T::work(derived, (GuardedFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::READS:
                 {
-                    auto derived = ::ecore::as< Reads >(obj);
-                    _this()->T::work(derived, (Reads*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Reads > (obj);
+                    _this()->T::work(derived, (Reads*) nullptr);
+                }
+                    break;
                 case ActionPackage::THROWS:
                 {
-                    auto derived = ::ecore::as< Throws >(obj);
-                    _this()->T::work(derived, (Throws*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Throws > (obj);
+                    _this()->T::work(derived, (Throws*) nullptr);
+                }
+                    break;
                 case ActionPackage::TRUEFLOW:
                 {
-                    auto derived = ::ecore::as< TrueFlow >(obj);
-                    _this()->T::work(derived, (TrueFlow*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < TrueFlow > (obj);
+                    _this()->T::work(derived, (TrueFlow*) nullptr);
+                }
+                    break;
                 case ActionPackage::TRYUNIT:
                 {
-                    auto derived = ::ecore::as< TryUnit >(obj);
-                    _this()->T::work(derived, (TryUnit*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < TryUnit > (obj);
+                    _this()->T::work(derived, (TryUnit*) nullptr);
+                }
+                    break;
                 case ActionPackage::USESTYPE:
                 {
-                    auto derived = ::ecore::as< UsesType >(obj);
-                    _this()->T::work(derived, (UsesType*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < UsesType > (obj);
+                    _this()->T::work(derived, (UsesType*) nullptr);
+                }
+                    break;
                 case ActionPackage::WRITES:
                 {
-                    auto derived = ::ecore::as< Writes >(obj);
-                    _this()->T::work(derived, (Writes*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Writes > (obj);
+                    _this()->T::work(derived, (Writes*) nullptr);
+                }
+                    break;
                 default:
-                break;
+                    break;
+                }
             }
-        }
 
-    private:
-        /** Inline helper, should compile to simple offset adjustment. */
-        T* _this()
-        {   return static_cast<T*>(this);}
+        private:
+            /** Inline helper, should compile to simple offset adjustment. */
+            T* _this()
+            {
+                return static_cast< T* >(this);
+            }
 
-        /** Inline helper, should compile to simple offset adjustment. */
-        const T* _this() const
-        {   return static_cast<const T*>(this);}
-    };
+            /** Inline helper, should compile to simple offset adjustment. */
+            const T* _this() const
+            {
+                return static_cast< const T* >(this);
+            }
+        };
 
-}
- // action
-}// kdm
+    } // action
+} // kdm
 
 #endif // KDM_ACTION_ITEMDISPATCHER_HPP

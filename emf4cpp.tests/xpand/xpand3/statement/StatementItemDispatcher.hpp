@@ -27,113 +27,129 @@
 #include <ecore/EClass.hpp>
 
 #include <xpand3/statement.hpp>
-#include <xpand3/dllXpand3.hpp>
 
 namespace xpand3
 {
     namespace statement
     {
 
-        template<class T>
-        class EXPORT_XPAND3_DLL
-    StatementItemDispatcher
-    {
-    public:
-        StatementItemDispatcher() = default;
-        ~StatementItemDispatcher() = default;
-
-        /** Clients need to overload and reimplement this work() method for every
-         * class they want to handle. The second argument is a dummy argument to
-         * disambiguate work methods in case of an inheritance hirarchy and
-         * always contains a nullptr.
-         * Note that in a class hierarchy classes may be shadowed by derived classes. */
-        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-        {}
-
-        /** Entry function for the dispatch mechanism. */
-        void enter(const ::ecore::EObject_ptr& obj)
+        template< class T >
+        class StatementItemDispatcher
         {
-            auto eClass = obj->eClass();
-            if (eClass->getEPackage() != StatementPackage::_instance())
+        public:
+            StatementItemDispatcher() = default;
+            ~StatementItemDispatcher() = default;
+
+            /** Clients need to overload and reimplement this work() method for every
+             * class they want to handle. The second argument is a dummy argument to
+             * disambiguate work methods in case of an inheritance hirarchy and
+             * always contains a nullptr.
+             * Note that in a class hierarchy classes may be shadowed by derived classes. */
+            void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
             {
-                assert(!"The package of the eclass does not match the package of the dispatcher!");
-                return;
             }
 
-            switch (eClass->getClassifierID())
+            /** Entry function for the dispatch mechanism. */
+            void enter(const ::ecore::EObject_ptr &obj)
             {
+                auto eClass = obj->eClass();
+                if (eClass->getEPackage() != StatementPackage::_instance())
+                {
+                    assert(
+                            !"The package of the eclass does not match the package of the dispatcher!");
+                    return;
+                }
+
+                switch (eClass->getClassifierID())
+                {
                 case StatementPackage::ABSTRACTSTATEMENT:
                 {
-                    auto derived = ::ecore::as< AbstractStatement >(obj);
-                    _this()->T::work(derived, (AbstractStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractStatement > (obj);
+                    _this()->T::work(derived, (AbstractStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::ABSTRACTSTATEMENTWITHBODY:
                 {
-                    auto derived = ::ecore::as< AbstractStatementWithBody >(obj);
-                    _this()->T::work(derived, (AbstractStatementWithBody*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractStatementWithBody
+                            > (obj);
+                    _this()->T::work(derived,
+                            (AbstractStatementWithBody*) nullptr);
+                }
+                    break;
                 case StatementPackage::ERRORSTATEMENT:
                 {
-                    auto derived = ::ecore::as< ErrorStatement >(obj);
-                    _this()->T::work(derived, (ErrorStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ErrorStatement > (obj);
+                    _this()->T::work(derived, (ErrorStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::EXPANDSTATEMENT:
                 {
-                    auto derived = ::ecore::as< ExpandStatement >(obj);
-                    _this()->T::work(derived, (ExpandStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExpandStatement > (obj);
+                    _this()->T::work(derived, (ExpandStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::EXPRESSIONSTATEMENT:
                 {
-                    auto derived = ::ecore::as< ExpressionStatement >(obj);
-                    _this()->T::work(derived, (ExpressionStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExpressionStatement > (obj);
+                    _this()->T::work(derived, (ExpressionStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::FILESTATEMENT:
                 {
-                    auto derived = ::ecore::as< FileStatement >(obj);
-                    _this()->T::work(derived, (FileStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < FileStatement > (obj);
+                    _this()->T::work(derived, (FileStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::FOREACHSTATEMENT:
                 {
-                    auto derived = ::ecore::as< ForEachStatement >(obj);
-                    _this()->T::work(derived, (ForEachStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ForEachStatement > (obj);
+                    _this()->T::work(derived, (ForEachStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::IFSTATEMENT:
                 {
-                    auto derived = ::ecore::as< IfStatement >(obj);
-                    _this()->T::work(derived, (IfStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < IfStatement > (obj);
+                    _this()->T::work(derived, (IfStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::LETSTATEMENT:
                 {
-                    auto derived = ::ecore::as< LetStatement >(obj);
-                    _this()->T::work(derived, (LetStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < LetStatement > (obj);
+                    _this()->T::work(derived, (LetStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::PROTECTSTATEMENT:
                 {
-                    auto derived = ::ecore::as< ProtectStatement >(obj);
-                    _this()->T::work(derived, (ProtectStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ProtectStatement > (obj);
+                    _this()->T::work(derived, (ProtectStatement*) nullptr);
+                }
+                    break;
                 case StatementPackage::TEXTSTATEMENT:
                 {
-                    auto derived = ::ecore::as< TextStatement >(obj);
-                    _this()->T::work(derived, (TextStatement*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < TextStatement > (obj);
+                    _this()->T::work(derived, (TextStatement*) nullptr);
+                }
+                    break;
                 default:
-                break;
+                    break;
+                }
             }
-        }
 
-    private:
-        /** Inline helper, should compile to simple offset adjustment. */
-        T* _this()
-        {   return static_cast<T*>(this);}
+        private:
+            /** Inline helper, should compile to simple offset adjustment. */
+            T* _this()
+            {
+                return static_cast< T* >(this);
+            }
 
-        /** Inline helper, should compile to simple offset adjustment. */
-        const T* _this() const
-        {   return static_cast<const T*>(this);}
-    };
+            /** Inline helper, should compile to simple offset adjustment. */
+            const T* _this() const
+            {
+                return static_cast< const T* >(this);
+            }
+        };
 
-}
- // statement
-}// xpand3
+    } // statement
+} // xpand3
 
 #endif // XPAND3_STATEMENT_ITEMDISPATCHER_HPP

@@ -27,80 +27,88 @@
 #include <ecore/EClass.hpp>
 
 #include <ResourceTests.hpp>
-#include <ResourceTests/dllResourceTests.hpp>
 
 namespace ResourceTests
 {
 
-    template<class T>
-    class EXPORT_RESOURCETESTS_DLL
-ResourceTestsItemDispatcher
-{
-public:
-    ResourceTestsItemDispatcher() = default;
-    ~ResourceTestsItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class ResourceTestsItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != ResourceTestsPackage::_instance())
+    public:
+        ResourceTestsItemDispatcher() = default;
+        ~ResourceTestsItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != ResourceTestsPackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case ResourceTestsPackage::ETYPES:
             {
-                auto derived = ::ecore::as< ETypes >(obj);
-                _this()->T::work(derived, (ETypes*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ETypes > (obj);
+                _this()->T::work(derived, (ETypes*) nullptr);
+            }
+                break;
             case ResourceTestsPackage::NAMEDOBJECT:
             {
-                auto derived = ::ecore::as< NamedObject >(obj);
-                _this()->T::work(derived, (NamedObject*)nullptr);
-            }break;
+                auto derived = ::ecore::as < NamedObject > (obj);
+                _this()->T::work(derived, (NamedObject*) nullptr);
+            }
+                break;
             case ResourceTestsPackage::REFERENCETARGET:
             {
-                auto derived = ::ecore::as< ReferenceTarget >(obj);
-                _this()->T::work(derived, (ReferenceTarget*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ReferenceTarget > (obj);
+                _this()->T::work(derived, (ReferenceTarget*) nullptr);
+            }
+                break;
             case ResourceTestsPackage::REFERRER:
             {
-                auto derived = ::ecore::as< Referrer >(obj);
-                _this()->T::work(derived, (Referrer*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Referrer > (obj);
+                _this()->T::work(derived, (Referrer*) nullptr);
+            }
+                break;
             case ResourceTestsPackage::ROOT:
             {
-                auto derived = ::ecore::as< Root >(obj);
-                _this()->T::work(derived, (Root*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Root > (obj);
+                _this()->T::work(derived, (Root*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // ResourceTests
+} // ResourceTests
 
 #endif // RESOURCETESTS_ITEMDISPATCHER_HPP

@@ -27,80 +27,88 @@
 #include <ecore/EClass.hpp>
 
 #include <xpand3.hpp>
-#include <xpand3/dllXpand3.hpp>
 
 namespace xpand3
 {
 
-    template<class T>
-    class EXPORT_XPAND3_DLL
-Xpand3ItemDispatcher
-{
-public:
-    Xpand3ItemDispatcher() = default;
-    ~Xpand3ItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class Xpand3ItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != Xpand3Package::_instance())
+    public:
+        Xpand3ItemDispatcher() = default;
+        ~Xpand3ItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != Xpand3Package::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case Xpand3Package::DECLAREDPARAMETER:
             {
-                auto derived = ::ecore::as< DeclaredParameter >(obj);
-                _this()->T::work(derived, (DeclaredParameter*)nullptr);
-            }break;
+                auto derived = ::ecore::as < DeclaredParameter > (obj);
+                _this()->T::work(derived, (DeclaredParameter*) nullptr);
+            }
+                break;
             case Xpand3Package::FILE:
             {
-                auto derived = ::ecore::as< File >(obj);
-                _this()->T::work(derived, (File*)nullptr);
-            }break;
+                auto derived = ::ecore::as < File > (obj);
+                _this()->T::work(derived, (File*) nullptr);
+            }
+                break;
             case Xpand3Package::IDENTIFIER:
             {
-                auto derived = ::ecore::as< Identifier >(obj);
-                _this()->T::work(derived, (Identifier*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Identifier > (obj);
+                _this()->T::work(derived, (Identifier*) nullptr);
+            }
+                break;
             case Xpand3Package::IMPORTSTATEMENT:
             {
-                auto derived = ::ecore::as< ImportStatement >(obj);
-                _this()->T::work(derived, (ImportStatement*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ImportStatement > (obj);
+                _this()->T::work(derived, (ImportStatement*) nullptr);
+            }
+                break;
             case Xpand3Package::SYNTAXELEMENT:
             {
-                auto derived = ::ecore::as< SyntaxElement >(obj);
-                _this()->T::work(derived, (SyntaxElement*)nullptr);
-            }break;
+                auto derived = ::ecore::as < SyntaxElement > (obj);
+                _this()->T::work(derived, (SyntaxElement*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // xpand3
+} // xpand3
 
 #endif // XPAND3_ITEMDISPATCHER_HPP

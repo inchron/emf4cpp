@@ -27,108 +27,123 @@
 #include <ecore/EClass.hpp>
 
 #include <xpand3/declaration.hpp>
-#include <xpand3/dllXpand3.hpp>
 
 namespace xpand3
 {
     namespace declaration
     {
 
-        template<class T>
-        class EXPORT_XPAND3_DLL
-    DeclarationItemDispatcher
-    {
-    public:
-        DeclarationItemDispatcher() = default;
-        ~DeclarationItemDispatcher() = default;
-
-        /** Clients need to overload and reimplement this work() method for every
-         * class they want to handle. The second argument is a dummy argument to
-         * disambiguate work methods in case of an inheritance hirarchy and
-         * always contains a nullptr.
-         * Note that in a class hierarchy classes may be shadowed by derived classes. */
-        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-        {}
-
-        /** Entry function for the dispatch mechanism. */
-        void enter(const ::ecore::EObject_ptr& obj)
+        template< class T >
+        class DeclarationItemDispatcher
         {
-            auto eClass = obj->eClass();
-            if (eClass->getEPackage() != DeclarationPackage::_instance())
+        public:
+            DeclarationItemDispatcher() = default;
+            ~DeclarationItemDispatcher() = default;
+
+            /** Clients need to overload and reimplement this work() method for every
+             * class they want to handle. The second argument is a dummy argument to
+             * disambiguate work methods in case of an inheritance hirarchy and
+             * always contains a nullptr.
+             * Note that in a class hierarchy classes may be shadowed by derived classes. */
+            void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
             {
-                assert(!"The package of the eclass does not match the package of the dispatcher!");
-                return;
             }
 
-            switch (eClass->getClassifierID())
+            /** Entry function for the dispatch mechanism. */
+            void enter(const ::ecore::EObject_ptr &obj)
             {
+                auto eClass = obj->eClass();
+                if (eClass->getEPackage() != DeclarationPackage::_instance())
+                {
+                    assert(
+                            !"The package of the eclass does not match the package of the dispatcher!");
+                    return;
+                }
+
+                switch (eClass->getClassifierID())
+                {
                 case DeclarationPackage::ABSTRACTASPECT:
                 {
-                    auto derived = ::ecore::as< AbstractAspect >(obj);
-                    _this()->T::work(derived, (AbstractAspect*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractAspect > (obj);
+                    _this()->T::work(derived, (AbstractAspect*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::ABSTRACTDECLARATION:
                 {
-                    auto derived = ::ecore::as< AbstractDeclaration >(obj);
-                    _this()->T::work(derived, (AbstractDeclaration*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractDeclaration > (obj);
+                    _this()->T::work(derived, (AbstractDeclaration*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::ABSTRACTNAMEDDECLARATION:
                 {
-                    auto derived = ::ecore::as< AbstractNamedDeclaration >(obj);
-                    _this()->T::work(derived, (AbstractNamedDeclaration*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < AbstractNamedDeclaration
+                            > (obj);
+                    _this()->T::work(derived,
+                            (AbstractNamedDeclaration*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::CHECK:
                 {
-                    auto derived = ::ecore::as< Check >(obj);
-                    _this()->T::work(derived, (Check*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Check > (obj);
+                    _this()->T::work(derived, (Check*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::CREATEEXTENSION:
                 {
-                    auto derived = ::ecore::as< CreateExtension >(obj);
-                    _this()->T::work(derived, (CreateExtension*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < CreateExtension > (obj);
+                    _this()->T::work(derived, (CreateExtension*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::DEFINITION:
                 {
-                    auto derived = ::ecore::as< Definition >(obj);
-                    _this()->T::work(derived, (Definition*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Definition > (obj);
+                    _this()->T::work(derived, (Definition*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::DEFINITIONASPECT:
                 {
-                    auto derived = ::ecore::as< DefinitionAspect >(obj);
-                    _this()->T::work(derived, (DefinitionAspect*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < DefinitionAspect > (obj);
+                    _this()->T::work(derived, (DefinitionAspect*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::EXTENSION:
                 {
-                    auto derived = ::ecore::as< Extension >(obj);
-                    _this()->T::work(derived, (Extension*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < Extension > (obj);
+                    _this()->T::work(derived, (Extension*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::EXTENSIONASPECT:
                 {
-                    auto derived = ::ecore::as< ExtensionAspect >(obj);
-                    _this()->T::work(derived, (ExtensionAspect*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < ExtensionAspect > (obj);
+                    _this()->T::work(derived, (ExtensionAspect*) nullptr);
+                }
+                    break;
                 case DeclarationPackage::JAVAEXTENSION:
                 {
-                    auto derived = ::ecore::as< JavaExtension >(obj);
-                    _this()->T::work(derived, (JavaExtension*)nullptr);
-                }break;
+                    auto derived = ::ecore::as < JavaExtension > (obj);
+                    _this()->T::work(derived, (JavaExtension*) nullptr);
+                }
+                    break;
                 default:
-                break;
+                    break;
+                }
             }
-        }
 
-    private:
-        /** Inline helper, should compile to simple offset adjustment. */
-        T* _this()
-        {   return static_cast<T*>(this);}
+        private:
+            /** Inline helper, should compile to simple offset adjustment. */
+            T* _this()
+            {
+                return static_cast< T* >(this);
+            }
 
-        /** Inline helper, should compile to simple offset adjustment. */
-        const T* _this() const
-        {   return static_cast<const T*>(this);}
-    };
+            /** Inline helper, should compile to simple offset adjustment. */
+            const T* _this() const
+            {
+                return static_cast< const T* >(this);
+            }
+        };
 
-}
- // declaration
-}// xpand3
+    } // declaration
+} // xpand3
 
 #endif // XPAND3_DECLARATION_ITEMDISPATCHER_HPP

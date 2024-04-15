@@ -27,185 +27,214 @@
 #include <ecore/EClass.hpp>
 
 #include <idlmm.hpp>
-#include <idlmm/dllIdlmm.hpp>
 
 namespace idlmm
 {
 
-    template<class T>
-    class EXPORT_IDLMM_DLL
-IdlmmItemDispatcher
-{
-public:
-    IdlmmItemDispatcher() = default;
-    ~IdlmmItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class IdlmmItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != IdlmmPackage::_instance())
+    public:
+        IdlmmItemDispatcher() = default;
+        ~IdlmmItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != IdlmmPackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case IdlmmPackage::ALIASDEF:
             {
-                auto derived = ::ecore::as< AliasDef >(obj);
-                _this()->T::work(derived, (AliasDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < AliasDef > (obj);
+                _this()->T::work(derived, (AliasDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::ARRAYDEF:
             {
-                auto derived = ::ecore::as< ArrayDef >(obj);
-                _this()->T::work(derived, (ArrayDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ArrayDef > (obj);
+                _this()->T::work(derived, (ArrayDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::ATTRIBUTEDEF:
             {
-                auto derived = ::ecore::as< AttributeDef >(obj);
-                _this()->T::work(derived, (AttributeDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < AttributeDef > (obj);
+                _this()->T::work(derived, (AttributeDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::CONSTANTDEF:
             {
-                auto derived = ::ecore::as< ConstantDef >(obj);
-                _this()->T::work(derived, (ConstantDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ConstantDef > (obj);
+                _this()->T::work(derived, (ConstantDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::CONTAINED:
             {
-                auto derived = ::ecore::as< Contained >(obj);
-                _this()->T::work(derived, (Contained*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Contained > (obj);
+                _this()->T::work(derived, (Contained*) nullptr);
+            }
+                break;
             case IdlmmPackage::CONTAINER:
             {
-                auto derived = ::ecore::as< Container >(obj);
-                _this()->T::work(derived, (Container*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Container > (obj);
+                _this()->T::work(derived, (Container*) nullptr);
+            }
+                break;
             case IdlmmPackage::ENUMDEF:
             {
-                auto derived = ::ecore::as< EnumDef >(obj);
-                _this()->T::work(derived, (EnumDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < EnumDef > (obj);
+                _this()->T::work(derived, (EnumDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::EXCEPTIONDEF:
             {
-                auto derived = ::ecore::as< ExceptionDef >(obj);
-                _this()->T::work(derived, (ExceptionDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ExceptionDef > (obj);
+                _this()->T::work(derived, (ExceptionDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::FIELD:
             {
-                auto derived = ::ecore::as< Field >(obj);
-                _this()->T::work(derived, (Field*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Field > (obj);
+                _this()->T::work(derived, (Field*) nullptr);
+            }
+                break;
             case IdlmmPackage::FIXEDDEF:
             {
-                auto derived = ::ecore::as< FixedDef >(obj);
-                _this()->T::work(derived, (FixedDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < FixedDef > (obj);
+                _this()->T::work(derived, (FixedDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::IDLTYPE:
             {
-                auto derived = ::ecore::as< IDLType >(obj);
-                _this()->T::work(derived, (IDLType*)nullptr);
-            }break;
+                auto derived = ::ecore::as < IDLType > (obj);
+                _this()->T::work(derived, (IDLType*) nullptr);
+            }
+                break;
             case IdlmmPackage::INCLUDE:
             {
-                auto derived = ::ecore::as< Include >(obj);
-                _this()->T::work(derived, (Include*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Include > (obj);
+                _this()->T::work(derived, (Include*) nullptr);
+            }
+                break;
             case IdlmmPackage::INTERFACEDEF:
             {
-                auto derived = ::ecore::as< InterfaceDef >(obj);
-                _this()->T::work(derived, (InterfaceDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < InterfaceDef > (obj);
+                _this()->T::work(derived, (InterfaceDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::MODULEDEF:
             {
-                auto derived = ::ecore::as< ModuleDef >(obj);
-                _this()->T::work(derived, (ModuleDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ModuleDef > (obj);
+                _this()->T::work(derived, (ModuleDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::OPERATIONDEF:
             {
-                auto derived = ::ecore::as< OperationDef >(obj);
-                _this()->T::work(derived, (OperationDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < OperationDef > (obj);
+                _this()->T::work(derived, (OperationDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::PARAMETERDEF:
             {
-                auto derived = ::ecore::as< ParameterDef >(obj);
-                _this()->T::work(derived, (ParameterDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ParameterDef > (obj);
+                _this()->T::work(derived, (ParameterDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::PRIMITIVEDEF:
             {
-                auto derived = ::ecore::as< PrimitiveDef >(obj);
-                _this()->T::work(derived, (PrimitiveDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < PrimitiveDef > (obj);
+                _this()->T::work(derived, (PrimitiveDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::SEQUENCEDEF:
             {
-                auto derived = ::ecore::as< SequenceDef >(obj);
-                _this()->T::work(derived, (SequenceDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < SequenceDef > (obj);
+                _this()->T::work(derived, (SequenceDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::STRINGDEF:
             {
-                auto derived = ::ecore::as< StringDef >(obj);
-                _this()->T::work(derived, (StringDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < StringDef > (obj);
+                _this()->T::work(derived, (StringDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::STRUCTDEF:
             {
-                auto derived = ::ecore::as< StructDef >(obj);
-                _this()->T::work(derived, (StructDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < StructDef > (obj);
+                _this()->T::work(derived, (StructDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::TRANSLATIONUNIT:
             {
-                auto derived = ::ecore::as< TranslationUnit >(obj);
-                _this()->T::work(derived, (TranslationUnit*)nullptr);
-            }break;
+                auto derived = ::ecore::as < TranslationUnit > (obj);
+                _this()->T::work(derived, (TranslationUnit*) nullptr);
+            }
+                break;
             case IdlmmPackage::TYPED:
             {
-                auto derived = ::ecore::as< Typed >(obj);
-                _this()->T::work(derived, (Typed*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Typed > (obj);
+                _this()->T::work(derived, (Typed*) nullptr);
+            }
+                break;
             case IdlmmPackage::TYPEDEFDEF:
             {
-                auto derived = ::ecore::as< TypedefDef >(obj);
-                _this()->T::work(derived, (TypedefDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < TypedefDef > (obj);
+                _this()->T::work(derived, (TypedefDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::UNIONDEF:
             {
-                auto derived = ::ecore::as< UnionDef >(obj);
-                _this()->T::work(derived, (UnionDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < UnionDef > (obj);
+                _this()->T::work(derived, (UnionDef*) nullptr);
+            }
+                break;
             case IdlmmPackage::UNIONFIELD:
             {
-                auto derived = ::ecore::as< UnionField >(obj);
-                _this()->T::work(derived, (UnionField*)nullptr);
-            }break;
+                auto derived = ::ecore::as < UnionField > (obj);
+                _this()->T::work(derived, (UnionField*) nullptr);
+            }
+                break;
             case IdlmmPackage::WSTRINGDEF:
             {
-                auto derived = ::ecore::as< WstringDef >(obj);
-                _this()->T::work(derived, (WstringDef*)nullptr);
-            }break;
+                auto derived = ::ecore::as < WstringDef > (obj);
+                _this()->T::work(derived, (WstringDef*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // idlmm
+} // idlmm
 
 #endif // IDLMM_ITEMDISPATCHER_HPP

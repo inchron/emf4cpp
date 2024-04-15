@@ -27,65 +27,70 @@
 #include <ecore/EClass.hpp>
 
 #include <derived.hpp>
-#include <derived/dllDerived.hpp>
 
 namespace derived
 {
 
-    template<class T>
-    class EXPORT_DERIVED_DLL
-DerivedItemDispatcher
-{
-public:
-    DerivedItemDispatcher() = default;
-    ~DerivedItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class DerivedItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != DerivedPackage::_instance())
+    public:
+        DerivedItemDispatcher() = default;
+        ~DerivedItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != DerivedPackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case DerivedPackage::DERIVED01:
             {
-                auto derived = ::ecore::as< Derived01 >(obj);
-                _this()->T::work(derived, (Derived01*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Derived01 > (obj);
+                _this()->T::work(derived, (Derived01*) nullptr);
+            }
+                break;
             case DerivedPackage::DERIVED02:
             {
-                auto derived = ::ecore::as< Derived02 >(obj);
-                _this()->T::work(derived, (Derived02*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Derived02 > (obj);
+                _this()->T::work(derived, (Derived02*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // derived
+} // derived
 
 #endif // DERIVED_ITEMDISPATCHER_HPP

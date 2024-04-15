@@ -27,95 +27,106 @@
 #include <ecore/EClass.hpp>
 
 #include <json.hpp>
-#include <json/dllJson.hpp>
 
 namespace json
 {
 
-    template<class T>
-    class EXPORT_JSON_DLL
-JsonItemDispatcher
-{
-public:
-    JsonItemDispatcher() = default;
-    ~JsonItemDispatcher() = default;
-
-    /** Clients need to overload and reimplement this work() method for every
-     * class they want to handle. The second argument is a dummy argument to
-     * disambiguate work methods in case of an inheritance hirarchy and
-     * always contains a nullptr.
-     * Note that in a class hierarchy classes may be shadowed by derived classes. */
-    void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
-    {}
-
-    /** Entry function for the dispatch mechanism. */
-    void enter(const ::ecore::EObject_ptr& obj)
+    template< class T >
+    class JsonItemDispatcher
     {
-        auto eClass = obj->eClass();
-        if (eClass->getEPackage() != JsonPackage::_instance())
+    public:
+        JsonItemDispatcher() = default;
+        ~JsonItemDispatcher() = default;
+
+        /** Clients need to overload and reimplement this work() method for every
+         * class they want to handle. The second argument is a dummy argument to
+         * disambiguate work methods in case of an inheritance hirarchy and
+         * always contains a nullptr.
+         * Note that in a class hierarchy classes may be shadowed by derived classes. */
+        void work(const ::ecore::EObject_ptr&, ::ecore::EObject*)
         {
-            assert(!"The package of the eclass does not match the package of the dispatcher!");
-            return;
         }
 
-        switch (eClass->getClassifierID())
+        /** Entry function for the dispatch mechanism. */
+        void enter(const ::ecore::EObject_ptr &obj)
         {
+            auto eClass = obj->eClass();
+            if (eClass->getEPackage() != JsonPackage::_instance())
+            {
+                assert(
+                        !"The package of the eclass does not match the package of the dispatcher!");
+                return;
+            }
+
+            switch (eClass->getClassifierID())
+            {
             case JsonPackage::ARRAYVALUE:
             {
-                auto derived = ::ecore::as< ArrayValue >(obj);
-                _this()->T::work(derived, (ArrayValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ArrayValue > (obj);
+                _this()->T::work(derived, (ArrayValue*) nullptr);
+            }
+                break;
             case JsonPackage::BOOLEANVALUE:
             {
-                auto derived = ::ecore::as< BooleanValue >(obj);
-                _this()->T::work(derived, (BooleanValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < BooleanValue > (obj);
+                _this()->T::work(derived, (BooleanValue*) nullptr);
+            }
+                break;
             case JsonPackage::NULLVALUE:
             {
-                auto derived = ::ecore::as< NullValue >(obj);
-                _this()->T::work(derived, (NullValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < NullValue > (obj);
+                _this()->T::work(derived, (NullValue*) nullptr);
+            }
+                break;
             case JsonPackage::NUMBERVALUE:
             {
-                auto derived = ::ecore::as< NumberValue >(obj);
-                _this()->T::work(derived, (NumberValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < NumberValue > (obj);
+                _this()->T::work(derived, (NumberValue*) nullptr);
+            }
+                break;
             case JsonPackage::NVPAIR:
             {
-                auto derived = ::ecore::as< NVPair >(obj);
-                _this()->T::work(derived, (NVPair*)nullptr);
-            }break;
+                auto derived = ::ecore::as < NVPair > (obj);
+                _this()->T::work(derived, (NVPair*) nullptr);
+            }
+                break;
             case JsonPackage::OBJECTVALUE:
             {
-                auto derived = ::ecore::as< ObjectValue >(obj);
-                _this()->T::work(derived, (ObjectValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < ObjectValue > (obj);
+                _this()->T::work(derived, (ObjectValue*) nullptr);
+            }
+                break;
             case JsonPackage::STRINGVALUE:
             {
-                auto derived = ::ecore::as< StringValue >(obj);
-                _this()->T::work(derived, (StringValue*)nullptr);
-            }break;
+                auto derived = ::ecore::as < StringValue > (obj);
+                _this()->T::work(derived, (StringValue*) nullptr);
+            }
+                break;
             case JsonPackage::VALUE:
             {
-                auto derived = ::ecore::as< Value >(obj);
-                _this()->T::work(derived, (Value*)nullptr);
-            }break;
+                auto derived = ::ecore::as < Value > (obj);
+                _this()->T::work(derived, (Value*) nullptr);
+            }
+                break;
             default:
-            break;
+                break;
+            }
         }
-    }
 
-private:
-    /** Inline helper, should compile to simple offset adjustment. */
-    T* _this()
-    {   return static_cast<T*>(this);}
+    private:
+        /** Inline helper, should compile to simple offset adjustment. */
+        T* _this()
+        {
+            return static_cast< T* >(this);
+        }
 
-    /** Inline helper, should compile to simple offset adjustment. */
-    const T* _this() const
-    {   return static_cast<const T*>(this);}
-};
+        /** Inline helper, should compile to simple offset adjustment. */
+        const T* _this() const
+        {
+            return static_cast< const T* >(this);
+        }
+    };
 
-}
- // json
+} // json
 
 #endif // JSON_ITEMDISPATCHER_HPP
