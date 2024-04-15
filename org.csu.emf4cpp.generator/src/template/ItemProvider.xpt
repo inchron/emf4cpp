@@ -109,8 +109,8 @@ std::string «this.name.toFirstUpper()»ItemProvider::_getText(const ::ecore::EO
 	switch (obj->eClass()->getClassifierID()) {
 «FOREACH EClassifiers.sortBy(e|e.name).sortBy(e|e.name.toUpperCase()) AS class ITERATOR it-»
     case «name.toFirstUpper() + "Package::" + class.name.toUpperCase()»: {
-    	std::string text = "«class.name.toFirstUpper()»";
-    	«PROTECT CSTART '/*' CEND '*/' ID this.name.toFirstUpper()+"ItemProvider_getTextEObject_"+class.name.toFirstUpper() DISABLE»
+    	std::string text = "«class.name»";
+    	«PROTECT CSTART '/*' CEND '*/' ID this.name.toFirstUpper()+"ItemProvider_getTextEObject_"+class.name DISABLE»
     	// Please, enable the protected region if you add manually written code.
     	// To do this, add the keyword ENABLED before START.
     	«ENDPROTECT»
@@ -131,8 +131,8 @@ std::string «this.name.toFirstUpper()»ItemProvider::_getText(const ::ecore::EC
 	switch (cl->getClassifierID()) {
 «FOREACH EClassifiers.sortBy(e|e.name).sortBy(e|e.name.toUpperCase()) AS class ITERATOR it-»
     case «name.toFirstUpper() + "Package::" + class.name.toUpperCase()»: {
-    	std::string text = "«class.name.toFirstUpper()»";
-    	«PROTECT CSTART '/*' CEND '*/' ID this.name.toFirstUpper()+"ItemProvider_getTextEClass_"+class.name.toFirstUpper() DISABLE»
+    	std::string text = "«class.name»";
+    	«PROTECT CSTART '/*' CEND '*/' ID this.name.toFirstUpper()+"ItemProvider_getTextEClass_"+class.name DISABLE»
     	// Please, enable the protected region if you add manually written code.
     	// To do this, add the keyword ENABLED before START.
     	«ENDPROTECT»

@@ -70,8 +70,8 @@ public:
 		switch (eClass->getClassifierID()) {
 «FOREACH EClassifiers.typeSelect(EClass).sortBy(e|e.name).sortBy(e|e.name.toUpperCase()) AS class ITERATOR it-»
 		case «name.toFirstUpper() + "Package::" + class.name.toUpperCase()»: {
-			auto derived = ::ecore::as< «class.name.toFirstUpper()» >(obj);
-			_this()->T::work(derived, («class.name.toFirstUpper()»*)nullptr);
+			auto derived = ::ecore::as< «class.name» >(obj);
+			_this()->T::work(derived, («class.name»*)nullptr);
 		} break;
 «ENDFOREACH-»
 		default:
