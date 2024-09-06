@@ -65,7 +65,18 @@ public:
 
 	::ecorecpp::util::TreeIterator<::ecore::EObject_ptr> getAllContents();
 
-	::ecore::EObject_ptr getEObject(const QUrl& uri, bool loadOnDemand);
+    /** Returns the object resolved by the URI.
+     *
+     * Every object contained by a resource has a corresponding URI that identifies it.
+     * The URI without the fragment is used to resolve a resource. If this is successful,
+     * the fragment is used to resolve the object within the resource.
+     * 
+     * @param[in] uri The URI to resolve.
+     * @param[in] loadOnDemand If set, the resource is created and loaded if it does not
+     *        yet exist.
+     * @return The object resolved by the URI, or a nullptr if there isn't one.
+     */
+	virtual ::ecore::EObject_ptr getEObject(const QUrl& uri, bool loadOnDemand);
 
 	URIConverter* getURIConverter();
 	void setURIConverter(const URIConverter&);
