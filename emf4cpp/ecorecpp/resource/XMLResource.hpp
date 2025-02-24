@@ -107,13 +107,13 @@ protected:
 	/** Generates a new UUID and calls setId(). */
 	virtual std::string createID( ::ecore::EObject_ptr );
 
-private:
-	void doLoad( const Buffer&, const Resource::OptionMap& = Resource::OptionMap() );
+	virtual void doLoad( const Buffer&, const Resource::OptionMap& = Resource::OptionMap() );
 	virtual Buffer doCompress( const Buffer& );
 	virtual Buffer doUncompress( const Buffer& );
 	virtual Buffer doEncrypt( const Buffer& );
 	virtual Buffer doDecrypt( const Buffer& );
 
+private:
 	using WeakEObject_ptr = std::weak_ptr<::ecore::EObject>;
 
 	std::map<WeakEObject_ptr, std::string, std::owner_less<WeakEObject_ptr>> _eObjectToIDMap;
