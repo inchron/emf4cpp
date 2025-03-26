@@ -20,6 +20,7 @@
 #ifndef Resource_HPP
 #define Resource_HPP
 
+#include <list>
 #include <memory>
 #include <string>
 #include <unordered_map>
