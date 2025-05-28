@@ -40,6 +40,59 @@
 
 /*PROTECTED REGION ID(EClassImpl.cpp) ENABLED START*/
 #include <iostream>
+
+namespace ecore
+{
+    std::string getDefaultOptions()
+    {
+        return "verbosity=1";
+    }
+
+    std::string getOptions()
+    {
+        if (const auto *env = std::getenv("EMF4CPP_OPTIONS"))
+            return env;
+        return getDefaultOptions();
+    }
+
+    int getOptionsAsInt(const std::string &key, int defaultValue)
+    {
+        std::istringstream tokenStream(getOptions());
+        std::string token;
+        while (std::getline(tokenStream, token, ':'))
+        {
+            if (token.rfind(key, 0) == 0)
+            {
+                auto pos = token.find('=');
+                if (pos == std::string::npos)
+                    return 1;
+                return std::atoi(token.c_str() + pos + 1);
+            }
+        }
+
+        return defaultValue;
+    }
+
+    std::string getOptionsAsString(const std::string &key,
+            const std::string &defaultValue)
+    {
+        std::istringstream tokenStream(getOptions());
+        std::string token;
+        while (std::getline(tokenStream, token, ':'))
+        {
+            if (token.rfind(key, 0) == 0)
+            {
+                auto pos = token.find('=');
+                if (pos == std::string::npos)
+                    return "true";
+                return token.c_str() + pos + 1;
+            }
+        }
+
+        return defaultValue;
+    }
+}
+
 /*PROTECTED REGION END*/
 
 using namespace ::ecore;
@@ -98,8 +151,7 @@ void EClass::_initialize()
         [[maybe_unused]]::ecore::EInt _featureID)
 {
     /*PROTECTED REGION ID(EClassImpl_getEStructuralFeature_0) ENABLED START*/
-    // Please, enable the protected region if you add manually written code.
-    // To do this, add the keyword ENABLED before START.
+
     if (m_eAllStructuralFeaturesIDMap.size() == 0)
         getEAllStructuralFeatures();
 
@@ -107,11 +159,17 @@ void EClass::_initialize()
         if (pair.second == _featureID)
             return pair.first;
 
-    std::cerr << "EClassImpl: " << getName() << " EStructuralFeature for ID: "
-            << _featureID << " not found." << std::endl;
-    for (auto &e : m_eAllStructuralFeaturesIDMap)
-        std::cerr << e.first->getName() << ":\t" << e.second << std::endl;
+    if (getOptionsAsInt("verbosity", 1) >= 1)
+    {
+        std::cerr << "EClassImpl: " << getName()
+                << " EStructuralFeature for ID: " << _featureID << " not found."
+                << std::endl;
+        for (auto &e : m_eAllStructuralFeaturesIDMap)
+            std::cerr << e.first->getName() << ":\t" << e.second << std::endl;
+    }
+
     throw "EClassImpl: EStructuralFeature not found";
+
     /*PROTECTED REGION END*/
 }
 
@@ -127,12 +185,17 @@ void EClass::_initialize()
     if (it != m_eAllStructuralFeaturesIDMap.end())
         return it->second;
 
-    std::cerr << "EClassImpl: " << getName()
-            << " EStructuralFeature not found: " << _feature->getName()
-            << std::endl;
-    for (auto &e : m_eAllStructuralFeaturesIDMap)
-        std::cerr << e.first->getName() << ":\t" << e.second << std::endl;
+    if (getOptionsAsInt("verbosity", 1) >= 1)
+    {
+        std::cerr << "EClassImpl: " << getName()
+                << " EStructuralFeature not found: " << _feature->getName()
+                << std::endl;
+        for (auto &e : m_eAllStructuralFeaturesIDMap)
+            std::cerr << e.first->getName() << ":\t" << e.second << std::endl;
+    }
+
     throw "EClassImpl: EStructuralFeature not found";
+
     /*PROTECTED REGION END*/
 }
 
@@ -149,10 +212,15 @@ void EClass::_initialize()
             != m_eAllStructuralFeaturesMap.end())
         return it->second;
 
-    std::cerr << "EClassImpl: " << getName()
-            << " EStructuralFeature not found: " << _featureName << std::endl;
-    for (auto &e : m_eAllStructuralFeaturesMap)
-        std::cerr << "\t" << e.first << std::endl;
+    if (getOptionsAsInt("verbosity", 1) >= 1)
+    {
+        std::cerr << "EClassImpl: " << getName()
+                << " EStructuralFeature not found: " << _featureName
+                << std::endl;
+        for (auto &e : m_eAllStructuralFeaturesMap)
+            std::cerr << "\t" << e.first << std::endl;
+    }
+
     throw "EClassImpl: EStructuralFeature not found";
 
     /*PROTECTED REGION END*/

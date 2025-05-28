@@ -35,6 +35,17 @@
 namespace ecore
 {
     typedef ::ecorecpp::mapping::any any;
+
+    /* These methods parse the environment variable EMF4CPP_OPTIONS.
+     *
+     * If the environment is not set, the value of getDefaultOptions() is used.
+     * The implementation is done in EClassImpl.cpp, where they are also used.
+     */
+    std::string getOptions();
+    int getOptionsAsInt(const std::string &key, int defaultValue);
+    std::string getOptionsAsString(const std::string &key,
+            const std::string &defaultValue);
+    std::string getDefaultOptions();
 } // ecore
 /*PROTECTED REGION END*/
 
