@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <eopposite.hpp>
 
-#include <eopposite/dllEopposite.hpp>
+#include "dllEopposite.hpp"
 
 namespace eopposite
 {

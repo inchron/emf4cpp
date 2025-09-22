@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <nil/dllNil.hpp>
 #include <nil_forward.hpp>
 
 #include "NilPackage.hpp"
+
+#include "dllNil.hpp"
 
 /*PROTECTED REGION ID(Root_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <EOperationBody/dllEOperationBody.hpp>
 #include <EOperationBody_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "EOperationBodyPackage.hpp"
+
+#include "dllEOperationBody.hpp"
 
 /*PROTECTED REGION ID(Integer_pre) START*/
 // Please, enable the protected region if you add manually written code.

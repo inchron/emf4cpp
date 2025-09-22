@@ -22,7 +22,6 @@
 #ifndef KDM_PLATFORM_PLATFORMELEMENT_HPP
 #define KDM_PLATFORM_PLATFORMELEMENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/platform_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -33,6 +32,8 @@
 #include <kdm/platform/AbstractPlatformElement.hpp>
 
 #include "PlatformPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(PlatformElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

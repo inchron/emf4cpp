@@ -29,7 +29,7 @@
 #include <base/BasePackage.hpp>
 #include <base/base1/Base1Package.hpp>
 
-#include <base/dllBase.hpp>
+#include "../../dllBase.hpp"
 
 namespace base
 {

@@ -22,13 +22,14 @@
 #ifndef SVG_IMAGE_HPP
 #define SVG_IMAGE_HPP
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <PrimitiveTypes_forward.hpp>
 #include <SVG/StructuralElement.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(Image_pre) START*/
 // Please, enable the protected region if you add manually written code.

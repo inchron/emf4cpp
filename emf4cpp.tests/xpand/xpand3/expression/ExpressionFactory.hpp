@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <xpand3/expression.hpp>
 
-#include <xpand3/dllXpand3.hpp>
+#include "../dllXpand3.hpp"
 
 namespace xpand3
 {

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <CST.hpp>
 
-#include <CST/dllCST.hpp>
+#include "dllCST.hpp"
 
 namespace CST
 {

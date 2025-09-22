@@ -22,13 +22,14 @@
 #ifndef KDM_BUILD_DESCRIBEDBY_HPP
 #define KDM_BUILD_DESCRIBEDBY_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/build_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/build/AbstractBuildRelationship.hpp>
 
 #include "BuildPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(DescribedBy_pre) START*/
 // Please, enable the protected region if you add manually written code.

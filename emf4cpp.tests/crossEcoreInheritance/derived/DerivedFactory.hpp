@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <derived.hpp>
 
-#include <derived/dllDerived.hpp>
+#include "dllDerived.hpp"
 
 namespace derived
 {

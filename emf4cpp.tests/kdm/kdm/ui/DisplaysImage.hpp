@@ -22,7 +22,6 @@
 #ifndef KDM_UI_DISPLAYSIMAGE_HPP
 #define KDM_UI_DISPLAYSIMAGE_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/ui_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -31,6 +30,8 @@
 #include <kdm/ui/AbstractUIRelationship.hpp>
 
 #include "UiPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(DisplaysImage_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -22,7 +22,6 @@
 #ifndef XPAND3_EXPRESSION_BOOLEANOPERATION_HPP
 #define XPAND3_EXPRESSION_BOOLEANOPERATION_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3/expression_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -30,6 +29,8 @@
 #include <xpand3/expression/BinaryOperation.hpp>
 
 #include "ExpressionPackage.hpp"
+
+#include "../dllXpand3.hpp"
 
 /*PROTECTED REGION ID(BooleanOperation_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -22,13 +22,14 @@
 #ifndef IDLMM_PRIMITIVEDEF_HPP
 #define IDLMM_PRIMITIVEDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <idlmm/IDLType.hpp>
 #include <idlmm/PrimitiveKind.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(PrimitiveDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

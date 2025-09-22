@@ -22,10 +22,11 @@
 #ifndef ECORE_EENUMLITERAL_HPP
 #define ECORE_EENUMLITERAL_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/ENamedElement.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EEnumLiteral_pre) START*/
 // Please, enable the protected region if you add manually written code.

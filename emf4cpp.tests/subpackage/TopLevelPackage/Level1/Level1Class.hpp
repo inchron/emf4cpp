@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <TopLevelPackage/dllTopLevelPackage.hpp>
 #include <TopLevelPackage/Level1_forward.hpp>
 
 #include "Level1Package.hpp"
+
+#include "../dllTopLevelPackage.hpp"
 
 /*PROTECTED REGION ID(Level1Class_pre) START*/
 // Please, enable the protected region if you add manually written code.

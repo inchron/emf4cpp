@@ -22,7 +22,6 @@
 #ifndef KDM_BUILD_ABSTRACTBUILDELEMENT_HPP
 #define KDM_BUILD_ABSTRACTBUILDELEMENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/build_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/core/KDMEntity.hpp>
 
 #include "BuildPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractBuildElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

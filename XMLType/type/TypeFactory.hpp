@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <type.hpp>
 
-#include <type/dllType.hpp>
+#include "dllType.hpp"
 
 namespace type
 {

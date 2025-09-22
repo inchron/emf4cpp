@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <json/dllJson.hpp>
 #include <json_forward.hpp>
 
 #include "JsonPackage.hpp"
+
+#include "dllJson.hpp"
 
 /*PROTECTED REGION ID(Value_pre) START*/
 // Please, enable the protected region if you add manually written code.

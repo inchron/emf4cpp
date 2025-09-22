@@ -22,7 +22,6 @@
 #ifndef KDM_BUILD_BUILDSTEP_HPP
 #define KDM_BUILD_BUILDSTEP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/build_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/build/BuildResource.hpp>
 
 #include "BuildPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(BuildStep_pre) START*/
 // Please, enable the protected region if you add manually written code.

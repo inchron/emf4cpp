@@ -28,7 +28,7 @@
 
 #include <kdm/core/CorePackage.hpp>
 
-#include <kdm/dllKdm.hpp>
+#include "../dllKdm.hpp"
 
 namespace kdm
 {

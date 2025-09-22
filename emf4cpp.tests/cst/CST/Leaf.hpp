@@ -22,13 +22,14 @@
 #ifndef CST_LEAF_HPP
 #define CST_LEAF_HPP
 
-#include <CST/dllCST.hpp>
 #include <CST_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <CST/Element.hpp>
 
 #include "CSTPackage.hpp"
+
+#include "dllCST.hpp"
 
 /*PROTECTED REGION ID(Leaf_pre) START*/
 // Please, enable the protected region if you add manually written code.

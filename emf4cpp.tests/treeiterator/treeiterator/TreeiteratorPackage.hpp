@@ -26,7 +26,7 @@
 #include <treeiterator_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <treeiterator/dllTreeiterator.hpp>
+#include "dllTreeiterator.hpp"
 
 namespace treeiterator
 {

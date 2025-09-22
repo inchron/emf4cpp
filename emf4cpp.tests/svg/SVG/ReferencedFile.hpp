@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <PrimitiveTypes_forward.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(ReferencedFile_pre) START*/
 // Please, enable the protected region if you add manually written code.

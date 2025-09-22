@@ -41,7 +41,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <ecore/EObject.hpp>
 «ENDIF-»
 
-#include <«EPackage.getDllExtensionPrefix()».hpp>
 #include <«EPackage.getFQN("/")»_forward.hpp>
 
 «FOREACH getNeededPackages() AS pkg-»
@@ -54,6 +53,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 «IF (boolean) GLOBALVAR bootstrap == false-»
 #include "«EPackage.name.toFirstUpper()»Package.hpp"
 «ENDIF-»
+
+#include "«EPackage.getDllExtensionInclude()»"
 
 «PROTECT CSTART '/*' CEND '*/' ID name + "_pre" DISABLE»
 // Please, enable the protected region if you add manually written code.

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <company.hpp>
 
-#include <company/dllCompany.hpp>
+#include "dllCompany.hpp"
 
 namespace company
 {

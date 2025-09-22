@@ -22,7 +22,6 @@
 #ifndef KDM_PLATFORM_SPAWNS_HPP
 #define KDM_PLATFORM_SPAWNS_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/platform_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/platform/AbstractPlatformRelationship.hpp>
 
 #include "PlatformPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(Spawns_pre) START*/
 // Please, enable the protected region if you add manually written code.

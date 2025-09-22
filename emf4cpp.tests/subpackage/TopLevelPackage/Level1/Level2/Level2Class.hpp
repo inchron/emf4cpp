@@ -22,13 +22,14 @@
 #ifndef TOPLEVELPACKAGE_LEVEL1_LEVEL2_LEVEL2CLASS_HPP
 #define TOPLEVELPACKAGE_LEVEL1_LEVEL2_LEVEL2CLASS_HPP
 
-#include <TopLevelPackage/dllTopLevelPackage.hpp>
 #include <TopLevelPackage/Level1/Level2_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <TopLevelPackage/TopLevelClass.hpp>
 
 #include "Level2Package.hpp"
+
+#include "../../dllTopLevelPackage.hpp"
 
 /*PROTECTED REGION ID(Level2Class_pre) START*/
 // Please, enable the protected region if you add manually written code.

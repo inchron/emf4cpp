@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <treeiterator/dllTreeiterator.hpp>
 #include <treeiterator_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "TreeiteratorPackage.hpp"
+
+#include "dllTreeiterator.hpp"
 
 /*PROTECTED REGION ID(Leaf_pre) START*/
 // Please, enable the protected region if you add manually written code.

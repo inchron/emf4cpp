@@ -26,7 +26,7 @@
 #include <json_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <json/dllJson.hpp>
+#include "dllJson.hpp"
 
 namespace json
 {

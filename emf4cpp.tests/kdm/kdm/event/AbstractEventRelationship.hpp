@@ -22,13 +22,14 @@
 #ifndef KDM_EVENT_ABSTRACTEVENTRELATIONSHIP_HPP
 #define KDM_EVENT_ABSTRACTEVENTRELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/event_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/KDMRelationship.hpp>
 
 #include "EventPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractEventRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

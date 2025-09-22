@@ -22,7 +22,6 @@
 #ifndef IDLMM_PARAMETERDEF_HPP
 #define IDLMM_PARAMETERDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -30,6 +29,8 @@
 #include <idlmm/ParameterMode.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(ParameterDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

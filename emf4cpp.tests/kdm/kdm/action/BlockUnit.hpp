@@ -22,7 +22,6 @@
 #ifndef KDM_ACTION_BLOCKUNIT_HPP
 #define KDM_ACTION_BLOCKUNIT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/action_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -32,6 +31,8 @@
 #include <kdm/action/ActionElement.hpp>
 
 #include "ActionPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(BlockUnit_pre) START*/
 // Please, enable the protected region if you add manually written code.

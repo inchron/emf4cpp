@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <ResourceTests/dllResourceTests.hpp>
 #include <ResourceTests_forward.hpp>
 
 #include "ResourceTestsPackage.hpp"
+
+#include "dllResourceTests.hpp"
 
 /*PROTECTED REGION ID(ReferenceTarget_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -26,7 +26,7 @@
 #include <CST_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <CST/dllCST.hpp>
+#include "dllCST.hpp"
 
 namespace CST
 {

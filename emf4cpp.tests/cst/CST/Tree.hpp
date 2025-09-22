@@ -22,13 +22,14 @@
 #ifndef CST_TREE_HPP
 #define CST_TREE_HPP
 
-#include <CST/dllCST.hpp>
 #include <CST_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <CST/Node.hpp>
 
 #include "CSTPackage.hpp"
+
+#include "dllCST.hpp"
 
 /*PROTECTED REGION ID(Tree_pre) START*/
 // Please, enable the protected region if you add manually written code.

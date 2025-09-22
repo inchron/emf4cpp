@@ -22,13 +22,14 @@
 #ifndef KDM_DATA_ABSTRACTDATARELATIONSHIP_HPP
 #define KDM_DATA_ABSTRACTDATARELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/data_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/KDMRelationship.hpp>
 
 #include "DataPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractDataRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

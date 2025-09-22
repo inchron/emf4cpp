@@ -22,10 +22,11 @@
 #ifndef ECORE_EATTRIBUTE_HPP
 #define ECORE_EATTRIBUTE_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/EStructuralFeature.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EAttribute_pre) START*/
 // Please, enable the protected region if you add manually written code.

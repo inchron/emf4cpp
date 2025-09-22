@@ -22,13 +22,14 @@
 #ifndef KDM_CORE_MODELELEMENT_HPP
 #define KDM_CORE_MODELELEMENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/core_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/Element.hpp>
 
 #include "CorePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ModelElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -26,7 +26,7 @@
 #include <ResourceTests_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <ResourceTests/dllResourceTests.hpp>
+#include "dllResourceTests.hpp"
 
 namespace ResourceTests
 {

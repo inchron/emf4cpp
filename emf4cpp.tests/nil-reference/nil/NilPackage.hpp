@@ -26,7 +26,7 @@
 #include <nil_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <nil/dllNil.hpp>
+#include "dllNil.hpp"
 
 namespace nil
 {

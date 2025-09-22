@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <nil.hpp>
 
-#include <nil/dllNil.hpp>
+#include "dllNil.hpp"
 
 namespace nil
 {

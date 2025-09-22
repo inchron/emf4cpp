@@ -22,7 +22,6 @@
 #ifndef KDM_DATA_READSCOLUMNSET_HPP
 #define KDM_DATA_READSCOLUMNSET_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/data_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/action/AbstractActionRelationship.hpp>
 
 #include "DataPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ReadsColumnSet_pre) START*/
 // Please, enable the protected region if you add manually written code.

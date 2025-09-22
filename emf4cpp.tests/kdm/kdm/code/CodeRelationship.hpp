@@ -22,7 +22,6 @@
 #ifndef KDM_CODE_CODERELATIONSHIP_HPP
 #define KDM_CODE_CODERELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/code_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/code/AbstractCodeRelationship.hpp>
 
 #include "CodePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(CodeRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

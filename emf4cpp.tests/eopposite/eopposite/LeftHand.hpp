@@ -22,13 +22,14 @@
 #ifndef EOPPOSITE_LEFTHAND_HPP
 #define EOPPOSITE_LEFTHAND_HPP
 
-#include <eopposite/dllEopposite.hpp>
 #include <eopposite_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <eopposite/NamedObject.hpp>
 
 #include "EoppositePackage.hpp"
+
+#include "dllEopposite.hpp"
 
 /*PROTECTED REGION ID(LeftHand_pre) START*/
 // Please, enable the protected region if you add manually written code.

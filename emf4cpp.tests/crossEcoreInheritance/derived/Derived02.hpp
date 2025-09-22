@@ -22,7 +22,6 @@
 #ifndef DERIVED_DERIVED02_HPP
 #define DERIVED_DERIVED02_HPP
 
-#include <derived/dllDerived.hpp>
 #include <derived_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -30,6 +29,8 @@
 #include <derived/Derived01.hpp>
 
 #include "DerivedPackage.hpp"
+
+#include "dllDerived.hpp"
 
 /*PROTECTED REGION ID(Derived02_pre) START*/
 // Please, enable the protected region if you add manually written code.

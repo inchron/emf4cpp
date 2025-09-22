@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <PrimitiveTypes.hpp>
 
-#include <PrimitiveTypes/dllPrimitiveTypes.hpp>
+#include "dllPrimitiveTypes.hpp"
 
 namespace PrimitiveTypes
 {

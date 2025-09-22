@@ -22,13 +22,14 @@
 #ifndef IDLMM_MODULEDEF_HPP
 #define IDLMM_MODULEDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <idlmm/Container.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(ModuleDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

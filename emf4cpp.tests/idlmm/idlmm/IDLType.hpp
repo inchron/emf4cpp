@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(IDLType_pre) START*/
 // Please, enable the protected region if you add manually written code.

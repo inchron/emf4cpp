@@ -28,7 +28,7 @@
 
 #include <xpand3/Xpand3Package.hpp>
 
-#include <xpand3/dllXpand3.hpp>
+#include "../dllXpand3.hpp"
 
 namespace xpand3
 {

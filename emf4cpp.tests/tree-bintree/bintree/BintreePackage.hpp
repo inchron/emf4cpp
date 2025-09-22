@@ -26,7 +26,7 @@
 #include <bintree_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <bintree/dllBintree.hpp>
+#include "dllBintree.hpp"
 
 namespace bintree
 {

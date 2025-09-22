@@ -22,13 +22,14 @@
 #ifndef KDM_STRUCTURE_ABSTRACTSTRUCTURERELATIONSHIP_HPP
 #define KDM_STRUCTURE_ABSTRACTSTRUCTURERELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/structure_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/KDMRelationship.hpp>
 
 #include "StructurePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractStructureRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -22,13 +22,14 @@
 #ifndef TREE_NONTERMINAL_HPP
 #define TREE_NONTERMINAL_HPP
 
-#include <tree/dllTree.hpp>
 #include <tree_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <tree/TreeNode.hpp>
 
 #include "TreePackage.hpp"
+
+#include "dllTree.hpp"
 
 /*PROTECTED REGION ID(NonTerminal_pre) START*/
 // Please, enable the protected region if you add manually written code.

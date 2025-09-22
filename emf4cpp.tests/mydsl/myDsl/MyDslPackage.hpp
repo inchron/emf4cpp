@@ -26,7 +26,7 @@
 #include <myDsl_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <myDsl/dllMyDsl.hpp>
+#include "dllMyDsl.hpp"
 
 namespace myDsl
 {

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <TopLevelPackage/Level1/Level2.hpp>
 
-#include <TopLevelPackage/dllTopLevelPackage.hpp>
+#include "../../dllTopLevelPackage.hpp"
 
 namespace TopLevelPackage
 {

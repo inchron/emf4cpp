@@ -26,7 +26,7 @@
 #include <type_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <type/dllType.hpp>
+#include "dllType.hpp"
 
 namespace type
 {

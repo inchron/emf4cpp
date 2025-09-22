@@ -22,7 +22,6 @@
 #ifndef XPAND3_DECLARATION_JAVAEXTENSION_HPP
 #define XPAND3_DECLARATION_JAVAEXTENSION_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3/declaration_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -31,6 +30,8 @@
 #include <xpand3/declaration/AbstractNamedDeclaration.hpp>
 
 #include "DeclarationPackage.hpp"
+
+#include "../dllXpand3.hpp"
 
 /*PROTECTED REGION ID(JavaExtension_pre) START*/
 // Please, enable the protected region if you add manually written code.

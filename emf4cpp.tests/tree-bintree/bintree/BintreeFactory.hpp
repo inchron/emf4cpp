@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <bintree.hpp>
 
-#include <bintree/dllBintree.hpp>
+#include "dllBintree.hpp"
 
 namespace bintree
 {

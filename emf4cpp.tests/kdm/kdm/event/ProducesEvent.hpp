@@ -22,7 +22,6 @@
 #ifndef KDM_EVENT_PRODUCESEVENT_HPP
 #define KDM_EVENT_PRODUCESEVENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/event_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/action/AbstractActionRelationship.hpp>
 
 #include "EventPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ProducesEvent_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -26,7 +26,7 @@
 #include <xpand3_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <xpand3/dllXpand3.hpp>
+#include "dllXpand3.hpp"
 
 namespace xpand3
 {

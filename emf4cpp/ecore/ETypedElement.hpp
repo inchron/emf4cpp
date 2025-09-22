@@ -22,10 +22,11 @@
 #ifndef ECORE_ETYPEDELEMENT_HPP
 #define ECORE_ETYPEDELEMENT_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/ENamedElement.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(ETypedElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

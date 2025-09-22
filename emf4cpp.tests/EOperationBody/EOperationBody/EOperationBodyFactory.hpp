@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <EOperationBody.hpp>
 
-#include <EOperationBody/dllEOperationBody.hpp>
+#include "dllEOperationBody.hpp"
 
 namespace EOperationBody
 {

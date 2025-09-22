@@ -22,13 +22,14 @@
 #ifndef XPAND3_STATEMENT_ABSTRACTSTATEMENT_HPP
 #define XPAND3_STATEMENT_ABSTRACTSTATEMENT_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3/statement_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <xpand3/SyntaxElement.hpp>
 
 #include "StatementPackage.hpp"
+
+#include "../dllXpand3.hpp"
 
 /*PROTECTED REGION ID(AbstractStatement_pre) START*/
 // Please, enable the protected region if you add manually written code.

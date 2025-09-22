@@ -22,13 +22,14 @@
 #ifndef SVG_VISIBILITY_HPP
 #define SVG_VISIBILITY_HPP
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <PrimitiveTypes_forward.hpp>
 #include <SVG/Attribute.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(Visibility_pre) START*/
 // Please, enable the protected region if you add manually written code.

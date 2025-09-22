@@ -22,12 +22,13 @@
 #ifndef SVG_TRANSFORM_HPP
 #define SVG_TRANSFORM_HPP
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <SVG/Attribute.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(Transform_pre) START*/
 // Please, enable the protected region if you add manually written code.

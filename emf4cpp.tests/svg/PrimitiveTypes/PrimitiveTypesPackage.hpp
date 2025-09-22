@@ -26,7 +26,7 @@
 #include <PrimitiveTypes_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <PrimitiveTypes/dllPrimitiveTypes.hpp>
+#include "dllPrimitiveTypes.hpp"
 
 namespace PrimitiveTypes
 {

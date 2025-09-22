@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <json.hpp>
 
-#include <json/dllJson.hpp>
+#include "dllJson.hpp"
 
 namespace json
 {

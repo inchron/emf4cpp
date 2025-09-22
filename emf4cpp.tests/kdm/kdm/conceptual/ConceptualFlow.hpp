@@ -22,13 +22,14 @@
 #ifndef KDM_CONCEPTUAL_CONCEPTUALFLOW_HPP
 #define KDM_CONCEPTUAL_CONCEPTUALFLOW_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/conceptual_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/conceptual/AbstractConceptualRelationship.hpp>
 
 #include "ConceptualPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ConceptualFlow_pre) START*/
 // Please, enable the protected region if you add manually written code.

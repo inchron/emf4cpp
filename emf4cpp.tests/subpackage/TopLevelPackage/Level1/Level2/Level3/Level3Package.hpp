@@ -28,7 +28,7 @@
 
 #include <TopLevelPackage/TopLevelPackagePackage.hpp>
 
-#include <TopLevelPackage/dllTopLevelPackage.hpp>
+#include "../../../dllTopLevelPackage.hpp"
 
 namespace TopLevelPackage
 {

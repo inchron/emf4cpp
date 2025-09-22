@@ -26,7 +26,7 @@
 #include <base_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <base/dllBase.hpp>
+#include "dllBase.hpp"
 
 namespace base
 {

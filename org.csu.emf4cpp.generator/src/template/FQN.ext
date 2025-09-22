@@ -154,7 +154,10 @@ cached String getDllExtensionPrefix(EPackage this) :
 ;
 
 cached String getDllExtensionInclude(EPackage this) :
-	"dll" + getTopLevelPackage().name.toFirstUpper() + ".hpp"
+	if this.ESuperPackage == null then
+		"dll" + this.name.toFirstUpper() + ".hpp"
+	else
+		"../" + this.ESuperPackage.getDllExtensionInclude()
 ;
 
 String getPackageGetAttribute(EPackage this, EClassifier class) :

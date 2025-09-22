@@ -26,7 +26,7 @@
 #include <tree_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <tree/dllTree.hpp>
+#include "dllTree.hpp"
 
 namespace tree
 {

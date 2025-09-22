@@ -22,7 +22,6 @@
 #ifndef XPAND3_STATEMENT_LETSTATEMENT_HPP
 #define XPAND3_STATEMENT_LETSTATEMENT_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3/statement_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -31,6 +30,8 @@
 #include <xpand3/statement/AbstractStatementWithBody.hpp>
 
 #include "StatementPackage.hpp"
+
+#include "../dllXpand3.hpp"
 
 /*PROTECTED REGION ID(LetStatement_pre) START*/
 // Please, enable the protected region if you add manually written code.

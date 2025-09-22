@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <ReferenceSerialization.hpp>
 
-#include <ReferenceSerialization/dllReferenceSerialization.hpp>
+#include "dllReferenceSerialization.hpp"
 
 namespace ReferenceSerialization
 {

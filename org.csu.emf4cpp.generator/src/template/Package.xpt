@@ -45,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <«e.getFQN("/")»/«e.getPackageName()».hpp>
 «ENDFOREACH-»
 
-#include <«getDllExtensionPrefix()».hpp>
+#include "«getDllExtensionInclude()»"
 
 «EXPAND template::EClassHPP::namespaces_begin FOR this-»
 

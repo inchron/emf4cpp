@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <idlmm.hpp>
 
-#include <idlmm/dllIdlmm.hpp>
+#include "dllIdlmm.hpp"
 
 namespace idlmm
 {

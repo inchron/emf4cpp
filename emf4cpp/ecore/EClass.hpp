@@ -22,10 +22,11 @@
 #ifndef ECORE_ECLASS_HPP
 #define ECORE_ECLASS_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/EClassifier.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EClass_pre) ENABLED START*/
 // Please, enable the protected region if you add manually written code.

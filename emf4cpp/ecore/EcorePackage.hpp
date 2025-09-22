@@ -26,7 +26,7 @@
 #include <ecore_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <ecore/dllEcore.hpp>
+#include "dllEcore.hpp"
 
 namespace ecore
 {

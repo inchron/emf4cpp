@@ -29,7 +29,7 @@
 #include <kdm/core/CorePackage.hpp>
 #include <kdm/kdm/KdmPackage.hpp>
 
-#include <kdm/dllKdm.hpp>
+#include "../dllKdm.hpp"
 
 namespace kdm
 {

@@ -22,10 +22,11 @@
 #ifndef ECORE_EFACTORY_HPP
 #define ECORE_EFACTORY_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/EModelElement.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EFactory_pre) START*/
 // Please, enable the protected region if you add manually written code.

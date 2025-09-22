@@ -22,13 +22,14 @@
 #ifndef DERIVED_DERIVED01_HPP
 #define DERIVED_DERIVED01_HPP
 
-#include <derived/dllDerived.hpp>
 #include <derived_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <base/base1/base2/Base20.hpp>
 
 #include "DerivedPackage.hpp"
+
+#include "dllDerived.hpp"
 
 /*PROTECTED REGION ID(Derived01_pre) START*/
 // Please, enable the protected region if you add manually written code.

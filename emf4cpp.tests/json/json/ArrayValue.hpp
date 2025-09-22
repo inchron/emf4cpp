@@ -22,12 +22,13 @@
 #ifndef JSON_ARRAYVALUE_HPP
 #define JSON_ARRAYVALUE_HPP
 
-#include <json/dllJson.hpp>
 #include <json_forward.hpp>
 
 #include <json/Value.hpp>
 
 #include "JsonPackage.hpp"
+
+#include "dllJson.hpp"
 
 /*PROTECTED REGION ID(ArrayValue_pre) START*/
 // Please, enable the protected region if you add manually written code.

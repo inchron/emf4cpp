@@ -26,7 +26,7 @@
 #include <v_2_0/edate_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <v_2_0/edate/dllEdate.hpp>
+#include "dllEdate.hpp"
 
 namespace v_2_0
 {

@@ -22,13 +22,14 @@
 #ifndef KDM_CORE_AGGREGATEDRELATIONSHIP_HPP
 #define KDM_CORE_AGGREGATEDRELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/core_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/ModelElement.hpp>
 
 #include "CorePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AggregatedRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

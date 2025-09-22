@@ -22,13 +22,14 @@
 #ifndef XPAND3_EXPRESSION_LISTLITERAL_HPP
 #define XPAND3_EXPRESSION_LISTLITERAL_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3/expression_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <xpand3/expression/AbstractExpression.hpp>
 
 #include "ExpressionPackage.hpp"
+
+#include "../dllXpand3.hpp"
 
 /*PROTECTED REGION ID(ListLiteral_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -22,13 +22,14 @@
 #ifndef IDLMM_STRINGDEF_HPP
 #define IDLMM_STRINGDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <idlmm/IDLType.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(StringDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

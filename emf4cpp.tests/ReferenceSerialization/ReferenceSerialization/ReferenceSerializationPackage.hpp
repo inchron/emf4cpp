@@ -26,7 +26,7 @@
 #include <ReferenceSerialization_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <ReferenceSerialization/dllReferenceSerialization.hpp>
+#include "dllReferenceSerialization.hpp"
 
 namespace ReferenceSerialization
 {

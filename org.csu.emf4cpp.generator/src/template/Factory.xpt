@@ -36,7 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <ecore/EFactory.hpp>
 #include <«getFQN("/")».hpp>
 
-#include <«getDllExtensionPrefix()».hpp>
+#include "«getDllExtensionInclude()»"
 
 «EXPAND template::EClassHPP::namespaces_begin FOR this-»
 

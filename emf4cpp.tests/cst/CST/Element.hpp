@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <CST/dllCST.hpp>
 #include <CST_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "CSTPackage.hpp"
+
+#include "dllCST.hpp"
 
 /*PROTECTED REGION ID(Element_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <ecore.hpp>
 
-#include <ecore/dllEcore.hpp>
+#include "dllEcore.hpp"
 
 namespace ecore
 {

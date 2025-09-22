@@ -22,12 +22,13 @@
 #ifndef KDM_KDM_EXTENDEDVALUE_HPP
 #define KDM_KDM_EXTENDEDVALUE_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/kdm_forward.hpp>
 
 #include <kdm/core/Element.hpp>
 
 #include "KdmPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ExtendedValue_pre) START*/
 // Please, enable the protected region if you add manually written code.

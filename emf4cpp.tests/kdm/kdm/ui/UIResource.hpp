@@ -22,7 +22,6 @@
 #ifndef KDM_UI_UIRESOURCE_HPP
 #define KDM_UI_UIRESOURCE_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/ui_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -33,6 +32,8 @@
 #include <kdm/ui/AbstractUIElement.hpp>
 
 #include "UiPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(UIResource_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <myDsl.hpp>
 
-#include <myDsl/dllMyDsl.hpp>
+#include "dllMyDsl.hpp"
 
 namespace myDsl
 {

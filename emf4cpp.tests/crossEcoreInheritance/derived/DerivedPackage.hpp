@@ -30,7 +30,7 @@
 #include <base/base1/Base1Package.hpp>
 #include <base/base1/base2/Base2Package.hpp>
 
-#include <derived/dllDerived.hpp>
+#include "dllDerived.hpp"
 
 namespace derived
 {

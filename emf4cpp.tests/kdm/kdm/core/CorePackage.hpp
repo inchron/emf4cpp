@@ -26,7 +26,7 @@
 #include <kdm/core_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <kdm/dllKdm.hpp>
+#include "../dllKdm.hpp"
 
 namespace kdm
 {

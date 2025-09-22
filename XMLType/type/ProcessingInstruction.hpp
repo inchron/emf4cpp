@@ -24,10 +24,11 @@
 
 #include <ecore/EObject.hpp>
 
-#include <type/dllType.hpp>
 #include <type_forward.hpp>
 
 #include "TypePackage.hpp"
+
+#include "dllType.hpp"
 
 /*PROTECTED REGION ID(ProcessingInstruction_pre) START*/
 // Please, enable the protected region if you add manually written code.

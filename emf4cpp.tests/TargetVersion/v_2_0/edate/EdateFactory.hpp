@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <v_2_0/edate.hpp>
 
-#include <v_2_0/edate/dllEdate.hpp>
+#include "dllEdate.hpp"
 
 namespace v_2_0
 {

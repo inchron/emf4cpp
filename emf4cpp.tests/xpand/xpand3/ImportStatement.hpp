@@ -22,13 +22,14 @@
 #ifndef XPAND3_IMPORTSTATEMENT_HPP
 #define XPAND3_IMPORTSTATEMENT_HPP
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <xpand3/SyntaxElement.hpp>
 
 #include "Xpand3Package.hpp"
+
+#include "dllXpand3.hpp"
 
 /*PROTECTED REGION ID(ImportStatement_pre) START*/
 // Please, enable the protected region if you add manually written code.

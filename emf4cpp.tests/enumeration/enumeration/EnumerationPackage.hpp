@@ -26,7 +26,7 @@
 #include <enumeration_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <enumeration/dllEnumeration.hpp>
+#include "dllEnumeration.hpp"
 
 namespace enumeration
 {

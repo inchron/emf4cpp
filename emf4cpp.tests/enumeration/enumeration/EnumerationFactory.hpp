@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <enumeration.hpp>
 
-#include <enumeration/dllEnumeration.hpp>
+#include "dllEnumeration.hpp"
 
 namespace enumeration
 {

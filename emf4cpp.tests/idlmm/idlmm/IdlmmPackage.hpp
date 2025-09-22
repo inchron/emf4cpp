@@ -26,7 +26,7 @@
 #include <idlmm_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <idlmm/dllIdlmm.hpp>
+#include "dllIdlmm.hpp"
 
 namespace idlmm
 {

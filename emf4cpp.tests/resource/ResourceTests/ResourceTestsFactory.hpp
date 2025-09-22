@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <ResourceTests.hpp>
 
-#include <ResourceTests/dllResourceTests.hpp>
+#include "dllResourceTests.hpp"
 
 namespace ResourceTests
 {

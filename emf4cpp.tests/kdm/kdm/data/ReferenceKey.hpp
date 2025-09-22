@@ -22,7 +22,6 @@
 #ifndef KDM_DATA_REFERENCEKEY_HPP
 #define KDM_DATA_REFERENCEKEY_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/data_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -33,6 +32,8 @@
 #include <kdm/data/IndexElement.hpp>
 
 #include "DataPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ReferenceKey_pre) START*/
 // Please, enable the protected region if you add manually written code.

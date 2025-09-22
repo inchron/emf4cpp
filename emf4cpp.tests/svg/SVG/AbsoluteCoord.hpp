@@ -22,13 +22,14 @@
 #ifndef SVG_ABSOLUTECOORD_HPP
 #define SVG_ABSOLUTECOORD_HPP
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <PrimitiveTypes_forward.hpp>
 #include <SVG/Coordinates.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(AbsoluteCoord_pre) START*/
 // Please, enable the protected region if you add manually written code.

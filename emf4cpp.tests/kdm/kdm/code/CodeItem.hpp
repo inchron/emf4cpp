@@ -22,7 +22,6 @@
 #ifndef KDM_CODE_CODEITEM_HPP
 #define KDM_CODE_CODEITEM_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/code_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -31,6 +30,8 @@
 #include <kdm/code/AbstractCodeElement.hpp>
 
 #include "CodePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(CodeItem_pre) START*/
 // Please, enable the protected region if you add manually written code.

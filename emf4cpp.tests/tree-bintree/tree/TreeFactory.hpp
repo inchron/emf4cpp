@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <tree.hpp>
 
-#include <tree/dllTree.hpp>
+#include "dllTree.hpp"
 
 namespace tree
 {

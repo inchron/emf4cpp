@@ -22,10 +22,11 @@
 #ifndef ECORE_EOPERATION_HPP
 #define ECORE_EOPERATION_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/ETypedElement.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EOperation_pre) START*/
 // Please, enable the protected region if you add manually written code.

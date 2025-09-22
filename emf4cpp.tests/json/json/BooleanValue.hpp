@@ -22,13 +22,14 @@
 #ifndef JSON_BOOLEANVALUE_HPP
 #define JSON_BOOLEANVALUE_HPP
 
-#include <json/dllJson.hpp>
 #include <json_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <json/Value.hpp>
 
 #include "JsonPackage.hpp"
+
+#include "dllJson.hpp"
 
 /*PROTECTED REGION ID(BooleanValue_pre) START*/
 // Please, enable the protected region if you add manually written code.

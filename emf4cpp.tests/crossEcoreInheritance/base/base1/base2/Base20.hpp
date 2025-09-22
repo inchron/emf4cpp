@@ -22,7 +22,6 @@
 #ifndef BASE_BASE1_BASE2_BASE20_HPP
 #define BASE_BASE1_BASE2_BASE20_HPP
 
-#include <base/dllBase.hpp>
 #include <base/base1/base2_forward.hpp>
 
 #include <ecore_forward.hpp>
@@ -31,6 +30,8 @@
 #include <base/base1/Base11.hpp>
 
 #include "Base2Package.hpp"
+
+#include "../../dllBase.hpp"
 
 /*PROTECTED REGION ID(Base20_pre) START*/
 // Please, enable the protected region if you add manually written code.

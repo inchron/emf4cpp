@@ -26,7 +26,7 @@
 #include <edate_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <edate/dllEdate.hpp>
+#include "dllEdate.hpp"
 
 namespace edate
 {

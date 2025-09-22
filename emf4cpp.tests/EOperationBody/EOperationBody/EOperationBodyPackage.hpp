@@ -26,7 +26,7 @@
 #include <EOperationBody_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <EOperationBody/dllEOperationBody.hpp>
+#include "dllEOperationBody.hpp"
 
 namespace EOperationBody
 {

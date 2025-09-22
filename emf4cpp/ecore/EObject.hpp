@@ -22,8 +22,9 @@
 #ifndef ECORE_EOBJECT_HPP
 #define ECORE_EOBJECT_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EObject_pre) ENABLED START*/
 #include <ecorecpp/notify_forward.hpp>

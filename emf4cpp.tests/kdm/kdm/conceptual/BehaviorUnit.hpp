@@ -22,7 +22,6 @@
 #ifndef KDM_CONCEPTUAL_BEHAVIORUNIT_HPP
 #define KDM_CONCEPTUAL_BEHAVIORUNIT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/conceptual_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -32,6 +31,8 @@
 #include <kdm/conceptual/ConceptualContainer.hpp>
 
 #include "ConceptualPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(BehaviorUnit_pre) START*/
 // Please, enable the protected region if you add manually written code.

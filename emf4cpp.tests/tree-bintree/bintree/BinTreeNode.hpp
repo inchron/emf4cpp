@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <bintree/dllBintree.hpp>
 #include <bintree_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "BintreePackage.hpp"
+
+#include "dllBintree.hpp"
 
 /*PROTECTED REGION ID(BinTreeNode_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <kdm/ui.hpp>
 
-#include <kdm/dllKdm.hpp>
+#include "../dllKdm.hpp"
 
 namespace kdm
 {

@@ -22,13 +22,14 @@
 #ifndef IDLMM_ENUMDEF_HPP
 #define IDLMM_ENUMDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <idlmm/TypedefDef.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(EnumDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

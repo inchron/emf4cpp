@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <company/dllCompany.hpp>
 #include <company_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "CompanyPackage.hpp"
+
+#include "dllCompany.hpp"
 
 /*PROTECTED REGION ID(Employee_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -26,7 +26,7 @@
 #include <TopLevelPackage/Level1_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <TopLevelPackage/dllTopLevelPackage.hpp>
+#include "../dllTopLevelPackage.hpp"
 
 namespace TopLevelPackage
 {

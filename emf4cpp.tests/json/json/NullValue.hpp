@@ -22,12 +22,13 @@
 #ifndef JSON_NULLVALUE_HPP
 #define JSON_NULLVALUE_HPP
 
-#include <json/dllJson.hpp>
 #include <json_forward.hpp>
 
 #include <json/Value.hpp>
 
 #include "JsonPackage.hpp"
+
+#include "dllJson.hpp"
 
 /*PROTECTED REGION ID(NullValue_pre) START*/
 // Please, enable the protected region if you add manually written code.

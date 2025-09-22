@@ -22,13 +22,14 @@
 #ifndef SVG_TEXT_HPP
 #define SVG_TEXT_HPP
 
-#include <SVG/dllSVG.hpp>
 #include <SVG_forward.hpp>
 
 #include <PrimitiveTypes_forward.hpp>
 #include <SVG/TextElement.hpp>
 
 #include "SVGPackage.hpp"
+
+#include "dllSVG.hpp"
 
 /*PROTECTED REGION ID(Text_pre) START*/
 // Please, enable the protected region if you add manually written code.

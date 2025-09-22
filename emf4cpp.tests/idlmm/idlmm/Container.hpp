@@ -22,13 +22,14 @@
 #ifndef IDLMM_CONTAINER_HPP
 #define IDLMM_CONTAINER_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <idlmm/Contained.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(Container_pre) START*/
 // Please, enable the protected region if you add manually written code.

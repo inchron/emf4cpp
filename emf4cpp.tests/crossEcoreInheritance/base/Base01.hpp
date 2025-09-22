@@ -24,13 +24,14 @@
 
 #include <ecore/EObject.hpp>
 
-#include <base/dllBase.hpp>
 #include <base_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <derived_forward.hpp>
 
 #include "BasePackage.hpp"
+
+#include "dllBase.hpp"
 
 /*PROTECTED REGION ID(Base01_pre) START*/
 // Please, enable the protected region if you add manually written code.

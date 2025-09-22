@@ -22,13 +22,14 @@
 #ifndef KDM_ACTION_ABSTRACTACTIONRELATIONSHIP_HPP
 #define KDM_ACTION_ABSTRACTACTIONRELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/action_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/KDMRelationship.hpp>
 
 #include "ActionPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractActionRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

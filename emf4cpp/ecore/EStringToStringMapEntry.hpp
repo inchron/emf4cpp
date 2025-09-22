@@ -24,8 +24,9 @@
 
 #include <ecore/EObject.hpp>
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EStringToStringMapEntry_pre) START*/
 // Please, enable the protected region if you add manually written code.

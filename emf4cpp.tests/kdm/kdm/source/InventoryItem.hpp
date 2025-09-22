@@ -22,7 +22,6 @@
 #ifndef KDM_SOURCE_INVENTORYITEM_HPP
 #define KDM_SOURCE_INVENTORYITEM_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/source_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/source/AbstractInventoryElement.hpp>
 
 #include "SourcePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(InventoryItem_pre) START*/
 // Please, enable the protected region if you add manually written code.

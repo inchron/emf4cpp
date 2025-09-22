@@ -26,7 +26,7 @@
 #include <SVG_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <SVG/dllSVG.hpp>
+#include "dllSVG.hpp"
 
 namespace SVG
 {

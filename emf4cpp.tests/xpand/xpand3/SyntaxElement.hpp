@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <xpand3/dllXpand3.hpp>
 #include <xpand3_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "Xpand3Package.hpp"
+
+#include "dllXpand3.hpp"
 
 /*PROTECTED REGION ID(SyntaxElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

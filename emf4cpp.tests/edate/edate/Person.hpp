@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <edate/dllEdate.hpp>
 #include <edate_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "EdatePackage.hpp"
+
+#include "dllEdate.hpp"
 
 /*PROTECTED REGION ID(Person_pre) START*/
 // Please, enable the protected region if you add manually written code.

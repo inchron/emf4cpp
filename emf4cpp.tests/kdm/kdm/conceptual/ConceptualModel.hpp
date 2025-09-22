@@ -22,7 +22,6 @@
 #ifndef KDM_CONCEPTUAL_CONCEPTUALMODEL_HPP
 #define KDM_CONCEPTUAL_CONCEPTUALMODEL_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/conceptual_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/kdm/KDMModel.hpp>
 
 #include "ConceptualPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ConceptualModel_pre) START*/
 // Please, enable the protected region if you add manually written code.

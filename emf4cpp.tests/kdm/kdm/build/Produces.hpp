@@ -22,13 +22,14 @@
 #ifndef KDM_BUILD_PRODUCES_HPP
 #define KDM_BUILD_PRODUCES_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/build_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/build/AbstractBuildRelationship.hpp>
 
 #include "BuildPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(Produces_pre) START*/
 // Please, enable the protected region if you add manually written code.

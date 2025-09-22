@@ -26,7 +26,7 @@
 #include <eopposite_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <eopposite/dllEopposite.hpp>
+#include "dllEopposite.hpp"
 
 namespace eopposite
 {

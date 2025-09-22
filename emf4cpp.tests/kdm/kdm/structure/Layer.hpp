@@ -22,7 +22,6 @@
 #ifndef KDM_STRUCTURE_LAYER_HPP
 #define KDM_STRUCTURE_LAYER_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/structure_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -30,6 +29,8 @@
 #include <kdm/structure/AbstractStructureElement.hpp>
 
 #include "StructurePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(Layer_pre) START*/
 // Please, enable the protected region if you add manually written code.

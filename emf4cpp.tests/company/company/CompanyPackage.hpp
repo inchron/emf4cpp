@@ -26,7 +26,7 @@
 #include <company_forward.hpp>
 #include <ecorecpp/PackageDeleter.hpp>
 
-#include <company/dllCompany.hpp>
+#include "dllCompany.hpp"
 
 namespace company
 {

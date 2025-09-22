@@ -24,13 +24,14 @@
 
 #include <ecore/EObject.hpp>
 
-#include <enumeration/dllEnumeration.hpp>
 #include <enumeration_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <enumeration/BirdType.hpp>
 
 #include "EnumerationPackage.hpp"
+
+#include "dllEnumeration.hpp"
 
 /*PROTECTED REGION ID(Bird_pre) START*/
 // Please, enable the protected region if you add manually written code.

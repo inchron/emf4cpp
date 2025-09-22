@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <ReferenceSerialization/dllReferenceSerialization.hpp>
 #include <ReferenceSerialization_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "ReferenceSerializationPackage.hpp"
+
+#include "dllReferenceSerialization.hpp"
 
 /*PROTECTED REGION ID(Content_pre) START*/
 // Please, enable the protected region if you add manually written code.

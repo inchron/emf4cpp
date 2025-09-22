@@ -22,10 +22,11 @@
 #ifndef ECORE_EPACKAGE_HPP
 #define ECORE_EPACKAGE_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/ENamedElement.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EPackage_pre) ENABLED START*/
 // Please, enable the protected region if you add manually written code.

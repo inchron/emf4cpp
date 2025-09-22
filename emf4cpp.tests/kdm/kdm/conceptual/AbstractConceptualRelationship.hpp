@@ -22,13 +22,14 @@
 #ifndef KDM_CONCEPTUAL_ABSTRACTCONCEPTUALRELATIONSHIP_HPP
 #define KDM_CONCEPTUAL_ABSTRACTCONCEPTUALRELATIONSHIP_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/conceptual_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/core/KDMRelationship.hpp>
 
 #include "ConceptualPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractConceptualRelationship_pre) START*/
 // Please, enable the protected region if you add manually written code.

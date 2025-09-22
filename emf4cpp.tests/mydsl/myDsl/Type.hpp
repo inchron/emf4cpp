@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <myDsl/dllMyDsl.hpp>
 #include <myDsl_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "MyDslPackage.hpp"
+
+#include "dllMyDsl.hpp"
 
 /*PROTECTED REGION ID(Type_pre) START*/
 // Please, enable the protected region if you add manually written code.

@@ -22,7 +22,6 @@
 #ifndef KDM_CODE_CONTROLELEMENT_HPP
 #define KDM_CODE_CONTROLELEMENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/code_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -32,6 +31,8 @@
 #include <kdm/code/ComputationalObject.hpp>
 
 #include "CodePackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(ControlElement_pre) START*/
 // Please, enable the protected region if you add manually written code.

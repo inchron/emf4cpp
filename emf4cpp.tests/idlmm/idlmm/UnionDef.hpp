@@ -22,13 +22,14 @@
 #ifndef IDLMM_UNIONDEF_HPP
 #define IDLMM_UNIONDEF_HPP
 
-#include <idlmm/dllIdlmm.hpp>
 #include <idlmm_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <idlmm/TypedefDef.hpp>
 
 #include "IdlmmPackage.hpp"
+
+#include "dllIdlmm.hpp"
 
 /*PROTECTED REGION ID(UnionDef_pre) START*/
 // Please, enable the protected region if you add manually written code.

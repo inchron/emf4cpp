@@ -22,13 +22,14 @@
 #ifndef KDM_ACTION_GUARDEDFLOW_HPP
 #define KDM_ACTION_GUARDEDFLOW_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/action_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
 #include <kdm/action/ControlFlow.hpp>
 
 #include "ActionPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(GuardedFlow_pre) START*/
 // Please, enable the protected region if you add manually written code.

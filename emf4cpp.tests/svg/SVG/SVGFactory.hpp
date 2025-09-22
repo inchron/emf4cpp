@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <SVG.hpp>
 
-#include <SVG/dllSVG.hpp>
+#include "dllSVG.hpp"
 
 namespace SVG
 {

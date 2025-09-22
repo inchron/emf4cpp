@@ -22,13 +22,14 @@
 #ifndef KDM_KDM_TAGGEDREF_HPP
 #define KDM_KDM_TAGGEDREF_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/kdm_forward.hpp>
 
 #include <kdm/core_forward.hpp>
 #include <kdm/kdm/ExtendedValue.hpp>
 
 #include "KdmPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(TaggedRef_pre) START*/
 // Please, enable the protected region if you add manually written code.

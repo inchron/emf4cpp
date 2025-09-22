@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <base/base1.hpp>
 
-#include <base/dllBase.hpp>
+#include "../dllBase.hpp"
 
 namespace base
 {

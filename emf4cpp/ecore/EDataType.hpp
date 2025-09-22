@@ -22,10 +22,11 @@
 #ifndef ECORE_EDATATYPE_HPP
 #define ECORE_EDATATYPE_HPP
 
-#include <ecore/dllEcore.hpp>
 #include <ecore_forward.hpp>
 
 #include <ecore/EClassifier.hpp>
+
+#include "dllEcore.hpp"
 
 /*PROTECTED REGION ID(EDataType_pre) START*/
 // Please, enable the protected region if you add manually written code.

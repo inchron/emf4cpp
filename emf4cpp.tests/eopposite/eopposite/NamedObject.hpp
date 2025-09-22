@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <eopposite/dllEopposite.hpp>
 #include <eopposite_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "EoppositePackage.hpp"
+
+#include "dllEopposite.hpp"
 
 /*PROTECTED REGION ID(NamedObject_pre) START*/
 // Please, enable the protected region if you add manually written code.

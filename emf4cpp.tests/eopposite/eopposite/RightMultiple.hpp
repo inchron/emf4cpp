@@ -22,13 +22,14 @@
 #ifndef EOPPOSITE_RIGHTMULTIPLE_HPP
 #define EOPPOSITE_RIGHTMULTIPLE_HPP
 
-#include <eopposite/dllEopposite.hpp>
 #include <eopposite_forward.hpp>
 
 #include <ecore_forward.hpp>
 #include <eopposite/NamedObject.hpp>
 
 #include "EoppositePackage.hpp"
+
+#include "dllEopposite.hpp"
 
 /*PROTECTED REGION ID(RightMultiple_pre) START*/
 // Please, enable the protected region if you add manually written code.

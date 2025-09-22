@@ -25,7 +25,7 @@
 #include <ecore/EFactory.hpp>
 #include <treeiterator.hpp>
 
-#include <treeiterator/dllTreeiterator.hpp>
+#include "dllTreeiterator.hpp"
 
 namespace treeiterator
 {

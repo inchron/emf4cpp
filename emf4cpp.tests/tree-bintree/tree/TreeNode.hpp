@@ -24,12 +24,13 @@
 
 #include <ecore/EObject.hpp>
 
-#include <tree/dllTree.hpp>
 #include <tree_forward.hpp>
 
 #include <ecore_forward.hpp>
 
 #include "TreePackage.hpp"
+
+#include "dllTree.hpp"
 
 /*PROTECTED REGION ID(TreeNode_pre) START*/
 // Please, enable the protected region if you add manually written code.

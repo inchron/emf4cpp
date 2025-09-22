@@ -22,13 +22,14 @@
 #ifndef KDM_KDM_KDMMODEL_HPP
 #define KDM_KDM_KDMMODEL_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/kdm_forward.hpp>
 
 #include <kdm/core_forward.hpp>
 #include <kdm/kdm/KDMFramework.hpp>
 
 #include "KdmPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(KDMModel_pre) START*/
 // Please, enable the protected region if you add manually written code.

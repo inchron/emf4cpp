@@ -22,7 +22,6 @@
 #ifndef KDM_DATA_ABSTRACTCONTENTELEMENT_HPP
 #define KDM_DATA_ABSTRACTCONTENTELEMENT_HPP
 
-#include <kdm/dllKdm.hpp>
 #include <kdm/data_forward.hpp>
 
 #include <kdm/kdm_forward.hpp>
@@ -32,6 +31,8 @@
 #include <kdm/data/AbstractDataElement.hpp>
 
 #include "DataPackage.hpp"
+
+#include "../dllKdm.hpp"
 
 /*PROTECTED REGION ID(AbstractContentElement_pre) START*/
 // Please, enable the protected region if you add manually written code.
