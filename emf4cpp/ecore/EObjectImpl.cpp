@@ -209,7 +209,7 @@ void EObject::_initialize()
     ::ecore::EClass_ptr eclass = eClass();
     for (const auto &ref : eclass->getEAllReferences())
     {
-        if (ref->isTransient() || !ref->isContainment() || !eIsSet(ref))
+        if (!ref->isContainment() || !eIsSet(ref))
         {
             continue;
         }
@@ -263,7 +263,7 @@ void EObject::_initialize()
     ::ecore::EClass_ptr eclass = eClass();
     for (const auto &ref : eclass->getEAllReferences())
     {
-        if (ref->isTransient() || ref->isContainment() || !eIsSet(ref))
+        if (ref->isContainment() || !eIsSet(ref))
         {
             continue;
         }
