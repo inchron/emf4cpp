@@ -128,6 +128,11 @@ public:
 			remove( *it );
 	}
 
+	void sort( typename EList<T>::Compare ) override
+	{
+		throw std::logic_error( "FeatureEListImpl does not support sorting");
+	}
+
 	virtual ~FeatureEListImpl()
 	{
 	}

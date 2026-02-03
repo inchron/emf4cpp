@@ -117,6 +117,15 @@ public:
 			remove( *it );
 	}
 
+	/** Sort the EListImpl without temporarily adding or removed elements.
+	 *
+	 * The Java counterpart List<E>.sort(Comparator<? super E> c)
+	 * implements a stable sort, hence this method does this, too. */
+	void sort( typename EList<T>::Compare c ) override
+	{
+		std::stable_sort( m_content.begin(), m_content.end(), c );
+	}
+
 	virtual ~EListImpl()
 	{
 	}
@@ -312,6 +321,32 @@ public:
 	void cleanup() override
 	{
 		containment_t::cleanup( m_content );
+	}
+
+	/** Sort the ReferenceEList without temporarily adding or removed elements.
+	 * There is a single Notification::MOVE emitted at the end, always, even
+	 * if the container did not change.
+	 *
+	 * The Java counterpart List<E>.sort(Comparator<? super E> c)
+	 * implements a stable sort, hence this method does this, too. */
+	void sort( typename EList<T>::Compare compare ) override
+	{
+		auto intermediateCompare = [&compare]( const typename containment_t::ptr_type& lhs,
+			const typename containment_t::ptr_type& rhs )
+		{
+			return compare( containment_t::to_value_type( lhs ),
+							containment_t::to_value_type( rhs ) );
+		};
+
+		std::stable_sort( m_content.begin(), m_content.end(), intermediateCompare );
+
+#ifdef ECORECPP_NOTIFICATION_API
+		if ( _this()->eNotificationRequired() ) {
+			::ecorecpp::notify::Notification notification(
+				::ecorecpp::notify::Notification::MOVE, _this(), m_ref, T(), T() );
+			_this()->eNotify( &notification );
+		}
+#endif
 	}
 
 	virtual ~ReferenceEListImpl()

@@ -37,16 +37,17 @@ public:
 
     enum EventType
     {
-        CREATE,
-        SET,
-        UNSET,
-		ADD,
-        REMOVE,
-        ADD_MANY,
-        REMOVE_MANY,
-        MOVE,
-        REMOVING_ADAPTER,
-        RESOLVE,
+        CREATE,           ///< @deprecated
+        SET,              ///< a feature of the notifier has been set
+        UNSET,            ///< a feature of the notifier has been unset.
+		ADD,              ///< a value has been inserted into a list-based feature of the notifier
+        REMOVE,           ///< a value has been removed from a list-based feature of the notifier
+        ADD_MANY,         ///< several values have been added into a list-based feature of the notifier
+        REMOVE_MANY,      ///< several values have been removed from a list-based feature of the notifier
+        MOVE,             ///< a value has been moved within a list-based feature of the notifier
+        REMOVING_ADAPTER, ///< an adapter is being removed from the notifier
+        RESOLVE,          ///< a feature of the notifier has been resolved from a proxy
+        RESET,            ///< several values have been added, others removed, and some moved
         EVENT_TYPE_COUNT
     };
 

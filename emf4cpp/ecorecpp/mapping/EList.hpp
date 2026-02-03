@@ -20,6 +20,7 @@
 #ifndef ECORECPP_MAPPING_ELIST_HPP
 #define ECORECPP_MAPPING_ELIST_HPP
 
+#include <functional>
 #include <memory>
 #include <type_traits>
 #include <vector>
@@ -211,6 +212,15 @@ public:
 	{
 	}
 
+	using Compare = std::function<bool( const T& lhs, const T& rhs )>;
+	/**
+	 * Sort the list. The Compare function is passed on to std::stable_sort().
+	 *
+	 * The Java counterpart List<E>.sort(Comparator<? super E> c)
+	 * implements a stable sort, hence this method does this, too.
+	 */
+	virtual void sort( Compare ) = 0;
+
 	/**
      * Allows treating an EList<T> as an EList<Q> (if T can be casted to Q dynamically)
      */
@@ -312,6 +322,11 @@ public:
 	void cleanup() override
 	{
 		m_delegate.cleanup();
+	}
+
+	void sort( typename EList<T>::Compare ) override
+	{
+		throw std::logic_error( "DelegateEList does not support sorting");
 	}
 
 	virtual ~DelegateEList()
