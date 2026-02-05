@@ -38,8 +38,16 @@ public:
 	using ef_ptr = ::ecore::EStructuralFeature_ptr;
 
 	/** Iterator interfaces for an EList<T>.
+	 *
+	 * The Iterator knows a forward and a reverse direction.
+	 *
+	 * A forward iterator uses an index between 0 and size()-1, where size()
+	 * points to past-the-end.
+	 *
+	 * The reverse iterator uses an index between size()-1 and 0, where -1
+	 * points to past-the-end.
 	 */
-	template<typename EListPtrType>
+	template<typename EListPtrType, bool forward = true>
 	class EListIterator {
 	public:
 		using iterator_category = std::bidirectional_iterator_tag;
@@ -64,7 +72,10 @@ public:
 
 		EListIterator& operator--()
 		{
-			--_ind;
+			if ( forward )
+				--_ind;
+			else
+				++_ind;
 			return *this;
 		}
 
@@ -77,7 +88,10 @@ public:
 
 		EListIterator& operator++()
 		{
-			++_ind;
+			if ( forward )
+				++_ind;
+			else
+				--_ind;
 			return *this;
 		}
 
@@ -98,9 +112,14 @@ public:
 			return !( *this == rhs );
 		}
 
+		/* A valid index is in [0 .. size-1]. As long as the borders have not
+		 * been reached, there is a next element.
+		 */
 		bool hasNext() const
 		{
-			return ( (int64_t)_ind < (int64_t)_elist->size() - 1 );
+			if ( forward )
+			    return ( (int64_t)_ind < (int64_t)_elist->size() - 1 );
+			return ( (int64_t)_ind > 0 );
 		}
 
 		const typename EList<T>::ptr_type& getEList() const
@@ -118,8 +137,10 @@ public:
 		size_t _ind;
 	};
 
-	typedef EListIterator<ptr_type> iterator;
-	typedef EListIterator<ptr_const_type> const_iterator;
+	typedef EListIterator<ptr_type, true> iterator;
+	typedef EListIterator<ptr_const_type, true> const_iterator;
+	typedef EListIterator<ptr_type, false> reverse_iterator;
+	typedef EListIterator<ptr_const_type, false> const_reverse_iterator;
 	// End of iterator interface
 
 
@@ -197,6 +218,40 @@ public:
 	}
 
 	const_iterator cend() const
+	{
+		return end();
+	}
+
+	reverse_iterator rbegin()
+	{
+		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
+		return reverse_iterator( this_shared, size() - 1 );
+	}
+
+	reverse_iterator rend()
+	{
+		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
+		return reverse_iterator( this_shared, -1 );
+	}
+
+	const_reverse_iterator rbegin() const
+	{
+		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
+		return const_reverse_iterator( this_shared, size() - 1 );
+	}
+
+	const_reverse_iterator rend() const
+	{
+		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
+		return const_reverse_iterator( this_shared, -1 );
+	}
+
+	const_reverse_iterator crbegin() const
+	{
+		return begin();
+	}
+
+	const_reverse_iterator crend() const
 	{
 		return end();
 	}
