@@ -1,6 +1,6 @@
 // -*- mode: c++; c-basic-style: "bsd"; c-basic-offset: 4; -*-
 /*
- * ecorecpp/notify.hpp
+ * ecorecpp/notify/Notification.hpp
  * Copyright (C) Cátedra SAES-UMU 2010 <andres.senac@um.es>
  *
  * EMF4CPP is free software: you can redistribute it and/or modify it
@@ -16,17 +16,8 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef ECORECPP_NOTIFY_HPP
-#define ECORECPP_NOTIFY_HPP
+#include "NotificationLocker.hpp"
 
-#include <ecore_forward.hpp>
-#include <ecore/EStructuralFeature.hpp>
-#include <ecore/EAttribute.hpp>
-
-#include "notify_forward.hpp"
-#include "notify/Adapter.hpp"
-#include "notify/Notification.hpp"
-#include "notify/NotificationLocker.hpp"
-#include "notify/Notifier.hpp"
-
-#endif // ECORECPP_NOTIFY_HPP
+namespace ecorecpp::notify
+{
+} // ecorecpp::notify

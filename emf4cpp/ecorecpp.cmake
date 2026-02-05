@@ -66,6 +66,7 @@ set(ecorecpp_HEADERS
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify_forward.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/Notification.hpp
+	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/NotificationLocker.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/Notifier.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/parser/Reference.hpp
 	${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/parser/XMLHandler.hpp
@@ -124,6 +125,7 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/Adapter.hpp DESTINATIO
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify_forward.hpp DESTINATION include/emf4cpp/ecorecpp)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify.hpp DESTINATION include/emf4cpp/ecorecpp)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/Notification.hpp DESTINATION include/emf4cpp/ecorecpp/notify)
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/NotificationLocker.hpp DESTINATION include/emf4cpp/ecorecpp/notify)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/notify/Notifier.hpp DESTINATION include/emf4cpp/ecorecpp/notify)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/parser/Reference.hpp DESTINATION include/emf4cpp/ecorecpp/parser)
 install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/ecorecpp/parser/XMLHandler.hpp DESTINATION include/emf4cpp/ecorecpp/parser)
