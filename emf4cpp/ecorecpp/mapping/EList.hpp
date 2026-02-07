@@ -30,6 +30,14 @@
 namespace ecorecpp {
 namespace mapping {
 
+/** Feature test macros for EList<T>::sort() and EList<T>::reverse_iterator.
+ *
+ * @sa https://en.cppreference.com/w/cpp/feature_test.html
+ */
+#define emf4cpp_elist_sort				20260203L
+#define emf4cpp_elist_reverse_iterator	20260205L
+
+
 template<typename T>
 class EList : public std::enable_shared_from_this<EList<T>> {
 public:

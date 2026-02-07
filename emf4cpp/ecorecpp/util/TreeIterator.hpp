@@ -30,12 +30,18 @@
 namespace ecorecpp {
 namespace util {
 
+/** A feature test macro if TreeIterator<T> can be use in range-base for loops.
+ *
+ * @sa https://en.cppreference.com/w/cpp/feature_test.html
+ */
+#define emf4cpp_treeiterator_range_based_for	20260207L
+
 /** A tree iterator implementation for EMF model hierarchies.
  *
  *  The default implementation of getChildren(T*) is supplied for EObject
- *  hierachies. For other types a matching specialization of this
+ *  hierarchies. For other types a matching specialization of this
  *  method must be supplied.
- *  The TreeIterator<EObject> traverses the EMF instance along
+ *  The TreeIterator<EObject_ptr> traverses the EMF instance along
  *  the containment relations.
  *
  *  The iterator to the next element is obtained by applying the
@@ -43,6 +49,12 @@ namespace util {
  *
  *  The dereference operator returns a pointer to current EObject
  *  or a nullptr for the past-the-last element.
+ *
+ *  The begin() and end() methods support the use in range-for loops
+ *  (since C++11): for (auto&& elem : object->eAllContents) ...
+ *
+ *  Their free function versions are provided as well for argument
+ *  dependent lookup.
  */
 
 template <class T>
@@ -64,6 +76,10 @@ public:
 		_stack.push(elist->begin());
 		_current = *elist->begin();
 	}
+
+	auto begin() const { return *this;}
+
+	auto end() const { return TreeIterator(value_type()); }
 
 	TreeIterator& operator++() {
 		if (!_current)
@@ -127,6 +143,18 @@ private:
 	T _current;
 	std::stack<typename EEList::iterator> _stack;
 };
+
+template <class T>
+TreeIterator<T> begin(const TreeIterator<T>& it)
+{
+	return it.begin();
+}
+
+template <class T>
+TreeIterator<T> end(const TreeIterator<T>& it)
+{
+	return it.end();
+}
 
 } // utils
 } // ecorecpp
