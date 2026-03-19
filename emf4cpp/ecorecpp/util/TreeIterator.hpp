@@ -72,8 +72,8 @@ public:
 		_current = obj;
 	}
 
-	explicit TreeIterator(const typename TreeIterator<T>::EEList::ptr_type& elist) {
-		_stack.push(elist->begin());
+	explicit TreeIterator(const typename EEList::ptr_type& elist) {
+		_stack.push(std::make_pair(elist, elist->begin()));
 		_current = *elist->begin();
 	}
 
@@ -85,9 +85,10 @@ public:
 		if (!_current)
 			return *this;
 
-		auto it = getChildren(_current);
-		if ( it != it.getEList()->end() ) {
-			_stack.push(it);
+		auto children = getChildren(_current);
+		auto it = children->begin();
+		if ( it != children->end() ) {
+			_stack.push(std::make_pair(children, it));
 			_current = *it;
 			return *this;
 		}
@@ -97,17 +98,17 @@ public:
 			return *this;
 		}
 
-		it = _stack.top();
+		it = _stack.top().second;
 		while ( !it.hasNext() ) {
 			_stack.pop();
 			if ( _stack.empty() ) {
 				_current = nullptr;
 				return *this;
 			}
-			it = _stack.top();
+			it = _stack.top().second;
 		}
 
-		it = ++_stack.top();
+		it = ++_stack.top().second;
 		_current = *it;
 		return *this;
 	}
@@ -135,13 +136,13 @@ public:
 	}
 
 protected:
-	typename EEList::iterator getChildren(T obj) {
-		return obj->eContents()->begin();
+	typename EEList::ptr_type getChildren(T obj) {
+		return obj->eContents();
 	}
 
 private:
 	T _current;
-	std::stack<typename EEList::iterator> _stack;
+	std::stack<std::pair<typename EEList::ptr_type, typename EEList::iterator>> _stack;
 };
 
 template <class T>

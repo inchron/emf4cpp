@@ -42,7 +42,9 @@ template<typename T>
 class EList : public std::enable_shared_from_this<EList<T>> {
 public:
 	using ptr_type = ::ecore::EList_ptr<T>;
+	using raw_ptr_type = EList*;
 	using ptr_const_type = ::ecore::EList_const_ptr<T>;
+	using raw_ptr_const_type = const EList*;
 	using ef_ptr = ::ecore::EStructuralFeature_ptr;
 
 	/** Iterator interfaces for an EList<T>.
@@ -130,9 +132,9 @@ public:
 			return ( (int64_t)_ind > 0 );
 		}
 
-		const typename EList<T>::ptr_type& getEList() const
+		ptr_type getEList() const
 		{
-			return _elist;
+			return _elist->shared_from_this();
 		}
 
 		size_t getIndex() const
@@ -145,30 +147,31 @@ public:
 		size_t _ind;
 	};
 
-	typedef EListIterator<ptr_type, true> iterator;
-	typedef EListIterator<ptr_const_type, true> const_iterator;
-	typedef EListIterator<ptr_type, false> reverse_iterator;
-	typedef EListIterator<ptr_const_type, false> const_reverse_iterator;
+	typedef EListIterator<raw_ptr_type, true> iterator;
+	typedef EListIterator<raw_ptr_const_type, true> const_iterator;
+	typedef EListIterator<raw_ptr_type, false> reverse_iterator;
+	typedef EListIterator<raw_ptr_const_type, false> const_reverse_iterator;
 	// End of iterator interface
 
 
-	inline T operator[]( size_t _index ) const
+	T operator[]( size_t _index ) const
 	{
 		return get( _index );
 	}
 
 	template<typename Q>
-	inline void insert_all( EList<Q>& _q, const ef_ptr& _ef = nullptr )
+	void insert_all( EList<Q>& _q, const ef_ptr& _ef = nullptr )
 	{
 		ptr_type _p( _q.template asEListOf<T>() );
-
-		for ( size_t i = 0; i < _p->size(); i++ )
+		const auto pSize = _p->size();
+		for ( size_t i = 0; i < pSize; i++ )
 			push_back( _p->get( i ), _ef );
 	}
 
-	inline void insert_all( EList const& _q, const ef_ptr& _ef = nullptr )
+	void insert_all( EList const& _q, const ef_ptr& _ef = nullptr )
 	{
-		for ( size_t i = 0; i < _q.size(); i++ )
+		const auto qSize = _q.size();
+		for ( size_t i = 0; i < qSize; i++ )
 			push_back( _q.get( i ), _ef );
 	}
 
@@ -198,26 +201,22 @@ public:
 
 	iterator begin()
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return iterator( this_shared, 0 );
+		return iterator( this, 0 );
 	}
 
 	iterator end()
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return iterator( this_shared, size() );
+		return iterator( this, size() );
 	}
 
 	const_iterator begin() const
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return const_iterator( this_shared, 0 );
+		return const_iterator( this, 0 );
 	}
 
 	const_iterator end() const
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return const_iterator( this_shared, size() );
+		return const_iterator( this, size() );
 	}
 
 	const_iterator cbegin() const
@@ -232,36 +231,32 @@ public:
 
 	reverse_iterator rbegin()
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return reverse_iterator( this_shared, size() - 1 );
+		return reverse_iterator( this, size() - 1 );
 	}
 
 	reverse_iterator rend()
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return reverse_iterator( this_shared, -1 );
+		return reverse_iterator( this, -1 );
 	}
 
 	const_reverse_iterator rbegin() const
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return const_reverse_iterator( this_shared, size() - 1 );
+		return const_reverse_iterator( this, size() - 1 );
 	}
 
 	const_reverse_iterator rend() const
 	{
-		auto this_shared = std::enable_shared_from_this<EList<T>>::shared_from_this();
-		return const_reverse_iterator( this_shared, -1 );
+		return const_reverse_iterator( this, -1 );
 	}
 
 	const_reverse_iterator crbegin() const
 	{
-		return begin();
+		return rbegin();
 	}
 
 	const_reverse_iterator crend() const
 	{
-		return end();
+		return rend();
 	}
 
 	virtual void remove( T ) = 0;
@@ -288,19 +283,15 @@ public:
      * Allows treating an EList<T> as an EList<Q> (if T can be casted to Q dynamically)
      */
 	template<typename Q>
-	inline typename EList<Q>::ptr_type asEListOf()
+	typename EList<Q>::ptr_type asEListOf()
 	{
 		return std::make_shared<DelegateEList<Q, T>>( *this );
 	}
 
-	virtual ~EList()
-	{
-	}
+	virtual ~EList() = default;
 
 protected:
-	EList()
-	{
-	}
+	EList() = default;
 };
 
 /**
@@ -389,11 +380,7 @@ public:
 
 	void sort( typename EList<T>::Compare ) override
 	{
-		throw std::logic_error( "DelegateEList does not support sorting");
-	}
-
-	virtual ~DelegateEList()
-	{
+		throw std::logic_error( "DelegateEList does not support sorting" );
 	}
 
 protected:
@@ -401,7 +388,7 @@ protected:
 
 	template<typename A, typename B>
 	struct _cast {
-		static inline B do_cast( A a )
+		static B do_cast( A a )
 		{
 			return std::dynamic_pointer_cast<typename B::element_type>( a );
 		}
@@ -409,7 +396,7 @@ protected:
 
 	template<typename A>
 	struct _cast<A, A> {
-		static inline A do_cast( A a )
+		static A do_cast( A a )
 		{
 			return a;
 		}

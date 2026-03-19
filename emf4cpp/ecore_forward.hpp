@@ -391,4 +391,3 @@ namespace ecore
 } // ecore
 
 #endif // _ECORE_FORWARD_HPP
-
