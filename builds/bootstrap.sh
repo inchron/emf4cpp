@@ -21,7 +21,7 @@ create_win_cfg ()
 ./generator-debug.sh
 ./generator-release.sh
 
-if [[ "$OSTYPE" == "msys" ]]; then
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
 	# release
 	create_win_cfg "release" -DCMAKE_BUILD_TYPE=Release
 

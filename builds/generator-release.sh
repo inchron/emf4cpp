@@ -11,7 +11,7 @@ mkdir -p generator-release
 mkdir -p xmltype-release
 mkdir -p ${VERSION}
 
-if [[ "$OSTYPE" == "msys" ]]; then
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
 
     ( cd generator-release && \
 	cmake -G "MSYS Makefiles" \

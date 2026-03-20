@@ -11,7 +11,7 @@ mkdir -p generator-debug
 mkdir -p xmltype-debug
 mkdir -p ${VERSION}
 
-if [[ "$OSTYPE" == "msys" ]]; then
+if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
 
     ( cd generator-debug && \
 	cmake -G "MSYS Makefiles" \
