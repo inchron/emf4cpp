@@ -36,7 +36,7 @@ Copier::~Copier() = default;
  * been used before to clone the whole model (i.e. the Copier instance is not
  * stateless but instead keeps track of objects from the source model).
  */
-EObject_ptr Copier::clone( EObject_ptr obj ) {
+EObject_ptr Copier::clone( const EObject_ptr& obj ) {
 	EObject_ptr clone = copy( obj );
 	for ( auto& kv : m_objectsMap )
 		copy_references( kv.first, kv.second );
@@ -54,7 +54,7 @@ Copier::clone(const mapping::EList< EObject_ptr >& original) {
 	auto clone = std::make_shared<
 		mapping::EListImpl< EObject_ptr > >();
 	for (auto&& object : original)
-		clone->push_back( copy(object) );
+		clone->push_back_unsafe( copy(object) );
 	for ( auto& kv : m_objectsMap )
 		copy_references( kv.first, kv.second );
 	return clone;
@@ -71,7 +71,7 @@ Copier::clone(const mapping::EList< EObject_ptr >& original) {
  *
  * Attributes marked as ID are not copied, unless m_exactCopy is set.
  */
-EObject_ptr Copier::copy( EObject_ptr src ) {
+EObject_ptr Copier::copy( const EObject_ptr& src ) {
 	EClass_ptr cls = src->eClass();
 	auto dst = cls->getEPackage()->getEFactoryInstance()->create( cls );
 	assert( dst );
@@ -111,7 +111,7 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
 
 			for (const auto & srcObject : srcs) {
 				auto child = mapping::any::any_cast<EObject_ptr>( srcObject );
-				dsts->push_back( copy( child ) );
+				dsts->push_back_unsafe( copy( child ) );
 			}
 		} else if ( auto child = mapping::any::any_cast<EObject_ptr>( src_refs ) )
 			dst->eSet( eref, copy( child ) );
@@ -129,7 +129,7 @@ EObject_ptr Copier::copy( EObject_ptr src ) {
  * The actual drop and insertion steps can be reimplemented by derived
  * classes. \sa keepReference(), \sa dropReference().
  */
-void Copier::copy_references( EObject_ptr src, EObject_ptr dst ) {
+void Copier::copy_references( const EObject_ptr& src, const EObject_ptr& dst ) {
 	const auto& ereferences = src->eClass()->getEAllReferences();
 	for (const auto & ereference : ereferences) {
 		EReference_ptr eref = ereference;
@@ -140,29 +140,34 @@ void Copier::copy_references( EObject_ptr src, EObject_ptr dst ) {
 
 		mapping::any src_refs = src->eGet( eref );
 		if ( eref->getUpperBound() != 1 ) {
+			mapping::any dst_refs = dst->eGet( eref );
+			const auto& dsts = *mapping::any::any_cast<EList_ptr>( dst_refs );
+			const auto containerWasEmpty = dsts.empty();
+
 			const auto& srcs = *mapping::any::any_cast<EList_ptr>( src_refs );
 			for (const auto & srcObject : srcs) {
 				if ( auto refObj = mapping::any::any_cast<EObject_ptr>( srcObject ) ) {
 					auto it = m_objectsMap.find( refObj );
 					const bool isWithinCopy = it != m_objectsMap.end();
 					if ( isWithinCopy ) {
-						keepReference(dst, eref, it->second);
+						keepReferenceN(dst, eref, it->second, containerWasEmpty);
 					} else if ( m_keepExternalRefs ) {
-						keepReference(dst, eref, refObj);
+						keepReferenceN(dst, eref, refObj,containerWasEmpty );
 					} else {
-						dropReference(dst, eref, refObj);
+						dropReferenceN(dst, eref, refObj);
 					}
 				}
 			}
+
 		} else if ( auto refObj = mapping::any::any_cast<EObject_ptr>( src_refs ) ) {
 			auto it = m_objectsMap.find( refObj );
 			const bool isWithinCopy = it != m_objectsMap.end();
 			if ( isWithinCopy ) {
-				keepReference(dst, eref, it->second);
+				keepReference1(dst, eref, it->second);
 			} else if ( m_keepExternalRefs ) {
-				keepReference(dst, eref, refObj);
+				keepReference1(dst, eref, refObj);
 			} else {
-				dropReference(dst, eref, refObj);
+				dropReference1(dst, eref, refObj);
 			}
 		}
 	}
@@ -170,24 +175,33 @@ void Copier::copy_references( EObject_ptr src, EObject_ptr dst ) {
 
 /** Default implementation if a reference to an object shall be copied.
  */
-void Copier::keepReference(EObject_ptr dst, EReference_ptr eref,
-						   EObject_ptr refObj) {
-	if ( eref->getUpperBound() != 1 ) {
-		mapping::any dst_refs = dst->eGet( eref );
-		auto dsts = mapping::any::any_cast<EList_ptr>( dst_refs );
-		dsts->push_back( refObj );
-	} else {
-		dst->eSet( eref, refObj );
-	}
+void Copier::keepReferenceN(const EObject_ptr& dst, const EReference_ptr& eref,
+						   const EObject_ptr& refObj, bool canUseUnsafe) {
+	assert( eref->getUpperBound() != 1 );
+
+	mapping::any dst_refs = dst->eGet( eref );
+	auto dsts = mapping::any::any_cast<EList_ptr>( dst_refs );
+	if ( canUseUnsafe )
+	    dsts->push_back_unsafe( refObj );
+	else
+		dsts->push_back( refObj ); /* Danger: push_back_unsafe() collides with eOpposite relations. */
+}
+
+void Copier::keepReference1(const EObject_ptr& dst, const EReference_ptr& eref,
+						   const EObject_ptr& refObj) {
+	assert( eref->getUpperBound() == 1 );
+	dst->eSet( eref, refObj );
 }
 
 /** Default implementation if a reference to an object, which is external to
  * the copied tree, shall be dropped: Does nothing.
  */
-void Copier::dropReference(EObject_ptr, EReference_ptr, EObject_ptr) { }
+void Copier::dropReferenceN(const EObject_ptr&, const EReference_ptr&, const EObject_ptr&) { }
+
+void Copier::dropReference1(const EObject_ptr&, const EReference_ptr&, const EObject_ptr&) { }
 
 
-EObject_ptr Copier::get_clone( EObject_ptr original) {
+EObject_ptr Copier::get_clone( const EObject_ptr& original) {
 	auto it = m_objectsMap.find(original);
 	if (it != m_objectsMap.end())
 		return it->second;

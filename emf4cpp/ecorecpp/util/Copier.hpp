@@ -32,19 +32,19 @@ public:
 	virtual ~Copier();
 
 	/** Create a deep copy of the given EObject. */
-	virtual ::ecore::EObject_ptr clone( ::ecore::EObject_ptr );
+	virtual ::ecore::EObject_ptr clone( const ::ecore::EObject_ptr& );
 
 	/** Create a deep copy of all given EObjects. */
 	virtual std::shared_ptr<::ecorecpp::mapping::EList< ::ecore::EObject_ptr > >
 		clone(const ::ecorecpp::mapping::EList< ::ecore::EObject_ptr >&);
 
-	virtual ::ecore::EObject_ptr copy( ::ecore::EObject_ptr );
-	virtual void copy_references( ::ecore::EObject_ptr src, ::ecore::EObject_ptr dst );
+	virtual ::ecore::EObject_ptr copy( const ::ecore::EObject_ptr& );
+	virtual void copy_references( const ::ecore::EObject_ptr& src, const ::ecore::EObject_ptr& dst );
 
 	/** Return a copied object for a source object. If the source object was
 	 * not copied, e.g. because it is not in a containment relation to the
 	 * copied tree's root, a nullptr is returned. */
-	virtual ::ecore::EObject_ptr get_clone( ::ecore::EObject_ptr );
+	virtual ::ecore::EObject_ptr get_clone( const ::ecore::EObject_ptr& );
 
 	/** Control if attributes marked as ID are copied 1:1 or if they are
 	 * skipped. When they are skipped, an outer mechanism usually will
@@ -57,12 +57,19 @@ protected:
 	bool m_exactCopy {false};
 	std::map<::ecore::EObject_ptr, ::ecore::EObject_ptr> m_objectsMap;
 
-	virtual void keepReference(::ecore::EObject_ptr dst,
-							   ::ecore::EReference_ptr,
-							   ::ecore::EObject_ptr refObj);
-	virtual void dropReference(::ecore::EObject_ptr dst,
-							   ::ecore::EReference_ptr,
-							   ::ecore::EObject_ptr refObj);
+	virtual void keepReference1(const ::ecore::EObject_ptr& dst,
+							   const::ecore::EReference_ptr&,
+							   const ::ecore::EObject_ptr& refObj);
+	virtual void keepReferenceN(const ::ecore::EObject_ptr& dst,
+							   const::ecore::EReference_ptr&,
+							   const ::ecore::EObject_ptr& refObj,
+							   bool canUseUnsafe);
+	virtual void dropReference1(const ::ecore::EObject_ptr& dst,
+							  const ::ecore::EReference_ptr&,
+							   const ::ecore::EObject_ptr& refObj);
+	virtual void dropReferenceN(const ::ecore::EObject_ptr& dst,
+							  const ::ecore::EReference_ptr&,
+							   const ::ecore::EObject_ptr& refObj);
 };
 
 } // util
