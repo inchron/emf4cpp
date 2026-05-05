@@ -75,7 +75,7 @@ std::string XMLResource::getID( ::ecore::EObject_ptr eobj )
 	auto it = _idToEObjectMap.find( uriFragment );
 	if ( it != _idToEObjectMap.end() ) {
 		auto retVal = it->second.lock();
-		if ( retVal )
+		if ( retVal and retVal->eResource().get() == this )
 			return retVal;
 		_idToEObjectMap.erase( it );
 	}
