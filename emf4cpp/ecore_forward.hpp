@@ -23,6 +23,7 @@
 #define _ECORE_FORWARD_HPP
 
 /*PROTECTED REGION ID(ecore_forward) ENABLED START*/
+#include <cstdint>
 #include <memory>
 #include <vector>
 #include <ecorecpp/mapping_forward.hpp>
