@@ -83,7 +83,7 @@ void XMLSerializer::setExternalReferences( const std::list<::ecorecpp::parser::R
 void XMLSerializer::serialize(
 	const ::ecorecpp::mapping::EList<::ecore::EObject_ptr>::ptr_type& objlist )
 {
-	const bool hasManyRootObjects = objlist->size() > 1;
+	const bool hasSingleRootObject = objlist->size() == 1;
 	// Serialize the top level object into m_internalBuffer
 	// First remove the XML processing instruction
 	m_internalBuffer.str( ::ecorecpp::mapping::type_definitions::string_t() );
@@ -114,15 +114,15 @@ void XMLSerializer::serialize(
 			root_name = get_reference( obj );
 		}
 
-		if ( hasManyRootObjects )
+		if ( not hasSingleRootObject )
 			m_ser.open_object( root_name, greedy_serializer::SilentMode::Loud );
 		// Output attributes and child nodes
 		serialize_node( obj );
-		if ( hasManyRootObjects )
+		if ( not hasSingleRootObject )
 			m_ser.close_object( root_name, greedy_serializer::SilentMode::Loud );
 	}
 
-	if ( hasManyRootObjects )
+	if ( not hasSingleRootObject )
 		root_name = "xmi:XMI";
 	// The current state of m_internalBuffer controls the closing tag
 	m_ser.close_object( root_name, greedy_serializer::SilentMode::Loud );
